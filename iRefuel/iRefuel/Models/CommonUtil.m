@@ -151,4 +151,19 @@
 
 }
 
++ (void)showHUD:(NSString*)text delay:(NSTimeInterval)interval withDelegate:(id<MBProgressHUDDelegate>) delegate{
+    NSArray* windowArray = [[UIApplication sharedApplication] windows];
+    UIWindow *tempKeyboardWindow = [windowArray objectAtIndex: [windowArray count] - 1];
+    
+    MBProgressHUD* HUD = [[MBProgressHUD alloc] initWithView:tempKeyboardWindow];
+    [tempKeyboardWindow addSubview:HUD];
+    HUD.mode = MBProgressHUDModeText;
+    HUD.delegate = delegate;
+    HUD.detailsLabelText = text;
+    HUD.detailsLabelFont = [UIFont systemFontOfSize:16.0f];
+    [HUD show:YES];
+    [HUD hide:YES afterDelay:interval];
+    
+}
+
 @end

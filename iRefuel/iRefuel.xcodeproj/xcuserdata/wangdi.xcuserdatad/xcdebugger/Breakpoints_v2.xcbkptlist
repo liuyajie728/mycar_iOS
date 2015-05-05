@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iRefuel/FirstViewController.m"
-            timestampString = "452437164.627331"
+            timestampString = "452516880.212109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "-getPayCode"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "-WXPrepay"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iRefuel/FirstViewController.m"
+            timestampString = "452516880.212109"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "-getProductArgs"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

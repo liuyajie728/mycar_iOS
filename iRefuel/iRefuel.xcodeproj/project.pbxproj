@@ -14,6 +14,7 @@
 		0148DD261AF77C2700BAA18C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD251AF77C2700BAA18C /* libsqlite3.0.dylib */; };
 		0148DD3E1AF780CB00BAA18C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD211AF77BF900BAA18C /* SystemConfiguration.framework */; };
 		0148DD421AF7813100BAA18C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD411AF7813100BAA18C /* libstdc++.dylib */; };
+		01533E371AF8B7B6000029C0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 01533E361AF8B7B6000029C0 /* MBProgressHUD.m */; };
 		01EB612A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m */; };
 		01EB612B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611C1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m */; };
 		01EB612C1AF74C5A006E623C /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611E1AF74C5A006E623C /* UIAlertView+AFNetworking.m */; };
@@ -64,6 +65,8 @@
 		0148DD231AF77C0C00BAA18C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0148DD251AF77C2700BAA18C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		0148DD411AF7813100BAA18C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		01533E351AF8B7B6000029C0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		01533E361AF8B7B6000029C0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		01EB61191AF74C5A006E623C /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		01EB611A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		01EB611B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -164,9 +167,27 @@
 			path = WeChatSDK_1.4.1;
 			sourceTree = "<group>";
 		};
+		01533E331AF8B7B6000029C0 /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				01533E341AF8B7B6000029C0 /* MBHUD */,
+			);
+			path = CommonView;
+			sourceTree = "<group>";
+		};
+		01533E341AF8B7B6000029C0 /* MBHUD */ = {
+			isa = PBXGroup;
+			children = (
+				01533E351AF8B7B6000029C0 /* MBProgressHUD.h */,
+				01533E361AF8B7B6000029C0 /* MBProgressHUD.m */,
+			);
+			path = MBHUD;
+			sourceTree = "<group>";
+		};
 		01EB61161AF74C5A006E623C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				01533E331AF8B7B6000029C0 /* CommonView */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -412,6 +433,7 @@
 				01EB614E1AF74F92006E623C /* AFURLConnectionOperation.m in Sources */,
 				18321E1C1AE013C800263CF9 /* AppDelegate.m in Sources */,
 				01EB61341AF74CC3006E623C /* RootTabBarController.m in Sources */,
+				01533E371AF8B7B6000029C0 /* MBProgressHUD.m in Sources */,
 				01EB614F1AF74F92006E623C /* AFURLRequestSerialization.m in Sources */,
 				01EB612F1AF74C5A006E623C /* UIProgressView+AFNetworking.m in Sources */,
 				01EB614B1AF74F92006E623C /* AFHTTPSessionManager.m in Sources */,

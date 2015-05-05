@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
 
 @interface CommonUtil : NSObject
 
@@ -25,6 +26,7 @@
 //获取月份时间
 +(NSString*)getAssignMonthDate:(int)month;
 
++ (void)showHUD:(NSString*)text delay:(NSTimeInterval)interval withDelegate:(id<MBProgressHUDDelegate>)delegate;
 
 //算出text的高度
 //+(CGFloat)getCellHeight:(NSString*)text andWidth:(int)width;
