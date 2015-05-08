@@ -13,6 +13,7 @@
 #import "WXApiObject.h"
 #import "MBProgressHUD.h"
 #import "CommonUtil.h"
+#import "payRequsestHandler.h"
 
 //微信相关数据
 #define kWXAppID @"wx920a184018cc7654"
@@ -59,40 +60,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)login:(id)sender {
-    
-    
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSString * urlStr = @"http://www.key2all.cn/sms/send";
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager POST:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"%@",responseObject);
-        
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
-        NSLog(@"- %@",error);
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-    }];
-    
-}
+
 
 - (IBAction)test:(id)sender {
 
   
     //[self OldWeiChatPay];
     [self newWeiChatPay];
-    
-    
-    
-    
 }
 
 #pragma mark NewWeiChatPay
@@ -103,11 +77,14 @@
     //TUDO 接口还没更新
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     
-    NSDictionary *parameters = @{@"type": @"recharge"};
+    
+    NSDictionary *parameters = @{@"type": @"recharge",
+                                 @"amount":@"1",
+                                 @"user_id":@"007"};
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [manager POST:@"http://www.jiayoucar.com/api/order/create" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
         
         NSDictionary * dataDic = responseObject;
         
@@ -115,26 +92,93 @@
             
             //服务器返回成功
             NSLog(@"ok!");
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+           
             [CommonUtil showHUD:@"服务器返回成功" delay:2.0 withDelegate:self];
+
             
-            //成功以后开始支付
-            [self NewWeiChatPayGo];
+            NSDictionary * content = [dataDic objectForKey:@"content"];
             
+            //保存订单号 签名算法的时候要使用
+            payCode = [content objectForKey:@"order_id"];
+            
+   
+            //开始调用统一下单的微信接口
+            [self WeiChatUnifiedorder:[content objectForKey:@"order_id"] andTotal:[content objectForKey:@"total"] andIp:[content objectForKey:@"user_ip"]];
             
         }else{
             //服务器返回失败
             
             [CommonUtil showHUD:@"服务器返回失败" delay:2.0 withDelegate:self];
         }
-        
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failure");
+        NSLog(@"failure = %@",error);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
     
 }
+-(void)WeiChatUnifiedorder:(NSString*)orderId andTotal:(NSString*)total andIp:(NSString*)ipStr
+{
+//    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+//    /*
+//      金额
+//      订单号
+//      商品描述
+//      回调地址
+//      终端ip
+//      32位随机码
+//      签名算法
+//     */
+//    
+////    [self genNonceStr]; //32位随机码
+////    [self genPackage]; //签名算法
+////    [self genSign:nil];
+//    
+//    
+//    
+//    NSDictionary * parame = @{@"total_fee":[NSNumber numberWithInt:[total intValue]],
+//                              @"out_trade_no":orderId,
+//                              @"body":@"我是商品描述",
+//                              @"notify_url":@"http://www.jiayoucar.com/web/wepay/demo/notify_url.php",
+//                              @"spbill_create_ip":ipStr,
+//                              @"nonce_str":[self genNonceStr],
+//                              @"sign":[self genPackage]};
+//    
+//    //[self getUnifiedorderXml:parame];
+//    NSLog(@"%@",[self getUnifiedorderXml:parame]);
+//    
+//    
+//    [manager POST:@"https://api.mch.weixin.qq.com/pay/unifiedorder" parameters:[self getUnifiedorderXml:parame] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        NSLog(@"%@",responseObject);
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"%@",error);
+//        
+//    }];
+    
+    //创建支付签名对象
+    payRequsestHandler *req = [payRequsestHandler alloc];
+    
+    //初始化支付签名对象
+    [req init:APP_ID mch_id:MCH_ID];
+    
+    //设置密钥
+    [req setKey:PARTNER_ID];
+    
+    //获取到实际调起微信支付的参数后，在app端调起支付
+    NSMutableDictionary *dict = [req sendPay_demo:@{@"orderId":orderId,
+                                                    @"total":total,
+                                                    @"ip":ipStr}];
+    
+    
+    
+
+}
+
 -(void)NewWeiChatPayGo
 {
     //调用微信支付接口开始支付
@@ -334,10 +378,10 @@
     // 构造参数列表
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:@"WX" forKey:@"bank_type"];
-    [params setObject:@"充值" forKey:@"body"];
+    [params setObject:@"我是商品描述" forKey:@"body"];
     [params setObject:@"1" forKey:@"fee_type"];
     [params setObject:@"UTF-8" forKey:@"input_charset"];
-    [params setObject:@"http://www.jiayoucar.com/api/order/notify_wechat" forKey:@"notify_url"];
+    [params setObject:@"http://www.jiayoucar.com/web/wepay/demo/notify_url.php" forKey:@"notify_url"];
     [params setObject:payCode forKey:@"out_trade_no"]; //订单号
     [params setObject:kWXPartnerId forKey:@"partner"];
     [params setObject:[CommonUtil getIPAddress:YES] forKey:@"spbill_create_ip"];
@@ -459,16 +503,22 @@
         
     }
     
-    //更改当前页面的可用余额
-//    self.keyongMoney.text = [NSString stringWithFormat:@"%.2f",[self.keyongMoney.text floatValue] + [self.money_tf.text floatValue]];
-//    
-//    RechargeSucceedViewController * succeedVc = [[RechargeSucceedViewController alloc]initWithNibName:@"RechargeSucceedViewController" bundle:nil];
-//    succeedVc.info = infoDic;
-//    [self.navigationController pushViewController:succeedVc animated:YES];
+
     
     
 }
 
-
+-(NSString*)getUnifiedorderXml:(NSDictionary*)parame
+{
+    
+    NSString * xmlStr = @"<xml>";
+    for (NSString * key in parame.allKeys) {
+        
+        xmlStr = [NSString stringWithFormat:@"%@ <%@>%@</%@>",xmlStr,key,[parame objectForKey:key],key];
+    }
+    xmlStr = [NSString stringWithFormat:@"%@ </xml>",xmlStr];
+    
+    return xmlStr;
+}
 
 @end

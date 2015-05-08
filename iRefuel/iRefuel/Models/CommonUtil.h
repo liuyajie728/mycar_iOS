@@ -28,6 +28,15 @@
 
 + (void)showHUD:(NSString*)text delay:(NSTimeInterval)interval withDelegate:(id<MBProgressHUDDelegate>)delegate;
 
+//过滤纯数字
++ (BOOL)validateNumber:(NSString *) textString;
+
+//6位颜色码转换uiColor
++ (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
+
+//获取一个TitleView
++(UIView*)getTitleViewWithTitle:(NSString*)title andFount:(CGFloat)fount andTitleColour:(UIColor*)color;
+
 //算出text的高度
 //+(CGFloat)getCellHeight:(NSString*)text andWidth:(int)width;
 @end

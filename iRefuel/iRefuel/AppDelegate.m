@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "CommonUtil.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +30,11 @@
     
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
+    //设置nav的颜色
+    [[UINavigationBar appearance] setBarTintColor:[CommonUtil colorWithHexString:@"00a1d8" alpha:1]];
+    //self.navigationController.navigationBar.translucent = YES
+    [UINavigationBar appearance].translucent = YES;
     
     
     return YES;
