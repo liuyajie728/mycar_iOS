@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		013EA9271AFB5D9200B2C85A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013EA9261AFB5D9200B2C85A /* LoginViewController.m */; };
 		0148DD191AF775F000BAA18C /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148DD181AF775F000BAA18C /* CommonUtil.m */; };
 		0148DD1F1AF777B600BAA18C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD1B1AF777B600BAA18C /* libWeChatSDK.a */; };
 		0148DD201AF777B600BAA18C /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0148DD1C1AF777B600BAA18C /* readme.txt */; };
@@ -16,10 +15,13 @@
 		0148DD3E1AF780CB00BAA18C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD211AF77BF900BAA18C /* SystemConfiguration.framework */; };
 		0148DD421AF7813100BAA18C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD411AF7813100BAA18C /* libstdc++.dylib */; };
 		01533E371AF8B7B6000029C0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 01533E361AF8B7B6000029C0 /* MBProgressHUD.m */; };
+		018AC6221AFE047500A220FE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61D1AFE047400A220FE /* LoginViewController.m */; };
+		018AC6231AFE047500A220FE /* TreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61F1AFE047400A220FE /* TreatyViewController.m */; };
+		018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC6251AFE052A00A220FE /* FirstViewController.m */; };
+		018AC6291AFE053D00A220FE /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC6281AFE053D00A220FE /* SecondViewController.m */; };
 		01AFE7BA1AFB41D0006EEE27 /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B51AFB41D0006EEE27 /* ApiXml.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AFE7BB1AFB41D0006EEE27 /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B71AFB41D0006EEE27 /* payRequsestHandler.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AFE7BC1AFB41D0006EEE27 /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B91AFB41D0006EEE27 /* WXUtil.mm */; };
-		01D279B91AFCD9AB00C2C0C8 /* TreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D279B81AFCD9AB00C2C0C8 /* TreatyViewController.m */; };
 		01EB612A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m */; };
 		01EB612B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611C1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m */; };
 		01EB612C1AF74C5A006E623C /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611E1AF74C5A006E623C /* UIAlertView+AFNetworking.m */; };
@@ -40,8 +42,6 @@
 		01EB61511AF74F92006E623C /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB61481AF74F91006E623C /* AFURLSessionManager.m */; };
 		18321E191AE013C800263CF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18321E181AE013C800263CF9 /* main.m */; };
 		18321E1C1AE013C800263CF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18321E1B1AE013C800263CF9 /* AppDelegate.m */; };
-		18321E1F1AE013C800263CF9 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18321E1E1AE013C800263CF9 /* FirstViewController.m */; };
-		18321E221AE013C800263CF9 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18321E211AE013C800263CF9 /* SecondViewController.m */; };
 		18321E251AE013C800263CF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18321E231AE013C800263CF9 /* Main.storyboard */; };
 		18321E271AE013C800263CF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18321E261AE013C800263CF9 /* Images.xcassets */; };
 		18321E2A1AE013C800263CF9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18321E281AE013C800263CF9 /* LaunchScreen.xib */; };
@@ -60,8 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		013EA9251AFB5D9200B2C85A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		013EA9261AFB5D9200B2C85A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0148DD171AF775F000BAA18C /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		0148DD181AF775F000BAA18C /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		0148DD1B1AF777B600BAA18C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -74,14 +72,20 @@
 		0148DD411AF7813100BAA18C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		01533E351AF8B7B6000029C0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		01533E361AF8B7B6000029C0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		018AC61C1AFE047400A220FE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		018AC61D1AFE047400A220FE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		018AC61E1AFE047400A220FE /* TreatyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatyViewController.h; sourceTree = "<group>"; };
+		018AC61F1AFE047400A220FE /* TreatyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatyViewController.m; sourceTree = "<group>"; };
+		018AC6241AFE052A00A220FE /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		018AC6251AFE052A00A220FE /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		018AC6271AFE053D00A220FE /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		018AC6281AFE053D00A220FE /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		01AFE7B41AFB41D0006EEE27 /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
 		01AFE7B51AFB41D0006EEE27 /* ApiXml.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiXml.mm; sourceTree = "<group>"; };
 		01AFE7B61AFB41D0006EEE27 /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
 		01AFE7B71AFB41D0006EEE27 /* payRequsestHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = payRequsestHandler.mm; sourceTree = "<group>"; };
 		01AFE7B81AFB41D0006EEE27 /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
 		01AFE7B91AFB41D0006EEE27 /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
-		01D279B71AFCD9AA00C2C0C8 /* TreatyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatyViewController.h; sourceTree = "<group>"; };
-		01D279B81AFCD9AB00C2C0C8 /* TreatyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatyViewController.m; sourceTree = "<group>"; };
 		01EB61191AF74C5A006E623C /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		01EB611A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		01EB611B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -124,10 +128,6 @@
 		18321E181AE013C800263CF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18321E1A1AE013C800263CF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18321E1B1AE013C800263CF9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		18321E1D1AE013C800263CF9 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		18321E1E1AE013C800263CF9 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		18321E201AE013C800263CF9 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		18321E211AE013C800263CF9 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		18321E241AE013C800263CF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18321E261AE013C800263CF9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18321E291AE013C800263CF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -205,9 +205,49 @@
 			path = MBHUD;
 			sourceTree = "<group>";
 		};
+		018AC61A1AFE047400A220FE /* 充值 */ = {
+			isa = PBXGroup;
+			children = (
+				018AC6271AFE053D00A220FE /* SecondViewController.h */,
+				018AC6281AFE053D00A220FE /* SecondViewController.m */,
+			);
+			path = "充值";
+			sourceTree = "<group>";
+		};
+		018AC61B1AFE047400A220FE /* 登陆注册 */ = {
+			isa = PBXGroup;
+			children = (
+				018AC61C1AFE047400A220FE /* LoginViewController.h */,
+				018AC61D1AFE047400A220FE /* LoginViewController.m */,
+				018AC61E1AFE047400A220FE /* TreatyViewController.h */,
+				018AC61F1AFE047400A220FE /* TreatyViewController.m */,
+			);
+			path = "登陆注册";
+			sourceTree = "<group>";
+		};
+		018AC6201AFE047400A220FE /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				018AC6241AFE052A00A220FE /* FirstViewController.h */,
+				018AC6251AFE052A00A220FE /* FirstViewController.m */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		018AC6211AFE047400A220FE /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "我的";
+			sourceTree = "<group>";
+		};
 		01EB61161AF74C5A006E623C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				018AC61A1AFE047400A220FE /* 充值 */,
+				018AC61B1AFE047400A220FE /* 登陆注册 */,
+				018AC6201AFE047400A220FE /* 首页 */,
+				018AC6211AFE047400A220FE /* 我的 */,
 				01533E331AF8B7B6000029C0 /* CommonView */,
 			);
 			path = Controllers;
@@ -300,16 +340,8 @@
 				01EB61171AF74C5A006E623C /* libs */,
 				18321E1A1AE013C800263CF9 /* AppDelegate.h */,
 				18321E1B1AE013C800263CF9 /* AppDelegate.m */,
-				18321E1D1AE013C800263CF9 /* FirstViewController.h */,
-				18321E1E1AE013C800263CF9 /* FirstViewController.m */,
-				18321E201AE013C800263CF9 /* SecondViewController.h */,
-				18321E211AE013C800263CF9 /* SecondViewController.m */,
 				01EB61321AF74CC3006E623C /* RootTabBarController.h */,
 				01EB61331AF74CC3006E623C /* RootTabBarController.m */,
-				013EA9251AFB5D9200B2C85A /* LoginViewController.h */,
-				013EA9261AFB5D9200B2C85A /* LoginViewController.m */,
-				01D279B71AFCD9AA00C2C0C8 /* TreatyViewController.h */,
-				01D279B81AFCD9AB00C2C0C8 /* TreatyViewController.m */,
 				18321E231AE013C800263CF9 /* Main.storyboard */,
 				18321E261AE013C800263CF9 /* Images.xcassets */,
 				18321E281AE013C800263CF9 /* LaunchScreen.xib */,
@@ -452,30 +484,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				01EB612B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				18321E221AE013C800263CF9 /* SecondViewController.m in Sources */,
 				01EB614A1AF74F92006E623C /* AFHTTPRequestOperationManager.m in Sources */,
 				01EB612C1AF74C5A006E623C /* UIAlertView+AFNetworking.m in Sources */,
-				013EA9271AFB5D9200B2C85A /* LoginViewController.m in Sources */,
+				018AC6221AFE047500A220FE /* LoginViewController.m in Sources */,
 				01EB614E1AF74F92006E623C /* AFURLConnectionOperation.m in Sources */,
 				18321E1C1AE013C800263CF9 /* AppDelegate.m in Sources */,
 				01EB61341AF74CC3006E623C /* RootTabBarController.m in Sources */,
 				01533E371AF8B7B6000029C0 /* MBProgressHUD.m in Sources */,
+				018AC6291AFE053D00A220FE /* SecondViewController.m in Sources */,
 				01EB614F1AF74F92006E623C /* AFURLRequestSerialization.m in Sources */,
 				01AFE7BB1AFB41D0006EEE27 /* payRequsestHandler.mm in Sources */,
 				01AFE7BA1AFB41D0006EEE27 /* ApiXml.mm in Sources */,
 				01EB612F1AF74C5A006E623C /* UIProgressView+AFNetworking.m in Sources */,
 				01EB614B1AF74F92006E623C /* AFHTTPSessionManager.m in Sources */,
 				01EB61491AF74F92006E623C /* AFHTTPRequestOperation.m in Sources */,
-				18321E1F1AE013C800263CF9 /* FirstViewController.m in Sources */,
 				01EB614D1AF74F92006E623C /* AFSecurityPolicy.m in Sources */,
 				18321E191AE013C800263CF9 /* main.m in Sources */,
 				01EB614C1AF74F92006E623C /* AFNetworkReachabilityManager.m in Sources */,
 				01AFE7BC1AFB41D0006EEE27 /* WXUtil.mm in Sources */,
 				0148DD191AF775F000BAA18C /* CommonUtil.m in Sources */,
-				01D279B91AFCD9AB00C2C0C8 /* TreatyViewController.m in Sources */,
+				018AC6231AFE047500A220FE /* TreatyViewController.m in Sources */,
 				01EB61511AF74F92006E623C /* AFURLSessionManager.m in Sources */,
 				01EB61301AF74C5A006E623C /* UIRefreshControl+AFNetworking.m in Sources */,
 				01EB61311AF74C5A006E623C /* UIWebView+AFNetworking.m in Sources */,
+				018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */,
 				01EB612D1AF74C5A006E623C /* UIButton+AFNetworking.m in Sources */,
 				01EB612E1AF74C5A006E623C /* UIImageView+AFNetworking.m in Sources */,
 				01EB61501AF74F92006E623C /* AFURLResponseSerialization.m in Sources */,

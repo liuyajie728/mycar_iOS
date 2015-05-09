@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //设置item。
+    UITabBarItem * item0 = [self.tabBar.items objectAtIndex:0];
+
 }
 
 - (void)didReceiveMemoryWarning {

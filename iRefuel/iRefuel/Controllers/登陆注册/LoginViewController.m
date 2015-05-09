@@ -10,6 +10,7 @@
 #import "CommonUtil.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "MBProgressHUD.h"
+#import "TreatyViewController.h"
 
 
 @interface LoginViewController ()<UITextFieldDelegate,MBProgressHUDDelegate>
@@ -45,7 +46,7 @@
     UIView * titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 35)];
     titleView.backgroundColor = [UIColor redColor];
     
-    self.navigationItem.title = @"哎油";
+    //self.navigationItem.title = @"哎油";
     self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"哎油" andFount:18 andTitleColour:[UIColor whiteColor]];
 
 //    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
@@ -66,6 +67,17 @@
     //监听textField
     [self.phone_tf addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.verify_tf addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    
+    //自定义nav
+//    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+//    back.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+//    //[back setTitle:@"Back" forState:UIControlStateNormal];
+//    [back setFrame:CGRectMake(5, 2, 52, 30)];
+//    //[back setBackgroundImage:[UIImage imageNamed:@"bar_return"] forState:UIControlStateNormal];
+//    //[back addTarget:self action:@selector(popDiyView) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:back];
+//    barButton.style = UIBarButtonSystemItemUndo;
+//    self.navigationItem.leftBarButtonItem = barButton;
     
 }
 
@@ -150,8 +162,8 @@
         if ([[dic objectForKey:@"status"]longValue] == 200){
         
             [CommonUtil showHUD:@"恭喜您 注册成功" delay:2.0 withDelegate:self];
-            
             //TODO退回到登陆界面
+            
             
         }else if ([[dic objectForKey:@"status"]longValue] == 400){
             [CommonUtil showHUD:@"验证码输入错误" delay:2.0 withDelegate:self];
@@ -168,10 +180,9 @@
     }];
     
 }
-- (IBAction)clickTreaty:(id)sender {
-    //查看协议
+- (IBAction)clickBgTapGesture:(id)sender {
     
-    
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 #pragma mark TextFieldDelegate
@@ -195,7 +206,7 @@
             textField.text = [textField.text substringToIndex:11];
             
             if (textField.text.length == 11) {
-                self.verify_btn.backgroundColor = [UIColor colorWithRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:1];
+                self.verify_btn.backgroundColor = [UIColor colorWithRed:71/255.0 green:218/255.0 blue:192/255.0 alpha:1];
                 numberIsPhone = YES;
             }else{
                 self.verify_btn.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
@@ -237,7 +248,7 @@
     if (numberIsVerify && numberIsPhone) {
         isRefister = YES;
         
-        self.confirm_btn.backgroundColor = [UIColor colorWithRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:1];
+        self.confirm_btn.backgroundColor = [UIColor colorWithRed:71/255.0 green:218/255.0 blue:192/255.0 alpha:1];
         
     }else{
         isRefister = NO;

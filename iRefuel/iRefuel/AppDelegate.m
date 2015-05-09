@@ -28,7 +28,7 @@
         NSLog(@"注册微信失败");
     }
     
-    
+    //设置网络请求的时候顶部有请求转菊花状态
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     //设置nav的颜色
@@ -36,6 +36,9 @@
     //self.navigationController.navigationBar.translucent = YES
     [UINavigationBar appearance].translucent = YES;
     
+    
+    //设置barItem高亮的颜色
+    [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
     
     return YES;
 }
