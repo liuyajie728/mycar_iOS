@@ -104,7 +104,7 @@
     
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [manager POST:@"http://www.jiayoucar.com/api/sms/send" parameters:@{@"mobile":self.phone_tf.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://www.jiayoucar.com/api/sms/send" parameters:@{@"mobile":self.phone_tf.text,@"token":@"bbE0cMOoCmRJDnun8y9uqyR8C"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         verifyDic = responseObject;
         
@@ -143,15 +143,13 @@
     }
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    
-    
-//    [NSString stringWithFormat:@"%ld",[[[verifyDic objectForKey:@"content"]objectForKey:@"sms_id"]longValue]]
-    
+
     NSString * smsId = [NSString stringWithFormat:@"%ld",[[[verifyDic objectForKey:@"content"]objectForKey:@"sms_id"]longValue]];
     
     NSDictionary * paramet = @{@"mobile":self.phone_tf.text,
                                @"captcha":self.verify_tf.text,
-                               @"sms_id":smsId};
+                               @"sms_id":smsId,
+                               @"token":@"bbE0cMOoCmRJDnun8y9uqyR8C"};
     
     
 

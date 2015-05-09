@@ -207,13 +207,10 @@
                                     <navigationItem title="协议" id="eKo-od-TeS"/>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P9s-eE-ZC6">
-                                <rect key="frame" x="0.0" y="68" width="320" height="434"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议 123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议123 我时协议 协议</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3j-0D-GhM">
+                                <rect key="frame" x="0.0" y="68" width="320" height="438"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -221,6 +218,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="confirm_btn" destination="aVX-6l-K8P" id="YcP-kQ-IeZ"/>
+                        <outlet property="myWebView" destination="E3j-0D-GhM" id="NAR-Fe-0zX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkh-iU-RrS" userLabel="First Responder" sceneMemberID="firstResponder"/>
