@@ -7,24 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01402D991B00C92000DAE4F6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01402D981B00C92000DAE4F6 /* MyViewController.m */; };
 		0148DD191AF775F000BAA18C /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148DD181AF775F000BAA18C /* CommonUtil.m */; };
 		0148DD1F1AF777B600BAA18C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD1B1AF777B600BAA18C /* libWeChatSDK.a */; };
 		0148DD201AF777B600BAA18C /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0148DD1C1AF777B600BAA18C /* readme.txt */; };
 		0148DD241AF77C0C00BAA18C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD231AF77C0C00BAA18C /* libz.dylib */; };
 		0148DD261AF77C2700BAA18C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD251AF77C2700BAA18C /* libsqlite3.0.dylib */; };
-		0148DD3E1AF780CB00BAA18C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD211AF77BF900BAA18C /* SystemConfiguration.framework */; };
 		0148DD421AF7813100BAA18C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD411AF7813100BAA18C /* libstdc++.dylib */; };
 		01533E371AF8B7B6000029C0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 01533E361AF8B7B6000029C0 /* MBProgressHUD.m */; };
+		01631CF91B01D5FB00DC1888 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631CF81B01D5FB00DC1888 /* BaiduMapAPI.framework */; };
+		01631CFB1B01D64200DC1888 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631CFA1B01D64200DC1888 /* CoreLocation.framework */; };
+		01631CFD1B01D64D00DC1888 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631CFC1B01D64D00DC1888 /* QuartzCore.framework */; };
+		01631CFF1B01D65900DC1888 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631CFE1B01D65900DC1888 /* OpenGLES.framework */; };
+		01631D011B01D66400DC1888 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D001B01D66400DC1888 /* SystemConfiguration.framework */; };
+		01631D031B01D67C00DC1888 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D021B01D67C00DC1888 /* Security.framework */; };
+		01631D051B01D6B700DC1888 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D041B01D6B700DC1888 /* CoreGraphics.framework */; };
+		01631D411B01EDF100DC1888 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01631D401B01EDF100DC1888 /* Info.plist */; };
 		018AC6221AFE047500A220FE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61D1AFE047400A220FE /* LoginViewController.m */; };
 		018AC6231AFE047500A220FE /* TreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61F1AFE047400A220FE /* TreatyViewController.m */; };
 		018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC6251AFE052A00A220FE /* FirstViewController.m */; };
 		018AC6291AFE053D00A220FE /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC6281AFE053D00A220FE /* SecondViewController.m */; };
-		018AC62C1AFE2FD600A220FE /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018AC62B1AFE2FD600A220FE /* BaiduMapAPI.framework */; };
-		018AC62E1AFE304400A220FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018AC62D1AFE304400A220FE /* CoreLocation.framework */; };
-		018AC6301AFE306100A220FE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018AC62F1AFE306100A220FE /* QuartzCore.framework */; };
-		018AC6321AFE307000A220FE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018AC6311AFE307000A220FE /* OpenGLES.framework */; };
-		018AC6341AFE308300A220FE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018AC6331AFE308300A220FE /* CoreGraphics.framework */; };
-		018AC6361AFE308F00A220FE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018AC6351AFE308F00A220FE /* Security.framework */; };
 		01AFE7BA1AFB41D0006EEE27 /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B51AFB41D0006EEE27 /* ApiXml.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AFE7BB1AFB41D0006EEE27 /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B71AFB41D0006EEE27 /* payRequsestHandler.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AFE7BC1AFB41D0006EEE27 /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B91AFB41D0006EEE27 /* WXUtil.mm */; };
@@ -66,18 +68,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01402D971B00C92000DAE4F6 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		01402D981B00C92000DAE4F6 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		0148DD171AF775F000BAA18C /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		0148DD181AF775F000BAA18C /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		0148DD1B1AF777B600BAA18C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		0148DD1C1AF777B600BAA18C /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		0148DD1D1AF777B600BAA18C /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		0148DD1E1AF777B600BAA18C /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		0148DD211AF77BF900BAA18C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0148DD231AF77C0C00BAA18C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0148DD251AF77C2700BAA18C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		0148DD411AF7813100BAA18C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		01533E351AF8B7B6000029C0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		01533E361AF8B7B6000029C0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		01631CF81B01D5FB00DC1888 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI.framework; sourceTree = "<group>"; };
+		01631CFA1B01D64200DC1888 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		01631CFC1B01D64D00DC1888 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		01631CFE1B01D65900DC1888 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		01631D001B01D66400DC1888 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		01631D021B01D67C00DC1888 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		01631D041B01D6B700DC1888 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		01631D401B01EDF100DC1888 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		018AC61C1AFE047400A220FE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		018AC61D1AFE047400A220FE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		018AC61E1AFE047400A220FE /* TreatyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatyViewController.h; sourceTree = "<group>"; };
@@ -86,12 +97,6 @@
 		018AC6251AFE052A00A220FE /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		018AC6271AFE053D00A220FE /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		018AC6281AFE053D00A220FE /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		018AC62B1AFE2FD600A220FE /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI.framework; sourceTree = "<group>"; };
-		018AC62D1AFE304400A220FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		018AC62F1AFE306100A220FE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		018AC6311AFE307000A220FE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		018AC6331AFE308300A220FE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		018AC6351AFE308F00A220FE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		01AFE7B41AFB41D0006EEE27 /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
 		01AFE7B51AFB41D0006EEE27 /* ApiXml.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiXml.mm; sourceTree = "<group>"; };
 		01AFE7B61AFB41D0006EEE27 /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
@@ -146,8 +151,6 @@
 		18321E2F1AE013C800263CF9 /* iRefuelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iRefuelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18321E341AE013C800263CF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18321E351AE013C800263CF9 /* iRefuelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iRefuelTests.m; sourceTree = "<group>"; };
-		18321E3F1AE0163B00263CF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
-		18321E411AE0164F00263CF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		18321E421AE0167D00263CF9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,16 +159,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				018AC6361AFE308F00A220FE /* Security.framework in Frameworks */,
-				018AC6341AFE308300A220FE /* CoreGraphics.framework in Frameworks */,
-				018AC6321AFE307000A220FE /* OpenGLES.framework in Frameworks */,
-				018AC6301AFE306100A220FE /* QuartzCore.framework in Frameworks */,
-				018AC62E1AFE304400A220FE /* CoreLocation.framework in Frameworks */,
+				01631D051B01D6B700DC1888 /* CoreGraphics.framework in Frameworks */,
+				01631D031B01D67C00DC1888 /* Security.framework in Frameworks */,
+				01631CFB1B01D64200DC1888 /* CoreLocation.framework in Frameworks */,
+				01631D011B01D66400DC1888 /* SystemConfiguration.framework in Frameworks */,
+				01631CFF1B01D65900DC1888 /* OpenGLES.framework in Frameworks */,
+				01631CFD1B01D64D00DC1888 /* QuartzCore.framework in Frameworks */,
 				0148DD421AF7813100BAA18C /* libstdc++.dylib in Frameworks */,
-				0148DD3E1AF780CB00BAA18C /* SystemConfiguration.framework in Frameworks */,
-				018AC62C1AFE2FD600A220FE /* BaiduMapAPI.framework in Frameworks */,
 				0148DD261AF77C2700BAA18C /* libsqlite3.0.dylib in Frameworks */,
 				0148DD241AF77C0C00BAA18C /* libz.dylib in Frameworks */,
+				01631CF91B01D5FB00DC1888 /* BaiduMapAPI.framework in Frameworks */,
 				0148DD1F1AF777B600BAA18C /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +226,14 @@
 			path = MBHUD;
 			sourceTree = "<group>";
 		};
+		01631CF71B01D5FB00DC1888 /* baiduMap */ = {
+			isa = PBXGroup;
+			children = (
+				01631CF81B01D5FB00DC1888 /* BaiduMapAPI.framework */,
+			);
+			path = baiduMap;
+			sourceTree = "<group>";
+		};
 		018AC61A1AFE047400A220FE /* 充值 */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,16 +266,10 @@
 		018AC6211AFE047400A220FE /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				01402D971B00C92000DAE4F6 /* MyViewController.h */,
+				01402D981B00C92000DAE4F6 /* MyViewController.m */,
 			);
 			path = "我的";
-			sourceTree = "<group>";
-		};
-		018AC62A1AFE2FD600A220FE /* baiduMap */ = {
-			isa = PBXGroup;
-			children = (
-				018AC62B1AFE2FD600A220FE /* BaiduMapAPI.framework */,
-			);
-			path = baiduMap;
 			sourceTree = "<group>";
 		};
 		01EB61161AF74C5A006E623C /* Controllers */ = {
@@ -282,7 +287,7 @@
 		01EB61171AF74C5A006E623C /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				018AC62A1AFE2FD600A220FE /* baiduMap */,
+				01631CF71B01D5FB00DC1888 /* baiduMap */,
 				0148DD1A1AF777B600BAA18C /* WeChatSDK_1.4.1 */,
 				01EB61351AF74F91006E623C /* AFNetworking */,
 				01EB61181AF74C5A006E623C /* UIKit+AFNetworking */,
@@ -343,11 +348,12 @@
 		18321E0A1AE013C700263CF9 = {
 			isa = PBXGroup;
 			children = (
-				018AC6351AFE308F00A220FE /* Security.framework */,
-				018AC6331AFE308300A220FE /* CoreGraphics.framework */,
-				018AC6311AFE307000A220FE /* OpenGLES.framework */,
-				018AC62F1AFE306100A220FE /* QuartzCore.framework */,
-				018AC62D1AFE304400A220FE /* CoreLocation.framework */,
+				01631D041B01D6B700DC1888 /* CoreGraphics.framework */,
+				01631D021B01D67C00DC1888 /* Security.framework */,
+				01631D001B01D66400DC1888 /* SystemConfiguration.framework */,
+				01631CFE1B01D65900DC1888 /* OpenGLES.framework */,
+				01631CFC1B01D64D00DC1888 /* QuartzCore.framework */,
+				01631CFA1B01D64200DC1888 /* CoreLocation.framework */,
 				18321E421AE0167D00263CF9 /* Default-568h@2x.png */,
 				18321E151AE013C800263CF9 /* iRefuel */,
 				18321E321AE013C800263CF9 /* iRefuelTests */,
@@ -388,8 +394,6 @@
 				0148DD411AF7813100BAA18C /* libstdc++.dylib */,
 				0148DD251AF77C2700BAA18C /* libsqlite3.0.dylib */,
 				0148DD231AF77C0C00BAA18C /* libz.dylib */,
-				0148DD211AF77BF900BAA18C /* SystemConfiguration.framework */,
-				18321E401AE0163B00263CF9 /* Info.plist */,
 				18321E181AE013C800263CF9 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -398,6 +402,7 @@
 		18321E321AE013C800263CF9 /* iRefuelTests */ = {
 			isa = PBXGroup;
 			children = (
+				01631D401B01EDF100DC1888 /* Info.plist */,
 				18321E351AE013C800263CF9 /* iRefuelTests.m */,
 				18321E331AE013C800263CF9 /* Supporting Files */,
 			);
@@ -505,6 +510,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01631D411B01EDF100DC1888 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +545,7 @@
 				01EB61511AF74F92006E623C /* AFURLSessionManager.m in Sources */,
 				01EB61301AF74C5A006E623C /* UIRefreshControl+AFNetworking.m in Sources */,
 				01EB61311AF74C5A006E623C /* UIWebView+AFNetworking.m in Sources */,
+				01402D991B00C92000DAE4F6 /* MyViewController.m in Sources */,
 				018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */,
 				01EB612D1AF74C5A006E623C /* UIButton+AFNetworking.m in Sources */,
 				01EB612E1AF74C5A006E623C /* UIImageView+AFNetworking.m in Sources */,
@@ -580,15 +587,6 @@
 				18321E291AE013C800263CF9 /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		18321E401AE0163B00263CF9 /* Info.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18321E3F1AE0163B00263CF9 /* Base */,
-				18321E411AE0164F00263CF9 /* en */,
-			);
-			name = Info.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -684,6 +682,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iRefuel/libs/baiduMap",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/iRefuelTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -708,6 +707,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iRefuel/libs/baiduMap",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/iRefuelTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -43,8 +43,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    UIView * titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 35)];
-    titleView.backgroundColor = [UIColor redColor];
     
     //self.navigationItem.title = @"哎油";
     self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"哎油" andFount:18 andTitleColour:[UIColor whiteColor]];
@@ -67,6 +65,7 @@
     //监听textField
     [self.phone_tf addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.verify_tf addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    
     
     //自定义nav
 //    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];

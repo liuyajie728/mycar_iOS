@@ -1,17 +1,13 @@
 //
-//  FirstViewController.h
+//  MyViewController.h
 //  iRefuel
 //
-//  Created by 刘亚杰Kamas on 15/4/16.
+//  Created by wangdi on 15/5/11.
 //  Copyright (c) 2015年 SenseStrong E-Commerce Co. Ltd. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-
-
-@interface FirstViewController : UIViewController
-
+@interface MyViewController : UIViewController
 
 @end
-

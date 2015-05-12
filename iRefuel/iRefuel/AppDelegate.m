@@ -9,24 +9,48 @@
 #import "AppDelegate.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "CommonUtil.h"
+#import <BaiduMapAPI/BMKMapManager.h>
 
-@interface AppDelegate ()
+
+@interface AppDelegate ()<BMKGeneralDelegate>
 
 @end
 
+BMKMapManager* _mapManager;
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSDictionary *dic =[[NSBundle mainBundle] infoDictionary];//获取info－plist
+    NSString *appId  =  [dic objectForKey:@"CFBundleIdentifier"];//获取Bundle identifier
+    NSLog(@"bundId: %@",appId);
+    
+    _mapManager = [[BMKMapManager alloc]init];
+    NSLog(@"%@",_mapManager);
+    
+    BOOL ret = [_mapManager start:@"gfRVPQWP6mhZxKNqed6t1Rvf" generalDelegate:self];
+    
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }else{
+        NSLog(@"ok!");
+    }
+    
+    
     //注册微信
     BOOL isok = [WXApi registerApp:@"wx920a184018cc7654"];
     if (isok) {
-        NSLog(@"注册微信成功");
+        //NSLog(@"注册微信成功");
     }else{
         NSLog(@"注册微信失败");
     }
+    
+
+    
+
+    
     
     //设置网络请求的时候顶部有请求转菊花状态
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
@@ -85,4 +109,25 @@
     return [WXApi handleOpenURL:url delegate:self];
 }
 
+#pragma mark baiduMapDelegate
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
+}
 @end

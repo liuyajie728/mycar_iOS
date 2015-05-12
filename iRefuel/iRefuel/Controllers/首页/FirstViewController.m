@@ -15,6 +15,7 @@
 #import "CommonUtil.h"
 #import "payRequsestHandler.h"
 
+
 //微信相关数据
 #define kWXAppID @"wx920a184018cc7654"
 #define kWXAppSecret @"1ce56c3e71ff076f6f78ce5e845449e6"
@@ -24,7 +25,7 @@
 #define kWXPartnerId  @"1237619902"
 
 
-@interface FirstViewController ()<MBProgressHUDDelegate,BMKLocationServiceDelegate>
+@interface FirstViewController ()<MBProgressHUDDelegate>
 {
     //微信相关--------------
     NSString * payCode; //从服务器获取的支付编号
@@ -54,14 +55,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-
-    [self Location];
+    
+    //[self Location];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+//    self.hidesBottomBarWhenPushed = YES;
+}
+
 
 - (IBAction)test:(id)sender {
     
@@ -69,17 +75,11 @@
     [self newWeiChatPay];
 }
 
-//定位
--(void)Location
-{
-    BMKLocationService * locationService = [[BMKLocationService alloc]init];
-    locationService.delegate = self;
-    [locationService startUserLocationService];
+- (IBAction)clickLocation:(id)sender {
     
-//    locationService.desiredAccuracy = kCLLocationAccuracyBest;
-//    [locationService startUpdatingLocation];
-
 }
+
+
 
 #pragma mark NewWeiChatPay
 -(void)newWeiChatPay
@@ -531,14 +531,6 @@
     xmlStr = [NSString stringWithFormat:@"%@ </xml>",xmlStr];
     
     return xmlStr;
-}
-
-#pragma mark baiduMapDelegate
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    
-    NSLog(@"经度：%g",newLocation.coordinate.latitude);
-    NSLog(@"纬度：%g",newLocation.coordinate.longitude);
 }
 
 @end
