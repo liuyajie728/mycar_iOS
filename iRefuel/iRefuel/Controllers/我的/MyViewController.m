@@ -9,8 +9,15 @@
 #import "MyViewController.h"
 #import "CommonUtil.h"
 #import "AppDelegate.h"
+#import "SettingViewController.h"
 
-@interface MyViewController ()<UITextViewDelegate>
+@interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    NSArray * s1;
+    NSArray * s2;
+    NSArray * s3;
+    
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @end
@@ -23,9 +30,20 @@
     
     
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"我的" andFount:18 andTitleColour:[UIColor colorWithRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:1]];
+    self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"我的" andFount:18 andTitleColour:TitleColor];
     
-    //self.myTableView.tableHeaderView = [self getTableViewHead];
+    
+    //初始化数据数组
+    s1 = @[@"余额 充值记录",@"交易记录"];
+    s2 = @[@"待点评",@"最新活动"];
+    s3 = @[@"设置"];
+    
+    //nav右边按钮 TODO 要用自定义的or改个颜色
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(RightBarAction)];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:1];
+    
+    //设置tableView没有弹性
+    self.myTableView.bounces = NO;
     
 }
 
@@ -33,24 +51,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
--(UIView*)getTableViewHead
+-(void)RightBarAction
 {
-    UIView * headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 50)];
-    headView.backgroundColor = [UIColor redColor];
-
-    
-    return headView;
+    NSLog(@"+++");
 }
+
+
 #pragma mark tableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return 1;
-    }else if (section == 1 || section == 2){
-        return 2;
+    }else if (section == 1 ){
+        return s1.count;
+    }else if (section == 2){
+        return s2.count;
     }else if(section == 3){
-        return 1;
+        return s3.count;
     }
     
     return 3;
@@ -87,6 +104,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section == 0) {
         //头像
@@ -110,14 +129,54 @@
         [cell.contentView addSubview:phoneLabel];
         
         
-    }else{
-        
-         cell.textLabel.text = @"123";
+    }else if(indexPath.section == 1){
+    
+        cell.textLabel.text = s1[indexPath.row];
+        cell.textLabel.textColor = cellTxtColor;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
+    }else if (indexPath.section == 2){
+        cell.textLabel.text = s2[indexPath.row];
+        cell.textLabel.textColor = cellTxtColor;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
+    }else if (indexPath.section == 3){
+        cell.textLabel.text = s3[indexPath.row];
+        cell.textLabel.textColor = cellTxtColor;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
     }
     
-   
+    
     
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //self.hidesBottomBarWhenPushed = YES;
+    if (indexPath.section == 0) {
+        //头像
+    }else if (indexPath.section == 1){
+        
+        if (indexPath.row == 0) {
+            //余额 充值记录
+             [self performSegueWithIdentifier:@"Balance" sender:self];
+        }else if (indexPath.row == 1){
+            //交易记录
+        }
+        
+    
+    }else if (indexPath.section == 3){
+        //设置
+        [self performSegueWithIdentifier:@"Setting" sender:self];
+    }
+    
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+
 }
 /*
 #pragma mark - Navigation

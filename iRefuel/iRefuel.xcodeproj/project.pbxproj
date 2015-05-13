@@ -23,6 +23,8 @@
 		01631D031B01D67C00DC1888 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D021B01D67C00DC1888 /* Security.framework */; };
 		01631D051B01D6B700DC1888 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D041B01D6B700DC1888 /* CoreGraphics.framework */; };
 		01631D411B01EDF100DC1888 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01631D401B01EDF100DC1888 /* Info.plist */; };
+		017386911B0316CA008AC34C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017386901B0316CA008AC34C /* SettingViewController.m */; };
+		017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017386951B034642008AC34C /* BalanceAndPrepaidTakeViewController.m */; };
 		018AC6221AFE047500A220FE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61D1AFE047400A220FE /* LoginViewController.m */; };
 		018AC6231AFE047500A220FE /* TreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61F1AFE047400A220FE /* TreatyViewController.m */; };
 		018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC6251AFE052A00A220FE /* FirstViewController.m */; };
@@ -89,6 +91,12 @@
 		01631D021B01D67C00DC1888 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		01631D041B01D6B700DC1888 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		01631D401B01EDF100DC1888 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0173868F1B0316C9008AC34C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		017386901B0316CA008AC34C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		017386921B0324CE008AC34C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		017386931B032D03008AC34C /* MyDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDefine.h; sourceTree = "<group>"; };
+		017386941B034642008AC34C /* BalanceAndPrepaidTakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceAndPrepaidTakeViewController.h; sourceTree = "<group>"; };
+		017386951B034642008AC34C /* BalanceAndPrepaidTakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceAndPrepaidTakeViewController.m; sourceTree = "<group>"; };
 		018AC61C1AFE047400A220FE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		018AC61D1AFE047400A220FE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		018AC61E1AFE047400A220FE /* TreatyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatyViewController.h; sourceTree = "<group>"; };
@@ -268,6 +276,10 @@
 			children = (
 				01402D971B00C92000DAE4F6 /* MyViewController.h */,
 				01402D981B00C92000DAE4F6 /* MyViewController.m */,
+				017386941B034642008AC34C /* BalanceAndPrepaidTakeViewController.h */,
+				017386951B034642008AC34C /* BalanceAndPrepaidTakeViewController.m */,
+				0173868F1B0316C9008AC34C /* SettingViewController.h */,
+				017386901B0316CA008AC34C /* SettingViewController.m */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -383,6 +395,8 @@
 				18321E231AE013C800263CF9 /* Main.storyboard */,
 				18321E261AE013C800263CF9 /* Images.xcassets */,
 				18321E281AE013C800263CF9 /* LaunchScreen.xib */,
+				017386921B0324CE008AC34C /* PrefixHeader.pch */,
+				017386931B032D03008AC34C /* MyDefine.h */,
 				18321E161AE013C800263CF9 /* Supporting Files */,
 			);
 			path = iRefuel;
@@ -523,6 +537,7 @@
 			files = (
 				01EB612B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				01EB614A1AF74F92006E623C /* AFHTTPRequestOperationManager.m in Sources */,
+				017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */,
 				01EB612C1AF74C5A006E623C /* UIAlertView+AFNetworking.m in Sources */,
 				018AC6221AFE047500A220FE /* LoginViewController.m in Sources */,
 				01EB614E1AF74F92006E623C /* AFURLConnectionOperation.m in Sources */,
@@ -535,6 +550,7 @@
 				01AFE7BA1AFB41D0006EEE27 /* ApiXml.mm in Sources */,
 				01EB612F1AF74C5A006E623C /* UIProgressView+AFNetworking.m in Sources */,
 				01EB614B1AF74F92006E623C /* AFHTTPSessionManager.m in Sources */,
+				017386911B0316CA008AC34C /* SettingViewController.m in Sources */,
 				01EB61491AF74F92006E623C /* AFHTTPRequestOperation.m in Sources */,
 				01EB614D1AF74F92006E623C /* AFSecurityPolicy.m in Sources */,
 				18321E191AE013C800263CF9 /* main.m in Sources */,
@@ -683,6 +699,7 @@
 					"$(PROJECT_DIR)/iRefuel/libs/baiduMap",
 				);
 				GCC_INPUT_FILETYPE = automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/iRefuel/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/iRefuelTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -708,6 +725,7 @@
 					"$(PROJECT_DIR)/iRefuel/libs/baiduMap",
 				);
 				GCC_INPUT_FILETYPE = automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/iRefuel/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/iRefuelTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
