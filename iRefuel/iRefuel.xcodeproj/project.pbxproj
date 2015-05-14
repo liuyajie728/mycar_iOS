@@ -23,6 +23,11 @@
 		01631D031B01D67C00DC1888 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D021B01D67C00DC1888 /* Security.framework */; };
 		01631D051B01D6B700DC1888 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D041B01D6B700DC1888 /* CoreGraphics.framework */; };
 		01631D411B01EDF100DC1888 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01631D401B01EDF100DC1888 /* Info.plist */; };
+		01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01645D501B04745B00AD36EB /* TransactionRecordViewController.m */; };
+		01645D641B0493AD00AD36EB /* RechargeAndBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01645D621B0493AD00AD36EB /* RechargeAndBalanceViewController.m */; };
+		01645D651B0493AD00AD36EB /* RechargeAndBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01645D631B0493AD00AD36EB /* RechargeAndBalanceViewController.xib */; };
+		01645D691B04A26500AD36EB /* RechargeAndBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01645D671B04A26500AD36EB /* RechargeAndBalanceCell.m */; };
+		01645D6A1B04A26500AD36EB /* RechargeAndBalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01645D681B04A26500AD36EB /* RechargeAndBalanceCell.xib */; };
 		017386911B0316CA008AC34C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017386901B0316CA008AC34C /* SettingViewController.m */; };
 		017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017386951B034642008AC34C /* BalanceAndPrepaidTakeViewController.m */; };
 		018AC6221AFE047500A220FE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61D1AFE047400A220FE /* LoginViewController.m */; };
@@ -91,6 +96,14 @@
 		01631D021B01D67C00DC1888 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		01631D041B01D6B700DC1888 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		01631D401B01EDF100DC1888 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01645D4F1B04745B00AD36EB /* TransactionRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionRecordViewController.h; sourceTree = "<group>"; };
+		01645D501B04745B00AD36EB /* TransactionRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordViewController.m; sourceTree = "<group>"; };
+		01645D611B0493AD00AD36EB /* RechargeAndBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeAndBalanceViewController.h; sourceTree = "<group>"; };
+		01645D621B0493AD00AD36EB /* RechargeAndBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeAndBalanceViewController.m; sourceTree = "<group>"; };
+		01645D631B0493AD00AD36EB /* RechargeAndBalanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeAndBalanceViewController.xib; sourceTree = "<group>"; };
+		01645D661B04A26500AD36EB /* RechargeAndBalanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeAndBalanceCell.h; sourceTree = "<group>"; };
+		01645D671B04A26500AD36EB /* RechargeAndBalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeAndBalanceCell.m; sourceTree = "<group>"; };
+		01645D681B04A26500AD36EB /* RechargeAndBalanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeAndBalanceCell.xib; sourceTree = "<group>"; };
 		0173868F1B0316C9008AC34C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		017386901B0316CA008AC34C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		017386921B0324CE008AC34C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -278,8 +291,16 @@
 				01402D981B00C92000DAE4F6 /* MyViewController.m */,
 				017386941B034642008AC34C /* BalanceAndPrepaidTakeViewController.h */,
 				017386951B034642008AC34C /* BalanceAndPrepaidTakeViewController.m */,
+				01645D611B0493AD00AD36EB /* RechargeAndBalanceViewController.h */,
+				01645D621B0493AD00AD36EB /* RechargeAndBalanceViewController.m */,
+				01645D631B0493AD00AD36EB /* RechargeAndBalanceViewController.xib */,
+				01645D661B04A26500AD36EB /* RechargeAndBalanceCell.h */,
+				01645D671B04A26500AD36EB /* RechargeAndBalanceCell.m */,
+				01645D681B04A26500AD36EB /* RechargeAndBalanceCell.xib */,
 				0173868F1B0316C9008AC34C /* SettingViewController.h */,
 				017386901B0316CA008AC34C /* SettingViewController.m */,
+				01645D4F1B04745B00AD36EB /* TransactionRecordViewController.h */,
+				01645D501B04745B00AD36EB /* TransactionRecordViewController.m */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -514,8 +535,10 @@
 			files = (
 				0148DD201AF777B600BAA18C /* readme.txt in Resources */,
 				18321E251AE013C800263CF9 /* Main.storyboard in Resources */,
+				01645D651B0493AD00AD36EB /* RechargeAndBalanceViewController.xib in Resources */,
 				18321E431AE0167D00263CF9 /* Default-568h@2x.png in Resources */,
 				18321E2A1AE013C800263CF9 /* LaunchScreen.xib in Resources */,
+				01645D6A1B04A26500AD36EB /* RechargeAndBalanceCell.xib in Resources */,
 				18321E271AE013C800263CF9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +560,7 @@
 			files = (
 				01EB612B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				01EB614A1AF74F92006E623C /* AFHTTPRequestOperationManager.m in Sources */,
+				01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */,
 				017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */,
 				01EB612C1AF74C5A006E623C /* UIAlertView+AFNetworking.m in Sources */,
 				018AC6221AFE047500A220FE /* LoginViewController.m in Sources */,
@@ -553,6 +577,7 @@
 				017386911B0316CA008AC34C /* SettingViewController.m in Sources */,
 				01EB61491AF74F92006E623C /* AFHTTPRequestOperation.m in Sources */,
 				01EB614D1AF74F92006E623C /* AFSecurityPolicy.m in Sources */,
+				01645D691B04A26500AD36EB /* RechargeAndBalanceCell.m in Sources */,
 				18321E191AE013C800263CF9 /* main.m in Sources */,
 				01EB614C1AF74F92006E623C /* AFNetworkReachabilityManager.m in Sources */,
 				01AFE7BC1AFB41D0006EEE27 /* WXUtil.mm in Sources */,
@@ -562,6 +587,7 @@
 				01EB61301AF74C5A006E623C /* UIRefreshControl+AFNetworking.m in Sources */,
 				01EB61311AF74C5A006E623C /* UIWebView+AFNetworking.m in Sources */,
 				01402D991B00C92000DAE4F6 /* MyViewController.m in Sources */,
+				01645D641B0493AD00AD36EB /* RechargeAndBalanceViewController.m in Sources */,
 				018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */,
 				01EB612D1AF74C5A006E623C /* UIButton+AFNetworking.m in Sources */,
 				01EB612E1AF74C5A006E623C /* UIImageView+AFNetworking.m in Sources */,

@@ -9,7 +9,7 @@
 #import "MyViewController.h"
 #import "CommonUtil.h"
 #import "AppDelegate.h"
-#import "SettingViewController.h"
+#import "RechargeAndBalanceViewController.h"
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -160,9 +160,15 @@
         
         if (indexPath.row == 0) {
             //余额 充值记录
-             [self performSegueWithIdentifier:@"Balance" sender:self];
+             //[self performSegueWithIdentifier:@"Balance" sender:self];
+            //self.hidesBottomBarWhenPushed = YES;
+            RechargeAndBalanceViewController * rechargeVc = [[RechargeAndBalanceViewController alloc]init];
+            rechargeVc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:rechargeVc animated:YES];
+            
         }else if (indexPath.row == 1){
             //交易记录
+            [self performSegueWithIdentifier:@"TransactionRecord" sender:self];
         }
         
     

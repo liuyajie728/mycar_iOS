@@ -1,60 +1,42 @@
 //
-//  BalanceAndPrepaidTakeViewController.m
+//  RechargeAndBalanceViewController.m
 //  iRefuel
 //
-//  Created by wangdi on 15/5/13.
+//  Created by wangdi on 15/5/14.
 //  Copyright (c) 2015年 SenseStrong E-Commerce Co. Ltd. All rights reserved.
 //
 
-#import "BalanceAndPrepaidTakeViewController.h"
+#import "RechargeAndBalanceViewController.h"
 #import "CommonUtil.h"
-
-@implementation balanceCell
-
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
-}
+#import "RechargeAndBalanceCell.h"
 
 
 
-@end
 
-
-@interface BalanceAndPrepaidTakeViewController ()<UIGestureRecognizerDelegate>
+@interface RechargeAndBalanceViewController ()<UIGestureRecognizerDelegate>
 {
     NSArray * moneySource;
-
+    
 }
-
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
 
-@implementation BalanceAndPrepaidTakeViewController
+@implementation RechargeAndBalanceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    /*
-        注意！！！！！
-        目前没有用到这个类 而是用了RechargeAndBalanceViewController来显示余额
-    */
-    
+    // Do any additional setup after loading the view from its nib.
     
     //此viewController因为cell排版的特殊性 没有使用autolayout 所以要自己手动适应下
+    //当前类用了xib
     CGRect frame = self.myTableView.frame;
     frame.size.width = LCDW;
     frame.size.height = LCDH - 64;
+    frame.origin.y = 64;
     self.myTableView.frame = frame;
     
-    
+    NSLog(@" = %f",LCDH);
     
     //设置nav右边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -72,32 +54,31 @@
     
     self.myTableView.tableHeaderView = [self getTableViewHeadView];
     
-
+    
     [self settingDataSource];
     
-}
--(void)settingDataSource
-{
-
-    int money1 = arc4random()%99000+1000;
-    int money2 = arc4random()%9+1000;
-    int money3 = arc4random()%99+1000;
-    
-    moneySource = @[[NSString stringWithFormat:@"%d",money1],[NSString stringWithFormat:@"%d",money2],[NSString stringWithFormat:@"%d",money3]];
-        
-
-}
-
-
-
--(void)backBtn:(UIButton*)send
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)settingDataSource
+{
+    
+    int money1 = arc4random()%99000+1000;
+    int money2 = arc4random()%9+1000;
+    int money3 = arc4random()%99+1000;
+    
+    moneySource = @[[NSString stringWithFormat:@"%d",money1],[NSString stringWithFormat:@"%d",money2],[NSString stringWithFormat:@"%d",money3]];
+    [self.myTableView reloadData];
+    
+    
+}
+-(void)backBtn:(UIButton*)send
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(UIView*)getTableViewHeadView
@@ -124,9 +105,13 @@
     [headView addSubview:downContentView];
     
     return headView;
-
+    
 }
 
+
+
+
+#pragma mark tableViewDelegate
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView * v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 40)];
@@ -141,11 +126,10 @@
     return v;
 }
 
-#pragma mark tableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    if (section == 0) {
-//        return 20;
-//    }
+    //    if (section == 0) {
+    //        return 20;
+    //    }
     return 19;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -153,10 +137,10 @@
     return 1;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 44;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 52;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -170,14 +154,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static NSString *CellIdentifier = @"Cell";
-    balanceCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    static NSString *CellIdentifier = @"RechargeAndBalanceCell";
+//    RechargeAndBalanceCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[RechargeAndBalanceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+    
+    
+    RechargeAndBalanceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RechargeAndBalanceCell"];
     if (cell == nil) {
-        cell = [[balanceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"RechargeAndBalanceCell" owner:self options:nil] lastObject];
     }
-
+    
+    
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
     //左边 充值
     NSString * rechargeStr = [NSString stringWithFormat:@"充值 %@",moneySource[indexPath.row]];
     UIFont *font = [UIFont systemFontOfSize:15];
@@ -186,6 +178,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle.copy};
     CGSize labelsize =  [rechargeStr boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+    //NSLog(@" - %@",NSStringFromCGSize(labelsize));
     
     cell.leftTopLabel_lb.text = rechargeStr;
     CGRect frame = cell.leftTopLabel_lb.frame;
@@ -216,11 +209,6 @@
         cell.zengNum.hidden = YES;
     }
     
-    
-    
-    
-    
-
     return cell;
 }
 
