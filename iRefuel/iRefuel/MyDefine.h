@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SenseStrong E-Commerce Co. Ltd. All rights reserved.
 //
 
-#ifndef iRefuel_MyDefine_h
+
 #define iRefuel_MyDefine_h
 
 //获取屏幕信息（尺寸，宽，高）
@@ -19,4 +19,5 @@
 
 #define cellTxtColor [UIColor colorWithRed:35/255.0 green:35/255.0 blue:35/255.0 alpha:1]
 
-#endif
+//背景的蓝色
+#define BgBlueColor [UIColor colorWithRed:0/255.0 green:161/255.0 blue:216/255.0 alpha:1]

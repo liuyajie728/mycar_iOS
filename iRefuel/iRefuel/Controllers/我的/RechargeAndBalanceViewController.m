@@ -30,6 +30,7 @@
     
     //此viewController因为cell排版的特殊性 没有使用autolayout 所以要自己手动适应下
     //当前类用了xib
+    
     CGRect frame = self.myTableView.frame;
     frame.size.width = LCDW;
     frame.size.height = LCDH - 64;
@@ -38,7 +39,7 @@
     
     NSLog(@" = %f",LCDH);
     
-    //设置nav右边按钮
+    //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];

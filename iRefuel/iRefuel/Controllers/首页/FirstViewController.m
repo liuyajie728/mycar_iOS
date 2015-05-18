@@ -55,6 +55,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    //title
+    self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"首页" andFount:18 andTitleColour:[UIColor whiteColor]];
+    
+    //navRightBtn
+    UIButton * navRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [navRightBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
+    navRightBtn.frame = CGRectMake(0, 0, 30, 30);
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navRightBtn];
+    
+    
+    
     
     //[self Location];
 }

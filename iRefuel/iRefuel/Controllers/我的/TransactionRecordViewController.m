@@ -19,9 +19,6 @@
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
-
-
-
 @end
 
 
@@ -38,7 +35,7 @@
     
     self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"交易记录" andFount:18 andTitleColour:TitleColor];
     
-    //设置nav右边按钮
+    //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -76,6 +73,8 @@
         cell = [[TransactionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

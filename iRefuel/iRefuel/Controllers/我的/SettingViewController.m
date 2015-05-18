@@ -24,7 +24,7 @@
     
     self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"设置" andFount:18 andTitleColour:TitleColor];
     
-    //设置nav右边按钮
+    //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -38,6 +38,8 @@
 
     //添加向右滑动返回
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    
+
 
     
 }

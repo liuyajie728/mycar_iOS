@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		01402D991B00C92000DAE4F6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01402D981B00C92000DAE4F6 /* MyViewController.m */; };
+		01458DA41B09B16500B4A6AF /* DealDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01458DA31B09B16500B4A6AF /* DealDetailViewController.m */; };
+		01458DA71B09C9EE00B4A6AF /* DealAppraiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01458DA61B09C9EE00B4A6AF /* DealAppraiseViewController.m */; };
 		0148DD191AF775F000BAA18C /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148DD181AF775F000BAA18C /* CommonUtil.m */; };
 		0148DD1F1AF777B600BAA18C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD1B1AF777B600BAA18C /* libWeChatSDK.a */; };
 		0148DD201AF777B600BAA18C /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0148DD1C1AF777B600BAA18C /* readme.txt */; };
@@ -77,6 +79,10 @@
 /* Begin PBXFileReference section */
 		01402D971B00C92000DAE4F6 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		01402D981B00C92000DAE4F6 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		01458DA21B09B16500B4A6AF /* DealDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealDetailViewController.h; sourceTree = "<group>"; };
+		01458DA31B09B16500B4A6AF /* DealDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealDetailViewController.m; sourceTree = "<group>"; };
+		01458DA51B09C9EE00B4A6AF /* DealAppraiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealAppraiseViewController.h; sourceTree = "<group>"; };
+		01458DA61B09C9EE00B4A6AF /* DealAppraiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealAppraiseViewController.m; sourceTree = "<group>"; };
 		0148DD171AF775F000BAA18C /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		0148DD181AF775F000BAA18C /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		0148DD1B1AF777B600BAA18C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -301,6 +307,10 @@
 				017386901B0316CA008AC34C /* SettingViewController.m */,
 				01645D4F1B04745B00AD36EB /* TransactionRecordViewController.h */,
 				01645D501B04745B00AD36EB /* TransactionRecordViewController.m */,
+				01458DA21B09B16500B4A6AF /* DealDetailViewController.h */,
+				01458DA31B09B16500B4A6AF /* DealDetailViewController.m */,
+				01458DA51B09C9EE00B4A6AF /* DealAppraiseViewController.h */,
+				01458DA61B09C9EE00B4A6AF /* DealAppraiseViewController.m */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -563,6 +573,7 @@
 				01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */,
 				017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */,
 				01EB612C1AF74C5A006E623C /* UIAlertView+AFNetworking.m in Sources */,
+				01458DA71B09C9EE00B4A6AF /* DealAppraiseViewController.m in Sources */,
 				018AC6221AFE047500A220FE /* LoginViewController.m in Sources */,
 				01EB614E1AF74F92006E623C /* AFURLConnectionOperation.m in Sources */,
 				18321E1C1AE013C800263CF9 /* AppDelegate.m in Sources */,
@@ -583,6 +594,7 @@
 				01AFE7BC1AFB41D0006EEE27 /* WXUtil.mm in Sources */,
 				0148DD191AF775F000BAA18C /* CommonUtil.m in Sources */,
 				018AC6231AFE047500A220FE /* TreatyViewController.m in Sources */,
+				01458DA41B09B16500B4A6AF /* DealDetailViewController.m in Sources */,
 				01EB61511AF74F92006E623C /* AFURLSessionManager.m in Sources */,
 				01EB61301AF74C5A006E623C /* UIRefreshControl+AFNetworking.m in Sources */,
 				01EB61311AF74C5A006E623C /* UIWebView+AFNetworking.m in Sources */,
