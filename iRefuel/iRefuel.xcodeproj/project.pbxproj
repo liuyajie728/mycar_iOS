@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		01402D991B00C92000DAE4F6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01402D981B00C92000DAE4F6 /* MyViewController.m */; };
+		0142108C1B0AFDA400CB5AF7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0142108B1B0AFDA400CB5AF7 /* AVFoundation.framework */; };
+		0142108F1B0B0A2400CB5AF7 /* ScanCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0142108E1B0B0A2400CB5AF7 /* ScanCodeViewController.m */; };
+		014210921B0B138A00CB5AF7 /* GasStationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014210911B0B138A00CB5AF7 /* GasStationDetailViewController.m */; };
 		01458DA41B09B16500B4A6AF /* DealDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01458DA31B09B16500B4A6AF /* DealDetailViewController.m */; };
 		01458DA71B09C9EE00B4A6AF /* DealAppraiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01458DA61B09C9EE00B4A6AF /* DealAppraiseViewController.m */; };
 		0148DD191AF775F000BAA18C /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148DD181AF775F000BAA18C /* CommonUtil.m */; };
@@ -79,6 +82,11 @@
 /* Begin PBXFileReference section */
 		01402D971B00C92000DAE4F6 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		01402D981B00C92000DAE4F6 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		0142108B1B0AFDA400CB5AF7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0142108D1B0B0A2400CB5AF7 /* ScanCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCodeViewController.h; sourceTree = "<group>"; };
+		0142108E1B0B0A2400CB5AF7 /* ScanCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCodeViewController.m; sourceTree = "<group>"; };
+		014210901B0B138A00CB5AF7 /* GasStationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GasStationDetailViewController.h; sourceTree = "<group>"; };
+		014210911B0B138A00CB5AF7 /* GasStationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GasStationDetailViewController.m; sourceTree = "<group>"; };
 		01458DA21B09B16500B4A6AF /* DealDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealDetailViewController.h; sourceTree = "<group>"; };
 		01458DA31B09B16500B4A6AF /* DealDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealDetailViewController.m; sourceTree = "<group>"; };
 		01458DA51B09C9EE00B4A6AF /* DealAppraiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealAppraiseViewController.h; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0142108C1B0AFDA400CB5AF7 /* AVFoundation.framework in Frameworks */,
 				01631D051B01D6B700DC1888 /* CoreGraphics.framework in Frameworks */,
 				01631D031B01D67C00DC1888 /* Security.framework in Frameworks */,
 				01631CFB1B01D64200DC1888 /* CoreLocation.framework in Frameworks */,
@@ -286,6 +295,10 @@
 			children = (
 				018AC6241AFE052A00A220FE /* FirstViewController.h */,
 				018AC6251AFE052A00A220FE /* FirstViewController.m */,
+				0142108D1B0B0A2400CB5AF7 /* ScanCodeViewController.h */,
+				0142108E1B0B0A2400CB5AF7 /* ScanCodeViewController.m */,
+				014210901B0B138A00CB5AF7 /* GasStationDetailViewController.h */,
+				014210911B0B138A00CB5AF7 /* GasStationDetailViewController.m */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -391,6 +404,7 @@
 		18321E0A1AE013C700263CF9 = {
 			isa = PBXGroup;
 			children = (
+				0142108B1B0AFDA400CB5AF7 /* AVFoundation.framework */,
 				01631D041B01D6B700DC1888 /* CoreGraphics.framework */,
 				01631D021B01D67C00DC1888 /* Security.framework */,
 				01631D001B01D66400DC1888 /* SystemConfiguration.framework */,
@@ -579,6 +593,7 @@
 				18321E1C1AE013C800263CF9 /* AppDelegate.m in Sources */,
 				01EB61341AF74CC3006E623C /* RootTabBarController.m in Sources */,
 				01533E371AF8B7B6000029C0 /* MBProgressHUD.m in Sources */,
+				014210921B0B138A00CB5AF7 /* GasStationDetailViewController.m in Sources */,
 				018AC6291AFE053D00A220FE /* SecondViewController.m in Sources */,
 				01EB614F1AF74F92006E623C /* AFURLRequestSerialization.m in Sources */,
 				01AFE7BB1AFB41D0006EEE27 /* payRequsestHandler.mm in Sources */,
@@ -586,6 +601,7 @@
 				01EB612F1AF74C5A006E623C /* UIProgressView+AFNetworking.m in Sources */,
 				01EB614B1AF74F92006E623C /* AFHTTPSessionManager.m in Sources */,
 				017386911B0316CA008AC34C /* SettingViewController.m in Sources */,
+				0142108F1B0B0A2400CB5AF7 /* ScanCodeViewController.m in Sources */,
 				01EB61491AF74F92006E623C /* AFHTTPRequestOperation.m in Sources */,
 				01EB614D1AF74F92006E623C /* AFSecurityPolicy.m in Sources */,
 				01645D691B04A26500AD36EB /* RechargeAndBalanceCell.m in Sources */,

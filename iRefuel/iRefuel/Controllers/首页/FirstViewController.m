@@ -15,7 +15,6 @@
 #import "CommonUtil.h"
 #import "payRequsestHandler.h"
 
-
 //微信相关数据
 #define kWXAppID @"wx920a184018cc7654"
 #define kWXAppSecret @"1ce56c3e71ff076f6f78ce5e845449e6"
@@ -47,6 +46,8 @@
     
 }
 
+
+
 @end
 
 @implementation FirstViewController
@@ -62,10 +63,9 @@
     UIButton * navRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [navRightBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
     navRightBtn.frame = CGRectMake(0, 0, 30, 30);
+    [navRightBtn addTarget:self action:@selector(clickNavRightBtn) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navRightBtn];
-    
-    
     
     
     //[self Location];
@@ -75,9 +75,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)viewWillAppear:(BOOL)animated
+-(void)clickNavRightBtn
 {
-
+    [self performSegueWithIdentifier:@"GoScanCode" sender:self];
 }
 
 

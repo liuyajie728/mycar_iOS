@@ -38,6 +38,7 @@
     s2 = @[@"待点评",@"最新活动"];
     s3 = @[@"设置"];
     
+    
     //nav右边按钮 TODO 要用自定义的or改个颜色
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(RightBarAction)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:1];
@@ -65,9 +66,9 @@
     }else if (section == 1 ){
         return s1.count;
     }else if (section == 2){
-        return s2.count;
-    }else if(section == 3){
         return s3.count;
+    }else if(section == 3){
+        //return s3.count;
     }
     
     return 3;
@@ -75,7 +76,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)atableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,15 +137,15 @@
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
     }else if (indexPath.section == 2){
-        cell.textLabel.text = s2[indexPath.row];
-        cell.textLabel.textColor = cellTxtColor;
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
-    }else if (indexPath.section == 3){
         cell.textLabel.text = s3[indexPath.row];
         cell.textLabel.textColor = cellTxtColor;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
+    }else if (indexPath.section == 3){
+//        cell.textLabel.text = s3[indexPath.row];
+//        cell.textLabel.textColor = cellTxtColor;
+//        cell.textLabel.font = [UIFont systemFontOfSize:14];
+//        cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
     }
     
     
@@ -172,7 +173,7 @@
         }
         
     
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == 2){
         //设置
         [self performSegueWithIdentifier:@"Setting" sender:self];
     }
