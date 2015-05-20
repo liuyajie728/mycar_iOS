@@ -24,6 +24,9 @@
 #define kWXPartnerId  @"1237619902"
 
 
+@implementation homeCell
+@end
+
 @interface FirstViewController ()<MBProgressHUDDelegate>
 {
     //微信相关--------------
@@ -46,6 +49,7 @@
     
 }
 
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 
 @end
@@ -91,7 +95,52 @@
     
 }
 
+#pragma mark tableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"homeCell";
+    homeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[homeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (indexPath.row == 0) {
+        cell.littleImage1.hidden = YES;
+        cell.littleImage2.hidden = NO;
+        cell.littleImage3.hidden = NO;
+        
+        cell.littleImage3.text = @"火";
+        cell.littleImage3.backgroundColor = [UIColor redColor];
+        
+        cell.littleImage2.text = @"惠";
+        cell.littleImage2.backgroundColor = [UIColor yellowColor];
+        
+    }else if (indexPath.row == 1){
+        cell.littleImage1.hidden = YES;
+        cell.littleImage2.hidden = YES;
+        cell.littleImage3.hidden = NO;
+    
+        cell.littleImage3.text = @"优";
+        cell.littleImage3.backgroundColor = [UIColor greenColor];
+    }else{
+        cell.littleImage1.hidden = YES;
+        cell.littleImage2.hidden = YES;
+        cell.littleImage3.hidden = YES;
+    }
+        
+
+    return cell;
+}
 
 #pragma mark NewWeiChatPay
 -(void)newWeiChatPay

@@ -157,6 +157,9 @@
     //self.hidesBottomBarWhenPushed = YES;
     if (indexPath.section == 0) {
         //头像
+        
+        [self performSegueWithIdentifier:@"myInfo" sender:self];
+        
     }else if (indexPath.section == 1){
         
         if (indexPath.row == 0) {

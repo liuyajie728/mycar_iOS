@@ -17,6 +17,6 @@
 
 
 @interface GasStationCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *myCellContentLabel;
 
+@property (weak, nonatomic) IBOutlet UITextView *cellTextView;
 @end

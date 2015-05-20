@@ -12,6 +12,14 @@
 
 @interface FirstViewController : UIViewController
 
+@end
+
+@interface homeCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *littleImage3;
+@property (weak, nonatomic) IBOutlet UILabel *littleImage2;
+@property (weak, nonatomic) IBOutlet UILabel *littleImage1;
+
 
 @end
 

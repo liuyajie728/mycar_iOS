@@ -42,6 +42,10 @@
 		01AFE7BA1AFB41D0006EEE27 /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B51AFB41D0006EEE27 /* ApiXml.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AFE7BB1AFB41D0006EEE27 /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B71AFB41D0006EEE27 /* payRequsestHandler.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AFE7BC1AFB41D0006EEE27 /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B91AFB41D0006EEE27 /* WXUtil.mm */; };
+		01CC49871B0C74E4007B7237 /* StationDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CC49851B0C74E4007B7237 /* StationDetailTableViewCell.m */; };
+		01CC49881B0C74E4007B7237 /* StationDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01CC49861B0C74E4007B7237 /* StationDetailTableViewCell.xib */; };
+		01CC498B1B0C7C79007B7237 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CC498A1B0C7C79007B7237 /* MyInfoViewController.m */; };
+		01CC498E1B0C8F0B007B7237 /* RevampViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CC498D1B0C8F0B007B7237 /* RevampViewController.m */; };
 		01EB612A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m */; };
 		01EB612B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611C1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m */; };
 		01EB612C1AF74C5A006E623C /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EB611E1AF74C5A006E623C /* UIAlertView+AFNetworking.m */; };
@@ -138,6 +142,13 @@
 		01AFE7B71AFB41D0006EEE27 /* payRequsestHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = payRequsestHandler.mm; sourceTree = "<group>"; };
 		01AFE7B81AFB41D0006EEE27 /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
 		01AFE7B91AFB41D0006EEE27 /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
+		01CC49841B0C74E4007B7237 /* StationDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationDetailTableViewCell.h; sourceTree = "<group>"; };
+		01CC49851B0C74E4007B7237 /* StationDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationDetailTableViewCell.m; sourceTree = "<group>"; };
+		01CC49861B0C74E4007B7237 /* StationDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationDetailTableViewCell.xib; sourceTree = "<group>"; };
+		01CC49891B0C7C79007B7237 /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
+		01CC498A1B0C7C79007B7237 /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
+		01CC498C1B0C8F0B007B7237 /* RevampViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevampViewController.h; sourceTree = "<group>"; };
+		01CC498D1B0C8F0B007B7237 /* RevampViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevampViewController.m; sourceTree = "<group>"; };
 		01EB61191AF74C5A006E623C /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		01EB611A1AF74C5A006E623C /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		01EB611B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -299,6 +310,9 @@
 				0142108E1B0B0A2400CB5AF7 /* ScanCodeViewController.m */,
 				014210901B0B138A00CB5AF7 /* GasStationDetailViewController.h */,
 				014210911B0B138A00CB5AF7 /* GasStationDetailViewController.m */,
+				01CC49841B0C74E4007B7237 /* StationDetailTableViewCell.h */,
+				01CC49851B0C74E4007B7237 /* StationDetailTableViewCell.m */,
+				01CC49861B0C74E4007B7237 /* StationDetailTableViewCell.xib */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -308,6 +322,10 @@
 			children = (
 				01402D971B00C92000DAE4F6 /* MyViewController.h */,
 				01402D981B00C92000DAE4F6 /* MyViewController.m */,
+				01CC49891B0C7C79007B7237 /* MyInfoViewController.h */,
+				01CC498A1B0C7C79007B7237 /* MyInfoViewController.m */,
+				01CC498C1B0C8F0B007B7237 /* RevampViewController.h */,
+				01CC498D1B0C8F0B007B7237 /* RevampViewController.m */,
 				017386941B034642008AC34C /* BalanceAndPrepaidTakeViewController.h */,
 				017386951B034642008AC34C /* BalanceAndPrepaidTakeViewController.m */,
 				01645D611B0493AD00AD36EB /* RechargeAndBalanceViewController.h */,
@@ -564,6 +582,7 @@
 				18321E2A1AE013C800263CF9 /* LaunchScreen.xib in Resources */,
 				01645D6A1B04A26500AD36EB /* RechargeAndBalanceCell.xib in Resources */,
 				18321E271AE013C800263CF9 /* Images.xcassets in Resources */,
+				01CC49881B0C74E4007B7237 /* StationDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +604,7 @@
 				01EB612B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				01EB614A1AF74F92006E623C /* AFHTTPRequestOperationManager.m in Sources */,
 				01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */,
+				01CC498B1B0C7C79007B7237 /* MyInfoViewController.m in Sources */,
 				017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */,
 				01EB612C1AF74C5A006E623C /* UIAlertView+AFNetworking.m in Sources */,
 				01458DA71B09C9EE00B4A6AF /* DealAppraiseViewController.m in Sources */,
@@ -604,6 +624,7 @@
 				0142108F1B0B0A2400CB5AF7 /* ScanCodeViewController.m in Sources */,
 				01EB61491AF74F92006E623C /* AFHTTPRequestOperation.m in Sources */,
 				01EB614D1AF74F92006E623C /* AFSecurityPolicy.m in Sources */,
+				01CC498E1B0C8F0B007B7237 /* RevampViewController.m in Sources */,
 				01645D691B04A26500AD36EB /* RechargeAndBalanceCell.m in Sources */,
 				18321E191AE013C800263CF9 /* main.m in Sources */,
 				01EB614C1AF74F92006E623C /* AFNetworkReachabilityManager.m in Sources */,
@@ -613,6 +634,7 @@
 				01458DA41B09B16500B4A6AF /* DealDetailViewController.m in Sources */,
 				01EB61511AF74F92006E623C /* AFURLSessionManager.m in Sources */,
 				01EB61301AF74C5A006E623C /* UIRefreshControl+AFNetworking.m in Sources */,
+				01CC49871B0C74E4007B7237 /* StationDetailTableViewCell.m in Sources */,
 				01EB61311AF74C5A006E623C /* UIWebView+AFNetworking.m in Sources */,
 				01402D991B00C92000DAE4F6 /* MyViewController.m in Sources */,
 				01645D641B0493AD00AD36EB /* RechargeAndBalanceViewController.m in Sources */,

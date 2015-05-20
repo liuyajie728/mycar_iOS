@@ -8,9 +8,9 @@
 
 #import "GasStationDetailViewController.h"
 #import "CommonUtil.h"
+#import "StationDetailTableViewCell.h"
 
 @implementation GasStationCell
-
 
 
 @end
@@ -23,6 +23,7 @@
 
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (strong, nonatomic) StationDetailTableViewCell * prototypeCell;
 
 @end
 
@@ -46,9 +47,18 @@
     //添加向右滑动返回
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     
+    //设置cell相关
+    UINib *cellNib = [UINib nibWithNibName:@"StationDetailTableViewCell" bundle:nil];
+    [self.myTableView registerNib:cellNib forCellReuseIdentifier:@"sDetail"];
+    self.prototypeCell  = [self.myTableView dequeueReusableCellWithIdentifier:@"sDetail"];
+
+    StationDetailTableViewCell *c = [[[NSBundle mainBundle] loadNibNamed:@"StationDetailTableViewCell" owner:self options:nil] objectAtIndex:0];
     
-    self.myTableView.estimatedRowHeight = 80;
-    self.myTableView.rowHeight = UITableViewAutomaticDimension;
+    CGSize size = [c.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    NSLog(@"viewD h=%f", size.height);
+
+    
+
     
     dataAry = @[@"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",@"bbbbbbbbbbbbbb",@"cccccccccccccccccccccccccccccccccc",@"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",@"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",@"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",@"ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"];
     
@@ -71,26 +81,32 @@
 
 
 #pragma mark tableViewDelegate
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    //内容的高度
-//    //算出label的高度
-//    
-//    NSString * rechargeStr = dataAry[indexPath.row];
-//    
-//    CGSize labelSize = CGSizeZero;
-//    UIFont *labelFont = [UIFont boldSystemFontOfSize:14.0];
-//
-//    
-//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-//    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-//    NSDictionary *attributes = @{NSFontAttributeName:labelFont, NSParagraphStyleAttributeName:paragraphStyle.copy};
-//    labelSize =  [rechargeStr boundingRectWithSize:CGSizeMake(232, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
-//    
-//    return 50;
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 66;
 //}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
-
+    
+//    CGSize textViewSize = [cell.cellTextView sizeThatFits:CGSizeMake(241, FLT_MAX)];
+//    NSLog(@"s = %@",NSStringFromCGSize(textViewSize));
+//    return textViewSize.height+25;
+    
+    
+    StationDetailTableViewCell *cell = self.prototypeCell;
+    cell.translatesAutoresizingMaskIntoConstraints = NO;
+    cell.myLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    cell.myImage.translatesAutoresizingMaskIntoConstraints = NO;
+    cell.myLabel.text = dataAry[indexPath.row];
+    NSLog(@" + %@",dataAry[indexPath.row]);
+    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    NSLog(@"h=%f", size.height + 1);
+    return 200;
+    
+    
+    //return 100;
+    
+}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -98,30 +114,15 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return dataAry.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"GasStationCell";
-    GasStationCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[GasStationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.myCellContentLabel.text = dataAry[indexPath.row];
-    
-
-    
+    StationDetailTableViewCell *cell = [self.myTableView dequeueReusableCellWithIdentifier:@"sDetail"];
+    cell.myLabel.text = dataAry[indexPath.row];
     return cell;
 }
 
-//通过内容算出Cell留言的高度
--(CGFloat)getContentTextLabel:(NSString*)contentText
-{
-    
 
-    return 70;
-}
 
 @end
