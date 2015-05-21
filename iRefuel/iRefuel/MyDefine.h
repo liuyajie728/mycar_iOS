@@ -14,6 +14,10 @@
 #define LCDW LCDSIZE.size.width
 #define LCDH LCDSIZE.size.height
 
+//请求api
+#define MyHTTP @"http://api.irefuel.cn/"
+
+
 //title文字的颜色
 #define TitleColor [UIColor colorWithRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:1]
 

@@ -94,9 +94,9 @@
     
     
     StationDetailTableViewCell *cell = self.prototypeCell;
-    cell.translatesAutoresizingMaskIntoConstraints = NO;
-    cell.myLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    cell.myImage.translatesAutoresizingMaskIntoConstraints = NO;
+//    cell.translatesAutoresizingMaskIntoConstraints = NO;
+//    cell.myLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//    cell.myImage.translatesAutoresizingMaskIntoConstraints = NO;
     cell.myLabel.text = dataAry[indexPath.row];
     NSLog(@" + %@",dataAry[indexPath.row]);
     CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];

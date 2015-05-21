@@ -244,9 +244,13 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="distance" destination="Y0Q-Id-yS4" id="u1a-Ow-Mhm"/>
+                                            <outlet property="headImage" destination="M2Z-GE-2cj" id="QF7-lg-hDi"/>
                                             <outlet property="littleImage1" destination="AVA-OA-kuX" id="w6c-vH-vlD"/>
                                             <outlet property="littleImage2" destination="hnm-tF-Csh" id="VZc-7H-NIg"/>
                                             <outlet property="littleImage3" destination="KaV-TU-zOt" id="h2A-lF-GVu"/>
+                                            <outlet property="youzhanAddress" destination="5Mz-hy-ngL" id="rM1-RC-4Gi"/>
+                                            <outlet property="youzhanName" destination="KdV-6R-V88" id="IBS-EK-gzw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -154,13 +154,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-//    static NSString *CellIdentifier = @"RechargeAndBalanceCell";
-//    RechargeAndBalanceCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[RechargeAndBalanceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-    
+
     
     RechargeAndBalanceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RechargeAndBalanceCell"];
     if (cell == nil) {

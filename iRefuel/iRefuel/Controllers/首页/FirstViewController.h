@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *littleImage2;
 @property (weak, nonatomic) IBOutlet UILabel *littleImage1;
 
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
+@property (weak, nonatomic) IBOutlet UILabel *youzhanName;
+@property (weak, nonatomic) IBOutlet UILabel *youzhanAddress;
+@property (weak, nonatomic) IBOutlet UILabel *distance;
 
 @end
 

@@ -11,5 +11,7 @@
 @interface StationDetailTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *myLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *myImage;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
+
 @end

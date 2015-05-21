@@ -239,4 +239,18 @@
     return titleView;
 }
 
++ (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize
+{
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
++(NSMutableDictionary*)getPostDic
+{
+    NSMutableDictionary * postDic = [[NSMutableDictionary alloc]init];
+    [postDic setObject:@"bbE0cMOoCmRJDnun8y9uqyR8C" forKey:@"token"];
+    
+    return postDic;
+
+}
 @end

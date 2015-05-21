@@ -14,6 +14,9 @@
 #import "MBProgressHUD.h"
 #import "CommonUtil.h"
 #import "payRequsestHandler.h"
+#import "StationDetailViewController.h"
+#import <BaiduMapAPI/BMapKit.h>
+#import "AFHTTPRequestOperationManager.h"
 
 //微信相关数据
 #define kWXAppID @"wx920a184018cc7654"
@@ -27,8 +30,11 @@
 @implementation homeCell
 @end
 
-@interface FirstViewController ()<MBProgressHUDDelegate>
+@interface FirstViewController ()<MBProgressHUDDelegate,BMKLocationServiceDelegate,BMKMapViewDelegate>
 {
+    
+    NSArray * dataAry;
+    
     //微信相关--------------
     NSString * payCode; //从服务器获取的支付编号
     
@@ -47,10 +53,13 @@
     NSString *WXtraceId;
     NSString *WXpackage;
     
+    
+    //百度地图--------------------
+    BMKLocationService* _locService;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
-
 
 @end
 
@@ -72,7 +81,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navRightBtn];
     
     
-    //[self Location];
+   [self startLocation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,19 +91,66 @@
 -(void)clickNavRightBtn
 {
     [self performSegueWithIdentifier:@"GoScanCode" sender:self];
+    
 }
-
-
 - (IBAction)test:(id)sender {
     
     //[self OldWeiChatPay];
     [self newWeiChatPay];
 }
 
-- (IBAction)clickLocation:(id)sender {
-    
+-(void)startLocation
+{
+    _locService = [[BMKLocationService alloc]init];
+    _locService.delegate = self;
+    [_locService startUserLocationService];
 }
 
+-(void)postApiWithLatitude:(double)latitude andLongitude:(double)longitude
+{
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSMutableDictionary * postDic = [CommonUtil getPostDic];
+    if (latitude != 0 && longitude != 0) {
+        [postDic setObject:[NSNumber numberWithDouble:latitude] forKey:@"latitude"];
+        [postDic setObject:[NSNumber numberWithDouble:longitude] forKey:@"longitude"];
+    }
+    
+
+    
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [manager POST:[NSString stringWithFormat:@"%@/station",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+
+        
+        NSDictionary * dic = responseObject;
+        
+        if ([[dic objectForKey:@"status"]longValue] == 200) {
+            //成功
+            dataAry = [dic objectForKey:@"content"];
+            [self.myTableView reloadData];
+            
+        }else{
+            //失败
+            [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
+        }
+   
+        
+        
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@",error);
+        [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+
+
+
+}
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -103,7 +159,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return dataAry.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -114,35 +170,69 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (indexPath.row == 0) {
-        cell.littleImage1.hidden = YES;
-        cell.littleImage2.hidden = NO;
-        cell.littleImage3.hidden = NO;
-        
-        cell.littleImage3.text = @"火";
-        cell.littleImage3.backgroundColor = [UIColor redColor];
-        
-        cell.littleImage2.text = @"惠";
-        cell.littleImage2.backgroundColor = [UIColor yellowColor];
-        
-    }else if (indexPath.row == 1){
-        cell.littleImage1.hidden = YES;
-        cell.littleImage2.hidden = YES;
-        cell.littleImage3.hidden = NO;
+    NSDictionary * dataDic = dataAry[indexPath.row];
     
-        cell.littleImage3.text = @"优";
-        cell.littleImage3.backgroundColor = [UIColor greenColor];
-    }else{
-        cell.littleImage1.hidden = YES;
-        cell.littleImage2.hidden = YES;
-        cell.littleImage3.hidden = YES;
-    }
+    //图片
+   
         
 
     return cell;
 }
 
-#pragma mark NewWeiChatPay
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    StationDetailViewController * stationDetailVc = [[StationDetailViewController alloc]init];
+    stationDetailVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:stationDetailVc animated:YES];
+
+}
+
+#pragma mark baiduMapDelegate
+/**
+ *定位失败后，会调用此函数
+ *@param mapView 地图View
+ *@param error 错误号，参考CLError.h中定义的错误号
+ */
+- (void)didFailToLocateUserWithError:(NSError *)error
+{
+    NSLog(@"location error = %@",error);
+    
+    //定位失败
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"无法获取定位信息" message:@"请到设置 - 隐私 - 定位服务，允许 哎呦 使用您的定位信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alertView show];
+    [self postApiWithLatitude:0 andLongitude:0];
+}
+
+/**
+ *用户位置更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+{
+//    NSLog(@"经度 %f",userLocation.location.coordinate.latitude);
+//    NSLog(@"维度 %f",userLocation.location.coordinate.longitude);
+    
+    [_locService stopUserLocationService];
+    [self postApiWithLatitude:userLocation.location.coordinate.latitude andLongitude:userLocation.location.coordinate.longitude];
+    
+}
+
+/**
+ *在地图View将要启动定位时，会调用此函数
+ *@param mapView 地图View
+ */
+- (void)willStartLocatingUser
+{
+    NSLog(@"start locate");
+}
+
+- (void)didStopLocatingUser
+{
+    NSLog(@"didStopLocatingUser");
+}
+
+
+#pragma mark -  NewWeiChatPay
 -(void)newWeiChatPay
 {
     

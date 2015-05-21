@@ -38,5 +38,8 @@
 +(UIView*)getTitleViewWithTitle:(NSString*)title andFount:(CGFloat)fount andTitleColour:(UIColor*)color;
 
 //算出text的高度
-//+(CGFloat)getCellHeight:(NSString*)text andWidth:(int)width;
++ (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize;
+
+//获取一个post请求用的Dic 里面有个通用的token值
++(NSMutableDictionary*)getPostDic;
 @end
