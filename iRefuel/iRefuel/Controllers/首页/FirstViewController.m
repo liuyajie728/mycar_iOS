@@ -17,6 +17,9 @@
 #import "StationDetailViewController.h"
 #import <BaiduMapAPI/BMapKit.h>
 #import "AFHTTPRequestOperationManager.h"
+#import "UIImageView+WebCache.h"
+#import "LoginViewController.h"
+
 
 //微信相关数据
 #define kWXAppID @"wx920a184018cc7654"
@@ -34,6 +37,10 @@
 {
     
     NSArray * dataAry;
+    
+    //接受百度地图的注册 联网 成功后分别+1
+    //当值=2的时候 开始调用首页接口
+    int NotificationCode;
     
     //微信相关--------------
     NSString * payCode; //从服务器获取的支付编号
@@ -57,6 +64,8 @@
     //百度地图--------------------
     BMKLocationService* _locService;
     
+    
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -69,8 +78,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    //title
-    self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"首页" andFount:18 andTitleColour:[UIColor whiteColor]];
     
     //navRightBtn
     UIButton * navRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -80,18 +87,30 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navRightBtn];
     
+
+    self.myTableView.tableFooterView = [[UIView alloc]init];
     
-   [self startLocation];
+    
+    //接收百度推送成功后的消息
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startLocation) name:@"HomeLocation" object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    //title
+    self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"首页" andFount:18 andTitleColour:[UIColor whiteColor]];
+    self.navigationController.navigationBar.barTintColor = [CommonUtil colorWithHexString:@"00a1d8" alpha:1];
+    
+}
 -(void)clickNavRightBtn
 {
     [self performSegueWithIdentifier:@"GoScanCode" sender:self];
-    
+    //[self performSegueWithIdentifier:@"loginPush" sender:self];
 }
 - (IBAction)test:(id)sender {
     
@@ -101,9 +120,17 @@
 
 -(void)startLocation
 {
-    _locService = [[BMKLocationService alloc]init];
-    _locService.delegate = self;
-    [_locService startUserLocationService];
+    
+    NotificationCode ++;
+    NSLog(@"%d",NotificationCode);
+    
+    if (NotificationCode >=2) {
+        _locService = [[BMKLocationService alloc]init];
+        _locService.delegate = self;
+        [_locService startUserLocationService];
+    }
+    
+
 }
 
 -(void)postApiWithLatitude:(double)latitude andLongitude:(double)longitude
@@ -123,8 +150,6 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [manager POST:[NSString stringWithFormat:@"%@/station",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-
-        
         NSDictionary * dic = responseObject;
         
         if ([[dic objectForKey:@"status"]longValue] == 200) {
@@ -137,19 +162,13 @@
             [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
         }
    
-        
-        
-        
+
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        NSLog(@"%@",error);
         [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
-
-
-
 }
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -173,7 +192,60 @@
     NSDictionary * dataDic = dataAry[indexPath.row];
     
     //图片
+    [cell.headImage setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"image_url"]] placeholderImage:nil];
    
+    //油站名称
+    cell.youzhanName.text = [dataDic objectForKey:@"name"];
+    
+    //油站地址
+    //NSString * city = [dataDic objectForKey:@"city"];
+    NSString * district = [dataDic objectForKey:@"district"];
+    //NSString * province = [dataDic objectForKey:@"province"];
+    NSString * address = [dataDic objectForKey:@"address"];
+    
+    cell.youzhanAddress.text = [NSString stringWithFormat:@"%@区%@",district,address];
+    
+    //距离
+    if ([dataDic objectForKey:@"distance"]) {
+        
+        float distance = [[dataDic objectForKey:@"distance"]intValue];
+        
+        if (distance > 1500) {
+            cell.distance.text = [NSString stringWithFormat:@"%.2f km",distance/1000];
+            
+        }else{
+            cell.distance.text = [NSString stringWithFormat:@"%g m",distance];
+        }
+        
+        
+    }else{
+        cell.distance.hidden = YES;
+    }
+    
+    
+    //评价打星
+    UIImageView * start1 = (UIImageView*)[cell.contentView viewWithTag:100];
+    UIImageView * start2 = (UIImageView*)[cell.contentView viewWithTag:101];
+    UIImageView * start3 = (UIImageView*)[cell.contentView viewWithTag:102];
+    UIImageView * start4 = (UIImageView*)[cell.contentView viewWithTag:103];
+    UIImageView * start5 = (UIImageView*)[cell.contentView viewWithTag:104];
+    
+    
+    NSArray * startImages =  [CommonUtil getStartImages: [[dataDic objectForKey:@"rate_oil"]floatValue]];
+    
+   
+    start1.image =  [UIImage imageNamed:startImages[0]];
+    start2.image =  [UIImage imageNamed:startImages[1]];
+    start3.image =  [UIImage imageNamed:startImages[2]];
+    start4.image =  [UIImage imageNamed:startImages[3]];
+    start5.image =  [UIImage imageNamed:startImages[4]];
+
+
+    //三种标签 目前还没有
+    cell.littleImage1.hidden = YES;
+    cell.littleImage2.hidden = YES;
+    cell.littleImage3.hidden = YES;
+    
         
 
     return cell;
@@ -181,7 +253,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * dataDic = dataAry[indexPath.row];
+    
+    
+    
     StationDetailViewController * stationDetailVc = [[StationDetailViewController alloc]init];
+    //stationDetailVc.stationId = [dataDic objectForKey:@"station_id"];
+    stationDetailVc.FirstInfo = dataDic;
     stationDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:stationDetailVc animated:YES];
 

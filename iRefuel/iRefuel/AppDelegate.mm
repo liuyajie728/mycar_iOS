@@ -119,6 +119,8 @@ BMKMapManager* _mapManager;
         NSLog(@"onGetNetworkState %d",iError);
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HomeLocation" object:nil];
+    
 }
 
 - (void)onGetPermissionState:(int)iError
@@ -129,5 +131,7 @@ BMKMapManager* _mapManager;
     else {
         NSLog(@"onGetPermissionState %d",iError);
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HomeLocation" object:nil];
 }
 @end

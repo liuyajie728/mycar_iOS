@@ -103,7 +103,8 @@
     
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [manager POST:@"http://www.jiayoucar.com/api/sms/send" parameters:@{@"mobile":self.phone_tf.text,@"token":@"bbE0cMOoCmRJDnun8y9uqyR8C"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+   
+    [manager POST: [NSString stringWithFormat:@"%@/sms/send",MyHTTP] parameters:@{@"mobile":self.phone_tf.text,@"token":@"bbE0cMOoCmRJDnun8y9uqyR8C"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         verifyDic = responseObject;
         

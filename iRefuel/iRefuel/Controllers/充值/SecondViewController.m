@@ -7,6 +7,7 @@
 //
 
 #import "SecondViewController.h"
+#import "CommonUtil.h"
 
 @interface SecondViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    
+    self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"充值" andFount:18 andTitleColour:TitleColor];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -180,7 +180,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M2Z-GE-2cj">
                                                     <rect key="frame" x="13" y="10" width="86" height="65"/>
-                                                    <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="油站名称-油站品牌" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdV-6R-V88">
                                                     <rect key="frame" x="107" y="13" width="172" height="20"/>
@@ -189,33 +189,33 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="青岛市市南区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mz-hy-ngL">
-                                                    <rect key="frame" x="107" y="33" width="172" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <rect key="frame" x="107" y="33" width="205" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tqP-QJ-6eq">
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tqP-QJ-6eq">
                                                     <rect key="frame" x="107" y="57" width="18" height="18"/>
-                                                    <color key="backgroundColor" red="1" green="0.51546494809999999" blue="0.39739231940000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qm4-fh-I3L">
+                                                <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qm4-fh-I3L">
                                                     <rect key="frame" x="129" y="57" width="18" height="18"/>
-                                                    <color key="backgroundColor" red="1" green="0.51546494809999999" blue="0.39739231940000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uhi-YZ-gBA">
+                                                <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uhi-YZ-gBA">
                                                     <rect key="frame" x="151" y="57" width="18" height="18"/>
-                                                    <color key="backgroundColor" red="1" green="0.51546494809999999" blue="0.39739231940000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gmr-AD-aAx">
+                                                <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gmr-AD-aAx">
                                                     <rect key="frame" x="173" y="57" width="18" height="18"/>
-                                                    <color key="backgroundColor" red="1" green="0.51546494809999999" blue="0.39739231940000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwy-mf-pgW">
+                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwy-mf-pgW">
                                                     <rect key="frame" x="195" y="57" width="18" height="18"/>
-                                                    <color key="backgroundColor" red="1" green="0.51546494809999999" blue="0.39739231940000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="920m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Q-Id-yS4">
-                                                    <rect key="frame" x="243" y="57" width="69" height="20"/>
+                                                    <rect key="frame" x="221" y="57" width="91" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -272,6 +272,7 @@
                     <connections>
                         <outlet property="myTableView" destination="21M-KT-NKQ" id="SMa-8M-cgl"/>
                         <segue destination="V0F-KV-sJZ" kind="push" identifier="GoScanCode" id="MVR-Ho-U9r"/>
+                        <segue destination="iRz-EE-rUS" kind="push" identifier="loginPush" id="S1J-Lc-YVC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -766,7 +767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rho-Ce-Bnv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2314" y="84"/>
+            <point key="canvasLocation" x="2846" y="84"/>
         </scene>
         <!--Transaction Record View Controller-->
         <scene sceneID="zll-pW-fo4">
@@ -1132,7 +1133,7 @@
             </objects>
             <point key="canvasLocation" x="3112" y="714"/>
         </scene>
-        <!--充值-->
+        <!--Second View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
@@ -1144,18 +1145,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="bottom" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1wl-9d-scB">
-                                <rect key="frame" x="41" y="112" width="127" height="183"/>
-                                <color key="backgroundColor" red="1" green="0.51546494809999999" blue="0.39739231940000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pyA-Ke-fcc">
+                                <rect key="frame" x="0.0" y="133" width="320" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的充值金额" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mma-pZ-Bmf">
+                                        <rect key="frame" x="8" y="5" width="304" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-MX-FpE">
+                                <rect key="frame" x="16" y="239" width="288" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.63137254901960782" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="提交订单">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="充值" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="u0o-Mr-mxq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957" y="47"/>
+            <point key="canvasLocation" x="1489" y="47"/>
         </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1170,7 +1186,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="bOf-NX-0tZ" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="nw3-cw-86v" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="EHy-4P-QIj" kind="relationship" relationship="viewControllers" id="r9W-wI-xbh"/>
                     </connections>
                 </tabBarController>
@@ -1233,6 +1249,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="713-sC-IDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="957" y="714"/>
+        </scene>
+        <!--充值-->
+        <scene sceneID="NcV-wN-kjR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nw3-cw-86v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="充值" image="second" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g0y-83-YDm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="6vQ-QR-now"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qvV-dh-TCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957" y="47"/>
         </scene>
     </scenes>
     <resources>

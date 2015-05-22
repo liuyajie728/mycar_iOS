@@ -253,4 +253,68 @@
     return postDic;
 
 }
+
++(NSArray*)getStartImages:(float)number
+{
+
+    NSArray * starts = [[NSArray alloc]init];
+//    NSLog(@"%f %f星好评",number,number/20);
+    
+    
+    NSString * startImageName = @"startImage";
+    NSString * halfStartImageName = @"startImage_half";
+    NSString * grayStartImageName = @"startImage_gray";
+    
+    
+    float startNum = number/20;
+    if (startNum >= 4.5) {
+        //五星
+        starts = @[startImageName,startImageName,startImageName,startImageName,startImageName];
+        
+    }else if (startNum >= 4){
+        //四星半
+        starts = @[startImageName,startImageName,startImageName,startImageName,halfStartImageName];
+        
+    }else if (startNum >= 3.5){
+        //四星
+        starts = @[startImageName,startImageName,startImageName,startImageName,grayStartImageName];
+        
+        
+    }else if (startNum >= 3){
+        //三星半
+        starts = @[startImageName,startImageName,startImageName,halfStartImageName,grayStartImageName];
+        
+    }else if (startNum >= 2.5){
+        //三星
+        starts = @[startImageName,startImageName,startImageName,grayStartImageName,grayStartImageName];
+        
+        
+    }else if (startNum >= 2){
+        //二星半
+        starts = @[startImageName,startImageName,halfStartImageName,grayStartImageName,grayStartImageName];
+        
+        
+    }else if (startNum >= 1.5){
+        //二星
+        starts = @[startImageName,startImageName,grayStartImageName,grayStartImageName,grayStartImageName];
+        
+        
+    }else if (startNum >= 1){
+        //一星半
+        starts = @[startImageName,halfStartImageName,grayStartImageName,grayStartImageName,grayStartImageName];
+        
+        
+    }else if(startNum >= 0.5){
+        //半星
+        starts = @[halfStartImageName,grayStartImageName,grayStartImageName,grayStartImageName,grayStartImageName];
+        
+    }else{
+        //没星
+        starts = @[grayStartImageName,grayStartImageName,grayStartImageName,grayStartImageName,grayStartImageName];
+    }
+    
+    
+
+    return starts;
+}
 @end

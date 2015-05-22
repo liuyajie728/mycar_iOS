@@ -10,4 +10,7 @@
 
 @interface StationDetailViewController : UIViewController
 
+@property (nonatomic,assign) NSString * stationId;
+@property (nonatomic,strong) NSDictionary * firstInfo;
+
 @end
