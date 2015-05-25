@@ -10,10 +10,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CommonUtil.h"
 #import "GasStationDetailViewController.h"
+#import "StationDetailViewController.h"
 
 @interface ScanCodeViewController ()<UIGestureRecognizerDelegate,AVCaptureMetadataOutputObjectsDelegate>
 {
     NSString *stringValue;
+    BOOL isFirst;
 }
 
 @property (strong,nonatomic)AVCaptureDevice * device;
@@ -62,49 +64,49 @@
     
     
     
-//    //扫描二维码
-//    //初始化
-//    if (!_device) {
-//        // Device
-//        _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-//        
-//        // Input
-//        _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:nil];
-//        
-//        // Output
-//        _output = [[AVCaptureMetadataOutput alloc]init];
-//    }
-//    
-//    [_output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
-//    
-//    // Session
-//    _session = [[AVCaptureSession alloc]init];
-//    [_session setSessionPreset:AVCaptureSessionPresetHigh];
-//    
-//    if ([_session canAddInput:self.input])
-//    {
-//        [_session addInput:self.input];
-//    }
-//    
-//    if ([_session canAddOutput:self.output])
-//    {
-//        [_session addOutput:self.output];
-//    }
-//    
-//    // 条码类型 AVMetadataObjectTypeQRCode
-//    _output.metadataObjectTypes =@[AVMetadataObjectTypeQRCode];
-//    
-//    // Preview
-//    _preview =[AVCaptureVideoPreviewLayer layerWithSession:_session];
-//    _preview.videoGravity =AVLayerVideoGravityResizeAspectFill;
-//    _preview.frame =self.view.layer.bounds;
-//    [self.view.layer insertSublayer: _preview atIndex:0];
-//    
-//    // Start
-//    [_session startRunning];
+    //扫描二维码
+    //初始化
+    if (!_device) {
+        // Device
+        _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        
+        // Input
+        _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:nil];
+        
+        // Output
+        _output = [[AVCaptureMetadataOutput alloc]init];
+    }
+    
+    [_output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+    
+    // Session
+    _session = [[AVCaptureSession alloc]init];
+    [_session setSessionPreset:AVCaptureSessionPresetHigh];
+    
+    if ([_session canAddInput:self.input])
+    {
+        [_session addInput:self.input];
+    }
+    
+    if ([_session canAddOutput:self.output])
+    {
+        [_session addOutput:self.output];
+    }
+    
+    // 条码类型 AVMetadataObjectTypeQRCode
+    _output.metadataObjectTypes =@[AVMetadataObjectTypeQRCode];
+    
+    // Preview
+    _preview =[AVCaptureVideoPreviewLayer layerWithSession:_session];
+    _preview.videoGravity =AVLayerVideoGravityResizeAspectFill;
+    _preview.frame =self.view.layer.bounds;
+    [self.view.layer insertSublayer: _preview atIndex:0];
+    
+    // Start
+    [_session startRunning];
     
     
-    [self performSegueWithIdentifier:@"GoGasStationDetail" sender:self];
+    //[self performSegueWithIdentifier:@"GoGasStationDetail" sender:self];
     
 }
 
@@ -117,6 +119,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (isFirst) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    isFirst = YES;
 }
 
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
@@ -132,7 +141,37 @@
         
         
         NSLog(@"二维码扫描结果 %@",stringValue);
-        [self performSegueWithIdentifier:@"GoGasStationDetail" sender:self];
+//        [self performSegueWithIdentifier:@"GoGasStationDetail" sender:self];
+        
+        
+        if ([stringValue hasPrefix:@"http://web.irefuel.cn"]) {
+            
+            NSArray  * array = [stringValue componentsSeparatedByString:@"station/"];
+            NSString * typeStr = [array lastObject];
+            array = [typeStr componentsSeparatedByString:@"/"];
+            
+            if(array.count >=2){
+                
+                NSString * stationId = array[0];
+                NSString * operatorId = array[1];
+                
+                StationDetailViewController * stationDetailVc = [[StationDetailViewController alloc]init];
+                
+                stationDetailVc.stationId = stationId;
+                stationDetailVc.operatorId = operatorId;
+                
+                [self.navigationController pushViewController:stationDetailVc animated:YES];
+                
+            }
+
+            
+        }else{
+            //扫描不正确的二维码
+        }
+        
+
+        
+        
     }
 }
 
@@ -141,8 +180,11 @@
 {
     if ([segue.identifier isEqualToString:@"GoGasStationDetail"]) {
         //扫描二维码传值
-        GasStationDetailViewController * send = segue.destinationViewController;
-        send.codeSrt = stringValue;
+//        GasStationDetailViewController * send = segue.destinationViewController;
+//        send.codeSrt = stringValue;
+        
+     
+        
     }
 }
 

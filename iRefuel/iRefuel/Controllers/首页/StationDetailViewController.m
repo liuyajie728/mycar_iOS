@@ -11,10 +11,15 @@
 #import "StationDetailTableViewCell.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "UIImageView+WebCache.h"
+#import <BaiduMapAPI/BMapKit.h>
+#import "BaiduMapViewController.h"
+#import "ConsumedViewController.h"
+
 
 @interface StationDetailViewController ()<UIGestureRecognizerDelegate,MBProgressHUDDelegate>
 {
     NSArray * dataAry;
+    BOOL isFirstRequest; //判断当前页面只请求一次就行
 
 }
 
@@ -33,6 +38,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *topLittleImage3;
 @property (weak, nonatomic) IBOutlet UIImageView *topLittleImage4;
 @property (weak, nonatomic) IBOutlet UIImageView *topLittleImage5;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *fuwuLittleImage1;
+@property (weak, nonatomic) IBOutlet UIImageView *fuwuLittleImage2;
+@property (weak, nonatomic) IBOutlet UIImageView *fuwuLittleImage3;
+@property (weak, nonatomic) IBOutlet UIImageView *fuwuLittleImage4;
+@property (weak, nonatomic) IBOutlet UIImageView *fuwuLittleImage5;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *dianpingLabel;
 
@@ -63,6 +76,10 @@
     
     self.myTableView.tableFooterView = [[UIView alloc]init];
     
+    
+    //设置tableView没有弹性
+    self.myTableView.bounces = NO;
+    
     [self settingFrame];
     
 }
@@ -80,10 +97,115 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
     
-    if (dataAry) {
+    if (isFirstRequest) {
         return;
     }
     
+    //判断如果是扫码进入详情页 要再请求一次油站具体信息
+    if (self.firstInfo) {
+        //首页进入
+        //直接从首页面的数据来给当前界面显示
+        [self settingMyView];
+        [self requestCommit];
+        
+        
+    }else{
+        //二维码进入
+        //需要再请求一次当前页面信息
+        [self requestFirstInfo];
+
+    }
+}
+-(void)settingFrame
+{
+    CGRect frame = self.myTableView.frame;
+    frame.origin.y = 64;
+    frame.size.width = LCDW;
+    frame.size.height = LCDH - 64;
+    self.myTableView.frame = frame;
+
+}
+
+-(void)backBtn:(UIButton*)send
+{
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+//设置TableView topView的信息
+-(void)settingMyView
+{
+    //名称
+    self.youzhanName.text = [self.firstInfo objectForKey:@"name"];
+    
+    //油站地址
+    //NSString * city = [self.FirstInfo objectForKey:@"city"];
+    NSString * district = [self.firstInfo objectForKey:@"district"];
+    //NSString * province = [self.FirstInfo objectForKey:@"province"];
+    NSString * address = [self.firstInfo objectForKey:@"address"];
+    
+    self.youzhanAddress.text = [NSString stringWithFormat:@"%@区%@",district,address];
+    
+    //图片
+    [self.bigImage setImageWithURL:[NSURL URLWithString:[self.firstInfo objectForKey:@"image_url"]] placeholderImage:nil];
+    
+    //评星
+    //质量评价
+    NSArray * startImages =  [CommonUtil getStartImages: [[self.firstInfo objectForKey:@"rate_oil"]floatValue]];
+//    NSLog(@"++ %@",[self.firstInfo objectForKey:@"rate_oil"]);
+    self.topLittleImage1.image = [UIImage imageNamed:startImages[0]];
+    self.topLittleImage2.image = [UIImage imageNamed:startImages[1]];
+    self.topLittleImage3.image = [UIImage imageNamed:startImages[2]];
+    self.topLittleImage4.image = [UIImage imageNamed:startImages[3]];
+    self.topLittleImage5.image = [UIImage imageNamed:startImages[4]];
+    
+    //服务评价
+    NSArray * serviceImages =  [CommonUtil getStartImages: [[self.firstInfo objectForKey:@"rate_service"]floatValue]];
+//    NSLog(@"-- %@",[self.firstInfo objectForKey:@"rate_service"]);
+    self.fuwuLittleImage1.image = [UIImage imageNamed:serviceImages[0]];
+    self.fuwuLittleImage2.image = [UIImage imageNamed:serviceImages[1]];
+    self.fuwuLittleImage3.image = [UIImage imageNamed:serviceImages[2]];
+    self.fuwuLittleImage4.image = [UIImage imageNamed:serviceImages[3]];
+    self.fuwuLittleImage5.image = [UIImage imageNamed:serviceImages[4]];
+    
+}
+
+#pragma mark request
+//请求加油站详情
+-(void)requestFirstInfo
+{
+    
+    AFHTTPRequestOperationManager * youzhanInfoManager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary * youzhanInfoPostDic = [CommonUtil getPostDic];
+    
+    [youzhanInfoPostDic setObject:self.operatorId forKey:@"operator_id"];
+    [youzhanInfoPostDic setObject:self.stationId forKey:@"station_id"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [youzhanInfoManager POST:[NSString stringWithFormat:@"%@/station",MyHTTP] parameters:youzhanInfoPostDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary * d = responseObject;
+        self.firstInfo = [d objectForKey:@"content"];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        //设置油站信息和请求评论
+        [self settingMyView];
+        [self requestCommit];
+        
+       
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [CommonUtil showHUD:@"获取数据失败，请检查网络" delay:2.0f withDelegate:self];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+    
+
+}
+//请求评论内容
+-(void)requestCommit
+{
+    //请求评论信息
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     NSMutableDictionary * postDic = [CommonUtil getPostDic];
     
@@ -106,76 +228,112 @@
         }else if ([[dic objectForKey:@"status"]longValue] == 400){
             //没有评论
             self.myTableView.tableFooterView = self.myTableDownView;
-        
+            
             self.dianpingLabel.text = @"暂时没有评论";
         }else{
             //失败
-            [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
+            [CommonUtil showHUD:@"获取数据失败，请检查网络" delay:2.0f withDelegate:self];
         }
         
         
-        
-        
+        isFirstRequest = YES;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
     }];
-    
-    //设置top内容
-    
-    //名称
-    self.youzhanName.text = [self.firstInfo objectForKey:@"name"];
-    
-    //油站地址
-    //NSString * city = [self.FirstInfo objectForKey:@"city"];
-    NSString * district = [self.firstInfo objectForKey:@"district"];
-    //NSString * province = [self.FirstInfo objectForKey:@"province"];
-    NSString * address = [self.firstInfo objectForKey:@"address"];
-    
-    self.youzhanAddress.text = [NSString stringWithFormat:@"%@区%@",district,address];
-    
-    //图片
-    [self.bigImage setImageWithURL:[NSURL URLWithString:[self.firstInfo objectForKey:@"image_url"]] placeholderImage:nil];
-    
-    //评星
-    NSArray * startImages =  [CommonUtil getStartImages: [[self.firstInfo objectForKey:@"rate_oil"]floatValue]];
-    self.topLittleImage1.image = [UIImage imageNamed:startImages[0]];
-    self.topLittleImage2.image = [UIImage imageNamed:startImages[1]];
-    self.topLittleImage3.image = [UIImage imageNamed:startImages[2]];
-    self.topLittleImage4.image = [UIImage imageNamed:startImages[3]];
-    self.topLittleImage5.image = [UIImage imageNamed:startImages[4]];
-
-}
--(void)settingFrame
-{
-    CGRect frame = self.myTableView.frame;
-    frame.origin.y = 64;
-    frame.size.width = LCDW;
-    frame.size.height = LCDH - 64;
-    self.myTableView.frame = frame;
 
 }
 
--(void)backBtn:(UIButton*)send
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 #pragma mark clickBtn
 - (IBAction)clickPhone:(id)sender {
     
+    //打电话
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",[self.firstInfo objectForKey:@"tel"]]]];
-    
     
 }
 - (IBAction)clickMapNavigation:(id)sender
 {
+
+    //开始导航
+    BMKNaviPara* para = [[BMKNaviPara alloc]init];
+    
+    
+    //判断是否安装百度地图
+    NSURL * baiduUrl = [NSURL URLWithString:@"baidumap://map/"];
+    if ([[UIApplication sharedApplication]canOpenURL:baiduUrl]) {
+        //有百度地图的app
+        
+        //指定导航类型
+        para.naviType = BMK_NAVI_TYPE_NATIVE;
+        
+    }else{
+        //没有百度地图的app
+        
+        //判断如果没有成功定位(没有起点经纬度)的情况下就在本APP里显示地图
+        if (self.startLatitude == 0 && self.startLongitude == 0) {
+            
+            UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
+            BaiduMapViewController * mapVc = [board instantiateViewControllerWithIdentifier: @"BaiduMap"];
+            mapVc.targetLatitude = [[self.firstInfo objectForKey:@"latitude"]floatValue];
+            mapVc.targetLongitude = [[self.firstInfo objectForKey:@"longitude"]floatValue];
+            [self presentViewController:mapVc animated:YES completion:^{
+                
+            }];
+            return;
+            
+        }else{
+            
+            //如果成功定位 就采用web方式导航
+            para.naviType = BMK_NAVI_TYPE_WEB;
+            
+            //采用web方式要初始化起点位置
+            BMKPlanNode* start = [[BMKPlanNode alloc]init];
+            //指定起点经纬度
+            CLLocationCoordinate2D coor1;
+            coor1.latitude = self.startLatitude;
+            coor1.longitude = self.startLongitude;
+            start.pt = coor1;
+            //指定起点名称
+            //        start.name = _webStartName.text;
+            //指定起点
+            para.startPoint = start;
+        
+        }
+    }
+    
+    
+    //初始化终点节点
+    BMKPlanNode* end = [[BMKPlanNode alloc]init];
+    //指定终点经纬度
+    CLLocationCoordinate2D coor2;
+    
+    //赋值经纬度
+    coor2.latitude =  [[self.firstInfo objectForKey:@"latitude"]floatValue];
+    coor2.longitude = [[self.firstInfo objectForKey:@"longitude"]floatValue];
+    end.pt = coor2;
+    
+    //指定终点名称
+    end.name = [self.firstInfo objectForKey:@"name"];
+    //指定终点
+    para.endPoint = end;
+    
+    //指定返回自定义scheme
+    para.appScheme = @"SSEC.iRefuel";
+    
+    //调启百度地图客户端导航
+    [BMKNavigation openBaiduMapNavigation:para];
     
     
 }
 - (IBAction)goRefuel:(id)sender {
+    
+    UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
+    ConsumedViewController * mapVc = [board instantiateViewControllerWithIdentifier: @"Consume"];
+    [self.navigationController pushViewController:mapVc animated:YES];
     
     
 }

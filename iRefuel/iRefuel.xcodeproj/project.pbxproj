@@ -20,6 +20,8 @@
 		0148DD261AF77C2700BAA18C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD251AF77C2700BAA18C /* libsqlite3.0.dylib */; };
 		0148DD421AF7813100BAA18C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0148DD411AF7813100BAA18C /* libstdc++.dylib */; };
 		01533E371AF8B7B6000029C0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 01533E361AF8B7B6000029C0 /* MBProgressHUD.m */; };
+		0159853C1B105268006A3CD4 /* BaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0159853B1B105268006A3CD4 /* BaiduMapViewController.m */; };
+		0159853E1B1063BB006A3CD4 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0159853D1B1063BB006A3CD4 /* mapapi.bundle */; };
 		01620C981B0D97EA009F647C /* StationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01620C961B0D97EA009F647C /* StationDetailViewController.m */; };
 		01620C991B0D97EA009F647C /* StationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01620C971B0D97EA009F647C /* StationDetailViewController.xib */; };
 		01631CF91B01D5FB00DC1888 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631CF81B01D5FB00DC1888 /* BaiduMapAPI.framework */; };
@@ -30,6 +32,7 @@
 		01631D031B01D67C00DC1888 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D021B01D67C00DC1888 /* Security.framework */; };
 		01631D051B01D6B700DC1888 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D041B01D6B700DC1888 /* CoreGraphics.framework */; };
 		01631D411B01EDF100DC1888 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01631D401B01EDF100DC1888 /* Info.plist */; };
+		016410C41B12E208002869C7 /* ConsumedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 016410C31B12E208002869C7 /* ConsumedViewController.m */; };
 		01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01645D501B04745B00AD36EB /* TransactionRecordViewController.m */; };
 		01645D641B0493AD00AD36EB /* RechargeAndBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01645D621B0493AD00AD36EB /* RechargeAndBalanceViewController.m */; };
 		01645D651B0493AD00AD36EB /* RechargeAndBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01645D631B0493AD00AD36EB /* RechargeAndBalanceViewController.xib */; };
@@ -122,6 +125,9 @@
 		0148DD411AF7813100BAA18C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		01533E351AF8B7B6000029C0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		01533E361AF8B7B6000029C0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		0159853A1B105268006A3CD4 /* BaiduMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMapViewController.h; sourceTree = "<group>"; };
+		0159853B1B105268006A3CD4 /* BaiduMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapViewController.m; sourceTree = "<group>"; };
+		0159853D1B1063BB006A3CD4 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		01620C951B0D97EA009F647C /* StationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationDetailViewController.h; sourceTree = "<group>"; };
 		01620C961B0D97EA009F647C /* StationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationDetailViewController.m; sourceTree = "<group>"; };
 		01620C971B0D97EA009F647C /* StationDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationDetailViewController.xib; sourceTree = "<group>"; };
@@ -133,6 +139,8 @@
 		01631D021B01D67C00DC1888 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		01631D041B01D6B700DC1888 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		01631D401B01EDF100DC1888 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		016410C21B12E208002869C7 /* ConsumedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumedViewController.h; sourceTree = "<group>"; };
+		016410C31B12E208002869C7 /* ConsumedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumedViewController.m; sourceTree = "<group>"; };
 		01645D4F1B04745B00AD36EB /* TransactionRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionRecordViewController.h; sourceTree = "<group>"; };
 		01645D501B04745B00AD36EB /* TransactionRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordViewController.m; sourceTree = "<group>"; };
 		01645D611B0493AD00AD36EB /* RechargeAndBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeAndBalanceViewController.h; sourceTree = "<group>"; };
@@ -324,6 +332,7 @@
 		01631CF71B01D5FB00DC1888 /* baiduMap */ = {
 			isa = PBXGroup;
 			children = (
+				0159853D1B1063BB006A3CD4 /* mapapi.bundle */,
 				01631CF81B01D5FB00DC1888 /* BaiduMapAPI.framework */,
 			);
 			path = baiduMap;
@@ -364,6 +373,10 @@
 				01CC49841B0C74E4007B7237 /* StationDetailTableViewCell.h */,
 				01CC49851B0C74E4007B7237 /* StationDetailTableViewCell.m */,
 				01CC49861B0C74E4007B7237 /* StationDetailTableViewCell.xib */,
+				0159853A1B105268006A3CD4 /* BaiduMapViewController.h */,
+				0159853B1B105268006A3CD4 /* BaiduMapViewController.m */,
+				016410C21B12E208002869C7 /* ConsumedViewController.h */,
+				016410C31B12E208002869C7 /* ConsumedViewController.m */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -664,6 +677,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01620C991B0D97EA009F647C /* StationDetailViewController.xib in Resources */,
+				0159853E1B1063BB006A3CD4 /* mapapi.bundle in Resources */,
 				0148DD201AF777B600BAA18C /* readme.txt in Resources */,
 				18321E251AE013C800263CF9 /* Main.storyboard in Resources */,
 				01645D651B0493AD00AD36EB /* RechargeAndBalanceViewController.xib in Resources */,
@@ -716,6 +730,7 @@
 				017386911B0316CA008AC34C /* SettingViewController.m in Sources */,
 				0142108F1B0B0A2400CB5AF7 /* ScanCodeViewController.m in Sources */,
 				01EB61491AF74F92006E623C /* AFHTTPRequestOperation.m in Sources */,
+				016410C41B12E208002869C7 /* ConsumedViewController.m in Sources */,
 				01CD6B9A1B0DFC57003CCB9C /* UIButton+WebCache.m in Sources */,
 				01EB614D1AF74F92006E623C /* AFSecurityPolicy.m in Sources */,
 				01CC498E1B0C8F0B007B7237 /* RevampViewController.m in Sources */,
@@ -743,6 +758,7 @@
 				01CD6B921B0DFC57003CCB9C /* NSData+ImageContentType.m in Sources */,
 				01EB612D1AF74C5A006E623C /* UIButton+AFNetworking.m in Sources */,
 				01EB612E1AF74C5A006E623C /* UIImageView+AFNetworking.m in Sources */,
+				0159853C1B105268006A3CD4 /* BaiduMapViewController.m in Sources */,
 				01CD6B971B0DFC57003CCB9C /* SDWebImageDownloaderOperation.m in Sources */,
 				01EB61501AF74F92006E623C /* AFURLResponseSerialization.m in Sources */,
 				01CD6B961B0DFC57003CCB9C /* SDWebImageDownloader.m in Sources */,

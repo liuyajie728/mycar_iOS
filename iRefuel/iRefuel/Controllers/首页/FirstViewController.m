@@ -42,6 +42,10 @@
     //当值=2的时候 开始调用首页接口
     int NotificationCode;
     
+    //记录初始定位置
+    double startLatitude;
+    double startLongitude;
+    
     //微信相关--------------
     NSString * payCode; //从服务器获取的支付编号
     
@@ -69,6 +73,9 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
+
+
+
 
 @end
 
@@ -256,10 +263,13 @@
     NSDictionary * dataDic = dataAry[indexPath.row];
     
     
-    
     StationDetailViewController * stationDetailVc = [[StationDetailViewController alloc]init];
     //stationDetailVc.stationId = [dataDic objectForKey:@"station_id"];
-    stationDetailVc.FirstInfo = dataDic;
+    
+    stationDetailVc.firstInfo = dataDic;
+    stationDetailVc.startLatitude = startLatitude;
+    stationDetailVc.startLongitude = startLongitude;
+    
     stationDetailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:stationDetailVc animated:YES];
 
@@ -290,9 +300,11 @@
 //    NSLog(@"经度 %f",userLocation.location.coordinate.latitude);
 //    NSLog(@"维度 %f",userLocation.location.coordinate.longitude);
     
+    startLatitude = userLocation.location.coordinate.latitude;
+    startLongitude = userLocation.location.coordinate.longitude;
+    
     [_locService stopUserLocationService];
     [self postApiWithLatitude:userLocation.location.coordinate.latitude andLongitude:userLocation.location.coordinate.longitude];
-    
 }
 
 /**
