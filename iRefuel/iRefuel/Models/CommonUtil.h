@@ -46,6 +46,10 @@
 //根据评分获取图片
 +(NSArray*)getStartImages:(float)number;
 
+//把数据里面的“<null>”都改成适当的类型
++(NSDictionary*)changeDicSubType:(NSDictionary*)dic;
+
+
 
 
 @end

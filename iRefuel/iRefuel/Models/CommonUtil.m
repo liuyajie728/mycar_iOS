@@ -312,9 +312,21 @@
         //没星
         starts = @[grayStartImageName,grayStartImageName,grayStartImageName,grayStartImageName,grayStartImageName];
     }
-    
-    
-
     return starts;
+}
+
++(NSDictionary*)changeDicSubType:(NSDictionary*)dic
+{
+    NSMutableDictionary * mDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
+    
+    for (NSString* key in mDic.allKeys) {
+        
+        id halo = [mDic objectForKey:key];
+        if ([halo isKindOfClass:[NSNull class]]) {
+            [mDic setObject:@"" forKey:key];
+        }
+    }
+    
+    return mDic;
 }
 @end

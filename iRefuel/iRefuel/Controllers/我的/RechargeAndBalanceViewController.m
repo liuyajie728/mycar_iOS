@@ -9,14 +9,15 @@
 #import "RechargeAndBalanceViewController.h"
 #import "CommonUtil.h"
 #import "RechargeAndBalanceCell.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "MyPreference.h"
 
-
-
-
-@interface RechargeAndBalanceViewController ()<UIGestureRecognizerDelegate>
+@interface RechargeAndBalanceViewController ()<UIGestureRecognizerDelegate,MBProgressHUDDelegate>
 {
     NSArray * moneySource;
+    NSArray * dataAry;
     
+    UILabel * headViewLabel;
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
@@ -30,14 +31,11 @@
     
     //此viewController因为cell排版的特殊性 没有使用autolayout 所以要自己手动适应下
     //当前类用了xib
-    
     CGRect frame = self.myTableView.frame;
     frame.size.width = LCDW;
     frame.size.height = LCDH - 64;
     frame.origin.y = 64;
     self.myTableView.frame = frame;
-    
-    NSLog(@" = %f",LCDH);
     
     //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -56,7 +54,10 @@
     self.myTableView.tableHeaderView = [self getTableViewHeadView];
     
     
-    [self settingDataSource];
+    //[self settingDataSource];
+    
+    //先更新一遍用户信息 获取到最新的balance 然后再获取整个列表
+    [self requestUserInfo];
     
 }
 
@@ -64,7 +65,79 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark request
+-(void)requestUserInfo{
+    
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary * postDic = [CommonUtil getPostDic];
+    
+    NSDictionary * userInfo = [MyPreference getLoginInfo];
+    [postDic setObject: [userInfo objectForKey:@"user_id"] forKey:@"user_id"];
 
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [manager POST:[NSString stringWithFormat:@"%@/user",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //NSLog(@"%@",responseObject);
+        NSDictionary * dataDic = responseObject;
+        
+        if ([[dataDic objectForKey:@"status"]longValue] == 200)
+        {
+            [MyPreference commitLoginInfo:[dataDic objectForKey:@"content"]];
+            
+            //请求充值余额信息
+            [self requestConsumeWithBalance: [[dataDic objectForKey:@"content"]objectForKey:@"balance"] andUserId:[[dataDic objectForKey:@"content"]objectForKey:@"user_id"]];
+            
+            //设置余额
+            headViewLabel.text = [NSString stringWithFormat:@"余额: %@",[[dataDic objectForKey:@"content"]objectForKey:@"balance"]];
+            
+        }else{
+            [CommonUtil showHUD:@"服务器出错" delay:2.0f withDelegate:self];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+-(void)requestConsumeWithBalance:(NSString*)balance andUserId:(NSString*)userId
+{
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary * postDic = [CommonUtil getPostDic];
+    
+    //[postDic setObject:balance forKey:@"balance"];
+    [postDic setObject:userId forKey:@"user_id"];
+    
+    [manager POST:[NSString stringWithFormat:@"%@/order/recharge",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        NSDictionary * dataDic = responseObject;
+        
+        if ([[dataDic objectForKey:@"status"]longValue] == 200)
+        {
+            //分出来月份
+            NSArray * ary = [dataDic objectForKey:@"content"];
+            
+            for (NSDictionary * d in ary) {
+                
+                
+            }
+            
+            
+        
+        
+        }
+        
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
+    }];
+    
+}
 -(void)settingDataSource
 {
     
@@ -97,8 +170,8 @@
     downContentView.backgroundColor = [UIColor whiteColor];
     
     
-    UILabel * headViewLabel = [[UILabel alloc]initWithFrame:CGRectMake(12, 16, 200, 20)];
-    headViewLabel.text = @"余额: 100,100,100.00";
+    headViewLabel = [[UILabel alloc]initWithFrame:CGRectMake(12, 16, 200, 20)];
+    //headViewLabel.text = @"余额: 100,100,100.00";
     headViewLabel.backgroundColor = [UIColor clearColor];
     [downContentView addSubview:headViewLabel];
     

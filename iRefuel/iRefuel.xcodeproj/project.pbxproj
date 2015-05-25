@@ -33,6 +33,8 @@
 		01631D051B01D6B700DC1888 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01631D041B01D6B700DC1888 /* CoreGraphics.framework */; };
 		01631D411B01EDF100DC1888 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01631D401B01EDF100DC1888 /* Info.plist */; };
 		016410C41B12E208002869C7 /* ConsumedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 016410C31B12E208002869C7 /* ConsumedViewController.m */; };
+		016410C71B12F916002869C7 /* MyPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = 016410C61B12F916002869C7 /* MyPreference.m */; };
+		016410C91B130394002869C7 /* libc++abi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 016410C81B130394002869C7 /* libc++abi.dylib */; };
 		01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01645D501B04745B00AD36EB /* TransactionRecordViewController.m */; };
 		01645D641B0493AD00AD36EB /* RechargeAndBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01645D621B0493AD00AD36EB /* RechargeAndBalanceViewController.m */; };
 		01645D651B0493AD00AD36EB /* RechargeAndBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01645D631B0493AD00AD36EB /* RechargeAndBalanceViewController.xib */; };
@@ -141,6 +143,9 @@
 		01631D401B01EDF100DC1888 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		016410C21B12E208002869C7 /* ConsumedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumedViewController.h; sourceTree = "<group>"; };
 		016410C31B12E208002869C7 /* ConsumedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumedViewController.m; sourceTree = "<group>"; };
+		016410C51B12F916002869C7 /* MyPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPreference.h; sourceTree = "<group>"; };
+		016410C61B12F916002869C7 /* MyPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPreference.m; sourceTree = "<group>"; };
+		016410C81B130394002869C7 /* libc++abi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++abi.dylib"; path = "usr/lib/libc++abi.dylib"; sourceTree = SDKROOT; };
 		01645D4F1B04745B00AD36EB /* TransactionRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionRecordViewController.h; sourceTree = "<group>"; };
 		01645D501B04745B00AD36EB /* TransactionRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordViewController.m; sourceTree = "<group>"; };
 		01645D611B0493AD00AD36EB /* RechargeAndBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeAndBalanceViewController.h; sourceTree = "<group>"; };
@@ -261,6 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				016410C91B130394002869C7 /* libc++abi.dylib in Frameworks */,
 				0142108C1B0AFDA400CB5AF7 /* AVFoundation.framework in Frameworks */,
 				01631D051B01D6B700DC1888 /* CoreGraphics.framework in Frameworks */,
 				01631D031B01D67C00DC1888 /* Security.framework in Frameworks */,
@@ -291,6 +297,8 @@
 			children = (
 				0148DD171AF775F000BAA18C /* CommonUtil.h */,
 				0148DD181AF775F000BAA18C /* CommonUtil.m */,
+				016410C51B12F916002869C7 /* MyPreference.h */,
+				016410C61B12F916002869C7 /* MyPreference.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -523,6 +531,7 @@
 		18321E0A1AE013C700263CF9 = {
 			isa = PBXGroup;
 			children = (
+				016410C81B130394002869C7 /* libc++abi.dylib */,
 				0142108B1B0AFDA400CB5AF7 /* AVFoundation.framework */,
 				01631D041B01D6B700DC1888 /* CoreGraphics.framework */,
 				01631D021B01D67C00DC1888 /* Security.framework */,
@@ -730,6 +739,7 @@
 				017386911B0316CA008AC34C /* SettingViewController.m in Sources */,
 				0142108F1B0B0A2400CB5AF7 /* ScanCodeViewController.m in Sources */,
 				01EB61491AF74F92006E623C /* AFHTTPRequestOperation.m in Sources */,
+				016410C71B12F916002869C7 /* MyPreference.m in Sources */,
 				016410C41B12E208002869C7 /* ConsumedViewController.m in Sources */,
 				01CD6B9A1B0DFC57003CCB9C /* UIButton+WebCache.m in Sources */,
 				01EB614D1AF74F92006E623C /* AFSecurityPolicy.m in Sources */,

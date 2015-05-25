@@ -10,6 +10,7 @@
 #import "CommonUtil.h"
 #import "AppDelegate.h"
 #import "RechargeAndBalanceViewController.h"
+#import "MyPreference.h"
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -45,6 +46,9 @@
     
     //设置tableView没有弹性
     self.myTableView.bounces = NO;
+    
+    
+
     
 }
 
@@ -115,16 +119,20 @@
         headView.tag = 102;
         [cell.contentView addSubview:headView];
         
+        //设置用户信息
+        NSDictionary * userInfo = [MyPreference getLoginInfo];
+        
+        
         UILabel * nameLabe = [[UILabel alloc]initWithFrame:CGRectMake(headView.frame.origin.x + headView.frame.size.width + 10, 20, 140, 22)];
         nameLabe.backgroundColor = [UIColor clearColor];
-        nameLabe.text = @"嘻嘻呼呼哈哈";
+        nameLabe.text = [userInfo objectForKey:@"nickname"];
         nameLabe.textColor = [UIColor colorWithRed:35/255.0 green:35/255.0 blue:35/255.0 alpha:1];
         nameLabe.font = [UIFont systemFontOfSize:14];
         [cell.contentView addSubview:nameLabe];
         
         UILabel * phoneLabel = [[UILabel alloc]initWithFrame:CGRectMake(headView.frame.origin.x + headView.frame.size.width + 10, 20+22, 140, 22)];
         phoneLabel.backgroundColor = [UIColor clearColor];
-        phoneLabel.text = @"电话: 13000000000";
+        phoneLabel.text = [userInfo objectForKey:@"mobile"];
         phoneLabel.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
         phoneLabel.font = [UIFont systemFontOfSize:14];
         [cell.contentView addSubview:phoneLabel];

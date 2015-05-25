@@ -8,6 +8,8 @@
 
 #import "TransactionRecordViewController.h"
 #import "CommonUtil.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "MyPreference.h"
 
 @implementation TransactionCell
 - (void)awakeFromNib {
@@ -23,7 +25,12 @@
 
 
 
-@interface TransactionRecordViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
+@interface TransactionRecordViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,MBProgressHUDDelegate>
+{
+    NSArray * dataAry;
+}
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+
 
 @end
 
@@ -46,6 +53,9 @@
     //添加向右滑动返回
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     
+    //请求api
+    [self requestData];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -56,11 +66,44 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma maek request
+-(void)requestData
+{
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary * postDic = [CommonUtil getPostDic];
 
+    NSDictionary * userInfo = [MyPreference getLoginInfo];
+    [postDic setObject: [userInfo objectForKey:@"user_id"] forKey:@"user_id"];
+    
+     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [manager POST:[NSString stringWithFormat:@"%@/order/consume",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //NSLog(@"%@",responseObject);
+        NSDictionary * dataDic = responseObject;
+        
+        if ([[dataDic objectForKey:@"status"]longValue] == 200){
+            
+            dataAry = [dataDic objectForKey:@"content"];
+            [self.myTableView reloadData];
+            
+        }else{
+            [CommonUtil showHUD:@"服务器出错" delay:2.0f withDelegate:self];
+            
+        }
+        
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+    
+
+}
 #pragma mark TableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return dataAry.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,6 +118,15 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSDictionary * dic = dataAry[indexPath.row];
+    
+    cell.nameLabel.text = [dic objectForKey:@""];
+    cell.timeLabel.text = [dic objectForKey:@"time_create"];
+    cell.zhifuLabel.text = [dic objectForKey:@""];
+    
+    
+    
     
     return cell;
 }

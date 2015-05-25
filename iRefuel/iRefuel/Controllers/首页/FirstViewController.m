@@ -7,7 +7,6 @@
 //
 
 #import "FirstViewController.h"
-#import "AFHTTPRequestOperationManager.h"
 #import "CommonUtil.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
@@ -19,6 +18,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "UIImageView+WebCache.h"
 #import "LoginViewController.h"
+#import "MyPreference.h"
 
 
 //微信相关数据
@@ -86,6 +86,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
+    NSDictionary * userInfo = [MyPreference getLoginInfo];
+    
+    if (!userInfo || userInfo.count <= 0) {
+        //没有登录信息 显示注册界面
+        NSLog(@"1");
+        [self performSegueWithIdentifier:@"loginPush" sender:self];
+    }
+    
     //navRightBtn
     UIButton * navRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [navRightBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
@@ -107,6 +115,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)backBtn:(UIButton*)send
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     //title

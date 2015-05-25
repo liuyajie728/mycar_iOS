@@ -14,5 +14,10 @@
 
 @interface TransactionCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *cellImage;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *zhifuLabel;
 
 @end

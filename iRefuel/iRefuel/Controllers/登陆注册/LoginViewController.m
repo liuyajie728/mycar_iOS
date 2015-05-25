@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "MBProgressHUD.h"
 #import "TreatyViewController.h"
+#import "MyPreference.h"
 
 
 @interface LoginViewController ()<UITextFieldDelegate,MBProgressHUDDelegate>
@@ -154,13 +155,22 @@
     
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [manager POST:@"http://www.jiayoucar.com/api/user/login" parameters:paramet success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST: [NSString stringWithFormat:@"%@/user/login",MyHTTP] parameters:paramet success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSDictionary * dic = responseObject;
         if ([[dic objectForKey:@"status"]longValue] == 200){
         
-            [CommonUtil showHUD:@"恭喜您 注册成功" delay:2.0 withDelegate:self];
-            //TODO退回到登陆界面
+//            [CommonUtil showHUD:@"恭喜您 注册成功" delay:2.0 withDelegate:self];
+           
+            //保存用户信息
+            [MyPreference commitLoginInfo:[dic objectForKey:@"content"]];
+            
+             //退回到登陆界面
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+            
+            
             
             
         }else if ([[dic objectForKey:@"status"]longValue] == 400){

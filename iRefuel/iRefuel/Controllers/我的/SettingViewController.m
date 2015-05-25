@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "CommonUtil.h"
+#import "MyPreference.h"
 
 @interface SettingViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 {
@@ -83,8 +84,11 @@
 {
     if (indexPath.row == 0) {
         //关于
+        
     }else if (indexPath.row ==1){
         //退出
+        [MyPreference commitLoginInfo:NULL];
+        [self performSegueWithIdentifier:@"LogOut" sender:self];
     }
     
 }

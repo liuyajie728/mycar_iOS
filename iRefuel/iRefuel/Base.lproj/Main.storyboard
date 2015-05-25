@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Consumed View Controller-->
         <scene sceneID="TGz-Z5-7lU">
             <objects>
-                <viewController storyboardIdentifier="Consume" id="zx3-ic-Ydl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Consume" id="zx3-ic-Ydl" customClass="ConsumedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ESc-Uj-tFB"/>
                         <viewControllerLayoutGuide type="bottom" id="iI2-Nv-UCv"/>
@@ -16,8 +16,60 @@
                     <view key="view" contentMode="scaleToFill" id="FQ2-DH-F3a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHG-on-h2J">
+                                <rect key="frame" x="0.0" y="110" width="320" height="45"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="加油/加气/充电金额" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0qM-Wo-KWN">
+                                        <rect key="frame" x="8" y="7" width="304" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VF8-so-Ovz">
+                                <rect key="frame" x="16" y="256" width="288" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.63137254899999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="提交订单">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="commit:" destination="zx3-ic-Ydl" eventType="touchUpInside" id="nXL-mg-EBU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最低消费100元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HF-8X-YMk">
+                                <rect key="frame" x="203" y="91" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="其他消费金额" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfN-yp-aXF">
+                                <rect key="frame" x="203" y="173" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qQX-0P-f3v">
+                                <rect key="frame" x="0.0" y="192" width="320" height="45"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="其他消费金额" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKP-Jq-1kL">
+                                        <rect key="frame" x="8" y="7" width="304" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="chongzhi_Tf" destination="0qM-Wo-KWN" id="lMU-iS-C32"/>
+                        <outlet property="qita_Tf" destination="gKP-Jq-1kL" id="kZC-yt-bat"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFO-fP-thJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -351,7 +403,7 @@
                     <connections>
                         <outlet property="myTableView" destination="21M-KT-NKQ" id="SMa-8M-cgl"/>
                         <segue destination="V0F-KV-sJZ" kind="push" identifier="GoScanCode" id="MVR-Ho-U9r"/>
-                        <segue destination="iRz-EE-rUS" kind="push" identifier="loginPush" id="S1J-Lc-YVC"/>
+                        <segue destination="iRz-EE-rUS" kind="modal" identifier="loginPush" animates="NO" id="S1J-Lc-YVC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -601,10 +653,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QcA-C1-Tft"/>
+                    <connections>
+                        <segue destination="iRz-EE-rUS" kind="modal" identifier="LogOut" id="W55-ft-I4j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLn-Jx-BYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2314" y="1368"/>
+            <point key="canvasLocation" x="2473" y="1606"/>
         </scene>
         <!--My Info View Controller-->
         <scene sceneID="pTe-wz-GgG">
@@ -868,7 +923,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="transactionCell" rowHeight="86" id="gpE-I8-v3t">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="transactionCell" rowHeight="86" id="gpE-I8-v3t" customClass="TransactionCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gpE-I8-v3t" id="biT-0j-kb5">
@@ -899,6 +954,10 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cellImage" destination="ayB-yq-lak" id="AJC-xQ-id1"/>
+                                            <outlet property="nameLabel" destination="Xn9-ZG-z5L" id="tGe-BY-BnT"/>
+                                            <outlet property="timeLabel" destination="mUP-KX-cJC" id="6KO-HN-UKT"/>
+                                            <outlet property="zhifuLabel" destination="QBa-uq-BXo" id="n1z-2q-JG1"/>
                                             <segue destination="e2t-1w-DR8" kind="push" id="unN-rD-B2n"/>
                                         </connections>
                                     </tableViewCell>
@@ -912,6 +971,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="jDL-tG-cu4"/>
+                    <connections>
+                        <outlet property="myTableView" destination="YmG-1P-WI3" id="kJk-Nj-pCQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNQ-wy-kjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1225,24 +1287,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pyA-Ke-fcc">
-                                <rect key="frame" x="0.0" y="133" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="133" width="320" height="45"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的充值金额" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mma-pZ-Bmf">
-                                        <rect key="frame" x="8" y="5" width="304" height="50"/>
+                                        <rect key="frame" x="8" y="7" width="304" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-MX-FpE">
-                                <rect key="frame" x="16" y="239" width="288" height="36"/>
+                                <rect key="frame" x="16" y="219" width="288" height="36"/>
                                 <color key="backgroundColor" red="0.0" green="0.63137254901960782" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="提交订单">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最低消费200元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6E-NT-kPM">
+                                <rect key="frame" x="203" y="104" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -1250,7 +1318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="47"/>
+            <point key="canvasLocation" x="1370" y="147"/>
         </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1360,4 +1428,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="W55-ft-I4j"/>
+    </inferredMetricsTieBreakers>
 </document>

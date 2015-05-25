@@ -15,7 +15,7 @@
 #define LCDH LCDSIZE.size.height
 
 //请求api
-#define MyHTTP @"http://api.irefuel.cn/"
+#define MyHTTP @"http://api.irefuel.cn"
 
 
 //title文字的颜色
