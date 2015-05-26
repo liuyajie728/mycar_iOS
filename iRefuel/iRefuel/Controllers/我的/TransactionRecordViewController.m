@@ -10,6 +10,8 @@
 #import "CommonUtil.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "MyPreference.h"
+#import "UIImageView+WebCache.h"
+#import "DealDetailViewController.h"
 
 @implementation TransactionCell
 - (void)awakeFromNib {
@@ -28,6 +30,7 @@
 @interface TransactionRecordViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,MBProgressHUDDelegate>
 {
     NSArray * dataAry;
+    NSDictionary * segueDic; //传值需要的Dic
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
@@ -127,14 +130,35 @@
     
     NSDictionary * dic = dataAry[indexPath.row];
     
-    cell.nameLabel.text = [dic objectForKey:@""];
+    //TODO 还要显示品牌
+    cell.nameLabel.text = [dic objectForKey:@"station_name"];
     cell.timeLabel.text = [dic objectForKey:@"time_create"];
-    cell.zhifuLabel.text = [dic objectForKey:@""];
+    cell.zhifuLabel.text = [NSString stringWithFormat:@"支付额:￥%@",[dic objectForKey:@"amount"]];
+
+    [cell.cellImage setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"station_image_url"]] placeholderImage:nil];
     
-    
-    
-    
+
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    segueDic = dataAry[indexPath.row];
+     [self performSegueWithIdentifier:@"transactionDeal" sender:self];
+}
+#pragma mark storybord
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"transactionDeal"]) {
+       //详情
+//        RevampViewController * send = segue.destinationViewController;
+//        send.myType = revampType;
+        
+        DealDetailViewController * send = segue.destinationViewController;
+        send.transactionInfo = segueDic;
+        
+    }
+    
 }
 
 

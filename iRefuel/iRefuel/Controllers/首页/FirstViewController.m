@@ -109,6 +109,8 @@
     //接收百度推送成功后的消息
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startLocation) name:@"HomeLocation" object:nil];
     
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,6 +127,10 @@
     //title
     self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"首页" andFount:18 andTitleColour:[UIColor whiteColor]];
     self.navigationController.navigationBar.barTintColor = [CommonUtil colorWithHexString:@"00a1d8" alpha:1];
+    
+    
+    //TODO 设置每过24小时就请求一次 
+    [self getBoardList];
     
 }
 -(void)clickNavRightBtn
@@ -153,6 +159,7 @@
 
 }
 
+#pragma request API
 -(void)postApiWithLatitude:(double)latitude andLongitude:(double)longitude
 {
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
@@ -181,15 +188,43 @@
             //失败
             [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
         }
-   
-
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        //获取一个品牌对应id列表
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
+
+-(void)getBoardList
+{
+    
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary * postDic = [CommonUtil getPostDic];
+    [manager POST:[NSString stringWithFormat:@"%@/station_brand",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //NSLog(@"_++%@",responseObject);
+        
+        NSDictionary * dic = responseObject;
+        
+        [MyPreference commitBrandList:[dic objectForKey:@"content"]];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        
+    }];
+
+
+
+}
+
+
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

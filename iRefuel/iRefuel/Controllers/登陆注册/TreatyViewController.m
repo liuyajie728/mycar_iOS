@@ -40,7 +40,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [manager POST:@"http://www.jiayoucar.com/api/article/" parameters:@{@"token":@"bbE0cMOoCmRJDnun8y9uqyR8C"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         
         NSDictionary * dic = responseObject;
         if ([[dic objectForKey:@"status"]longValue] == 200) {

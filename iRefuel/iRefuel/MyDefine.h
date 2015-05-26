@@ -25,3 +25,6 @@
 
 //背景的蓝色
 #define BgBlueColor [UIColor colorWithRed:0/255.0 green:161/255.0 blue:216/255.0 alpha:1]
+
+//字体的灰色
+#define grayTxtColor [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]

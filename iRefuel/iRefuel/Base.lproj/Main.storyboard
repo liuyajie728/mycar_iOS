@@ -958,7 +958,6 @@
                                             <outlet property="nameLabel" destination="Xn9-ZG-z5L" id="tGe-BY-BnT"/>
                                             <outlet property="timeLabel" destination="mUP-KX-cJC" id="6KO-HN-UKT"/>
                                             <outlet property="zhifuLabel" destination="QBa-uq-BXo" id="n1z-2q-JG1"/>
-                                            <segue destination="e2t-1w-DR8" kind="push" id="unN-rD-B2n"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -971,8 +970,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="jDL-tG-cu4"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="myTableView" destination="YmG-1P-WI3" id="kJk-Nj-pCQ"/>
+                        <segue destination="e2t-1w-DR8" kind="push" identifier="transactionDeal" id="zcZ-Xe-nkw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNQ-wy-kjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1047,7 +1048,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1234567890" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huD-IQ-pWi">
-                                                    <rect key="frame" x="140" y="12" width="172" height="20"/>
+                                                    <rect key="frame" x="83" y="12" width="229" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1419,9 +1420,9 @@
     </scenes>
     <resources>
         <image name="ScanCodeRim" width="18" height="17"/>
-        <image name="homeDown" width="37" height="37"/>
-        <image name="myDown" width="37" height="37"/>
-        <image name="rechargeDown" width="37" height="37"/>
+        <image name="homeDown" width="25" height="25"/>
+        <image name="myDown" width="25" height="25"/>
+        <image name="rechargeDown" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

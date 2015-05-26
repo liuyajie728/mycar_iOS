@@ -144,11 +144,24 @@
         cell.textLabel.textColor = cellTxtColor;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
+        
+        //设置图片
+        if (indexPath.row == 0) {
+            cell.imageView.image = [UIImage imageNamed:@"my_recharge"];
+        }else if (indexPath.row == 1){
+            cell.imageView.image = [UIImage imageNamed:@"my_transactio"];
+        }
+        
     }else if (indexPath.section == 2){
         cell.textLabel.text = s3[indexPath.row];
         cell.textLabel.textColor = cellTxtColor;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.imageView.image = [UIImage imageNamed:@"clockicon.png"];
+        
+        if (indexPath.row == 0) {
+            cell.imageView.image = [UIImage imageNamed:@"my_setting"];
+        }
+        
     }else if (indexPath.section == 3){
 //        cell.textLabel.text = s3[indexPath.row];
 //        cell.textLabel.textColor = cellTxtColor;

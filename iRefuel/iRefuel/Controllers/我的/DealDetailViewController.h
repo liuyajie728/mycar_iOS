@@ -10,6 +10,8 @@
 
 @interface DealDetailViewController : UIViewController
 
+//上个界面穿过来的数据
+@property (nonatomic,strong)NSDictionary * transactionInfo;
 
 @end
 
