@@ -86,9 +86,15 @@
             dataAry = [dataDic objectForKey:@"content"];
             [self.myTableView reloadData];
             
-        }else{
-            [CommonUtil showHUD:@"服务器出错" delay:2.0f withDelegate:self];
+        }else if([[dataDic objectForKey:@"status"]longValue] == 400){
             
+            [CommonUtil showHUD:[NSString stringWithFormat:@"%@",[dataDic objectForKey:@"content"]] delay:2.0f withDelegate:self];
+            
+        }else if ([[dataDic objectForKey:@"status"]longValue] == 401){
+            
+            [CommonUtil showHUD:[NSString stringWithFormat:@"%@",[dataDic objectForKey:@"content"]] delay:2.0f withDelegate:self];
+            
+        
         }
         
         

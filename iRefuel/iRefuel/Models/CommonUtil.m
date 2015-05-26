@@ -329,4 +329,66 @@
     
     return mDic;
 }
+
++(NSArray*)getFormatRechargeData:(NSArray*)ary
+{
+    //分出来月份
+    //所有的数据 
+  
+    NSMutableArray * formatMary = [[NSMutableArray alloc]init];
+    for (NSDictionary * d in ary) {
+        
+        //把日期提取出来 yyyy-mm
+        NSString * status = [d objectForKey:@"time_create"];
+        status = [status substringToIndex:7];
+        
+        if (formatMary.count >0) {
+            //有数据 循环遍历
+            
+            //判断是否已经加进去的值
+            BOOL isOk = false;
+            for (NSMutableDictionary * dataMdic in formatMary) {
+                
+                NSString * justTime = [dataMdic objectForKey:@"time"];
+                
+                //如果有这个日期的数据 就把当前的这个数据加到此日期里面
+                if ([status isEqualToString:justTime]) {
+                    NSMutableArray * typeAry = [dataMdic objectForKey:@"datas"];
+                    [typeAry addObject:d];
+                    
+                    [dataMdic setObject:typeAry forKey:@"datas"];
+                    
+                    isOk = YES;
+                }
+            }
+            
+            //如果没有一样的日期 就创建一个
+            if (!isOk) {
+                NSMutableDictionary * dataMdic = [[NSMutableDictionary alloc]init];
+                NSMutableArray * typeAry = [[NSMutableArray alloc]init];
+                
+                [typeAry addObject:d];
+                
+                [dataMdic setObject:status forKey:@"time"];
+                [dataMdic setObject:typeAry forKey:@"datas"];
+                
+                [formatMary addObject:dataMdic];
+            }
+            
+        }else{
+            //没有数据 创建一个
+            NSMutableDictionary * dataMdic = [[NSMutableDictionary alloc]init];
+            
+            NSMutableArray * typeAry = [[NSMutableArray alloc]init];
+            [typeAry addObject:d];
+            
+            [dataMdic setObject:status forKey:@"time"];
+            [dataMdic setObject:typeAry forKey:@"datas"];
+            
+            [formatMary addObject:dataMdic];
+        }
+    }
+
+        return formatMary;
+}
 @end

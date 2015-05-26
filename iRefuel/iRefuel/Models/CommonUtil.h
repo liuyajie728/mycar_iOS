@@ -49,6 +49,10 @@
 //把数据里面的“<null>”都改成适当的类型
 +(NSDictionary*)changeDicSubType:(NSDictionary*)dic;
 
+//根据日期分出月份（用在充值记录页面）
++(NSArray*)getFormatRechargeData:(NSArray*)ary;
+
+
 
 
 

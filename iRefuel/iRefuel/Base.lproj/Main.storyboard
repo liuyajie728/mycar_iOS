@@ -1363,7 +1363,7 @@
         <scene sceneID="gx5-Tb-LQ3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bOf-NX-0tZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" image="first" id="acW-dT-cKf" customClass="Fi"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="homeDown" id="acW-dT-cKf" customClass="Fi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ARe-l8-rr0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1382,7 +1382,7 @@
         <scene sceneID="E7N-pq-n6u">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EHy-4P-QIj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="clockicon" id="RWz-sn-fIv"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="myDown" id="RWz-sn-fIv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CYk-la-fNA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1401,7 +1401,7 @@
         <scene sceneID="NcV-wN-kjR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nw3-cw-86v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="充值" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="充值" image="rechargeDown" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g0y-83-YDm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1419,9 +1419,9 @@
     </scenes>
     <resources>
         <image name="ScanCodeRim" width="18" height="17"/>
-        <image name="clockicon" width="24" height="24"/>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="homeDown" width="37" height="37"/>
+        <image name="myDown" width="37" height="37"/>
+        <image name="rechargeDown" width="37" height="37"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

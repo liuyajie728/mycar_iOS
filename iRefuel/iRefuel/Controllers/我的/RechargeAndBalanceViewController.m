@@ -18,7 +18,8 @@
     NSArray * dataAry;
     
     UILabel * headViewLabel;
-}
+    
+   }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
@@ -112,25 +113,22 @@
     
     [manager POST:[NSString stringWithFormat:@"%@/order/recharge",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         NSDictionary * dataDic = responseObject;
         
         if ([[dataDic objectForKey:@"status"]longValue] == 200)
         {
-            //分出来月份
-            NSArray * ary = [dataDic objectForKey:@"content"];
+           dataAry = [dataDic objectForKey:@""];
+           [self.myTableView reloadData];
             
-            for (NSDictionary * d in ary) {
-                
-                
-            }
-            
-            
+        }else if([[dataDic objectForKey:@"status"]longValue] == 400){
+            //返回不是200
+             [CommonUtil showHUD:[NSString stringWithFormat:@"%@",[dataDic objectForKey:@"content"]] delay:2.0f withDelegate:self];
         
-        
+        }else if ([[dataDic objectForKey:@"status"]longValue] == 401){
+             [CommonUtil showHUD:[NSString stringWithFormat:@"%@",[dataDic objectForKey:@"content"]] delay:2.0f withDelegate:self];
         }
-        
-        
+     
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -186,44 +184,42 @@
 
 
 #pragma mark tableViewDelegate
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView * v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 40)];
-    v.backgroundColor = [UIColor clearColor];
-    
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(12, 0, 150, 19)];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont systemFontOfSize:12];
-    label.text = @"本月";
-    [v addSubview:label];
-    
-    return v;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    //    if (section == 0) {
-    //        return 20;
-    //    }
-    return 19;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 52;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView * v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 40)];
+//    v.backgroundColor = [UIColor clearColor];
+//    
+//    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(12, 0, 150, 19)];
+//    label.backgroundColor = [UIColor clearColor];
+//    label.font = [UIFont systemFontOfSize:12];
+//    label.text = @"本月";
+//    [v addSubview:label];
+//    
+//    return v;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectio{
+//    return 19;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)sectio{
+//    return 1;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 52;
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return dataAry.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+//    NSDictionary * dic = formatMary[section];
+//    NSArray * datas = [dic objectForKey:@"datas"];
+    return dataAry.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -269,8 +265,6 @@
         frame = cell.zengNum.frame;
         frame.origin.x = cell.zeng.frame.origin.x + cell.zeng.frame.size.width + 3;
         cell.zengNum.frame = frame;
-        
-        
         
     }else{
         cell.zeng.hidden = YES;

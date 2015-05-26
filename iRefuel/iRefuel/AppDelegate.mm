@@ -62,7 +62,7 @@ BMKMapManager* _mapManager;
     
     
     //设置barItem高亮的颜色
-    [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
+    [[UITabBar appearance] setTintColor:[CommonUtil colorWithHexString:@"00a1d8" alpha:1]];
     
     return YES;
 }
