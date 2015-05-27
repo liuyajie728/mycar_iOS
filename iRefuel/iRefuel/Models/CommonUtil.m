@@ -11,6 +11,7 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #include <net/if.h>
+#import "MyPreference.h"
 
 #define IOS_CELLULAR    @"pdp_ip0"
 #define IOS_WIFI        @"en0"
@@ -223,7 +224,7 @@
 
 +(UIView*)getTitleViewWithTitle:(NSString*)title andFount:(CGFloat)fount andTitleColour:(UIColor*)color
 {
-    UIView * titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 130, 35)];
+    UIView * titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 35)];
     titleView.backgroundColor = [UIColor clearColor];
     
     UILabel * titleLabel = [[UILabel alloc]initWithFrame:titleView.frame];
@@ -390,5 +391,21 @@
     }
 
         return formatMary;
+}
+
++(NSString*)getBrandWithBrandId:(int)brandId
+{
+    NSString * brandName;
+    
+    
+    NSArray * brands = [MyPreference getBrandList];
+    
+    
+    
+    
+    
+    
+    return brandName;
+
 }
 @end

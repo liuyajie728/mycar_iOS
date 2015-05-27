@@ -118,7 +118,7 @@
         
         if ([[dataDic objectForKey:@"status"]longValue] == 200)
         {
-           dataAry = [dataDic objectForKey:@""];
+           dataAry = [dataDic objectForKey:@"content"];
            [self.myTableView reloadData];
             
         }else if([[dataDic objectForKey:@"status"]longValue] == 400){
@@ -205,10 +205,10 @@
 //    return 1;
 //}
 //
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 52;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 52;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -234,8 +234,11 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    
+    NSDictionary * cellDic = dataAry[indexPath.row];
+    
     //左边 充值
-    NSString * rechargeStr = [NSString stringWithFormat:@"充值 %@",moneySource[indexPath.row]];
+    NSString * rechargeStr = [NSString stringWithFormat:@"充值 %@",[cellDic objectForKey:@"total"]];
     UIFont *font = [UIFont systemFontOfSize:15];
     CGSize size = CGSizeMake(114,21);
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
@@ -250,9 +253,10 @@
     cell.leftTopLabel_lb.frame = frame;
     
     //充值后面赠费按钮
-    //TODO 判断是否有赠费
-    
-    if (indexPath.row != 0) {
+    //判断是否有赠费
+    if ([cellDic objectForKey:@"bonus"] || ![[cellDic objectForKey:@"bonus"]isKindOfClass:[NSNull class]]) {
+        //有赠费
+        
         cell.zeng.hidden = NO;
         cell.zengNum.hidden = NO;
         
@@ -265,11 +269,24 @@
         frame = cell.zengNum.frame;
         frame.origin.x = cell.zeng.frame.origin.x + cell.zeng.frame.size.width + 3;
         cell.zengNum.frame = frame;
-        
+        cell.zengNum.text = [cellDic objectForKey:@"bonus"];
+
     }else{
+        //没有赠费
         cell.zeng.hidden = YES;
         cell.zengNum.hidden = YES;
+
     }
+    
+    //时间
+    cell.leftDownLabel_lb.text = [cellDic objectForKey:@"time_create"];
+    
+    //右边
+    //加上赠费总共的金额
+    cell.rightTopLabel_lb.text = [cellDic objectForKey:@"amount"];
+    
+    //状态
+    NSString * status = [cellDic objectForKey:@"status"];
     
     return cell;
 }

@@ -52,8 +52,8 @@
 //根据日期分出月份（用在充值记录页面）
 +(NSArray*)getFormatRechargeData:(NSArray*)ary;
 
-
-
+//根据加油站品牌id得到加油站品牌
++(NSString*)getBrandWithBrandId:(int)brandId;
 
 
 @end

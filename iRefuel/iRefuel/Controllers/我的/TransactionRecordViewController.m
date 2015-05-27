@@ -96,8 +96,6 @@
         }else if ([[dataDic objectForKey:@"status"]longValue] == 401){
             
             [CommonUtil showHUD:[NSString stringWithFormat:@"%@",[dataDic objectForKey:@"content"]] delay:2.0f withDelegate:self];
-            
-        
         }
         
         

@@ -10,6 +10,7 @@
 
 @interface DealAppraiseViewController : UIViewController
 
+@property (nonatomic,strong)NSDictionary * transactionInfo;
 @end
 
 

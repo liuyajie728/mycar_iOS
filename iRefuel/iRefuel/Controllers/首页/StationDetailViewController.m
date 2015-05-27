@@ -93,7 +93,7 @@
 {
     
     //title
-    self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"油站详情" andFount:18 andTitleColour:TitleColor];
+    self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:[self.firstInfo objectForKey:@"name"] andFount:18 andTitleColour:TitleColor];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
     

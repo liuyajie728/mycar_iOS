@@ -916,7 +916,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76d8ed27-dbe7-4dd1-a61a-32a4da6e6d27";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -942,7 +942,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76d8ed27-dbe7-4dd1-a61a-32a4da6e6d27";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

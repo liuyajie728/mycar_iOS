@@ -10,6 +10,7 @@
 #import "CommonUtil.h"
 #import <AVFoundation/AVFoundation.h>
 #import "RevampViewController.h"
+#import "MyPreference.h"
 
 @implementation myInfoCell1
 @end
@@ -26,6 +27,11 @@
     UIImagePickerController * imagePicker;  // 图片选择器
     
     int revampType;//用来给修改界面穿的type
+    
+    
+    NSString * nickName;
+    
+    
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
@@ -68,6 +74,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    //设置个人信息
+    NSDictionary * dic = [MyPreference getLoginInfo];
+    
+    nickName = [dic objectForKey:@"nickname"];
+    
+}
+
 -(void)backBtn:(UIButton*)send
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -99,7 +114,6 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if (indexPath.section == 0 && indexPath.row == 0) {
         //头像
         
@@ -129,6 +143,9 @@
         
         if (indexPath.section == 0) {
             cell.leftLabel.text = s1[indexPath.row];
+            
+            //昵称的名字
+            cell.rightLabel.text = nickName;
             
         }else if (indexPath.section == 1){
             cell.leftLabel.text = s2[indexPath.row];

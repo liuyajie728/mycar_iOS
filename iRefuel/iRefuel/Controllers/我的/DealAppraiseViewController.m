@@ -8,8 +8,9 @@
 
 #import "DealAppraiseViewController.h"
 #import "CommonUtil.h"
+#import "AFHTTPRequestOperationManager.h"
 
-@interface DealAppraiseViewController ()<UIGestureRecognizerDelegate,UITextViewDelegate>
+@interface DealAppraiseViewController ()<UIGestureRecognizerDelegate,UITextViewDelegate,MBProgressHUDDelegate>
 {
     NSArray * starts1;
     NSArray * starts2;
@@ -18,6 +19,7 @@
     NSInteger start2Num;
     
     UILabel * txtNumLabel;
+    UITextView * footTextView;
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -83,7 +85,7 @@
     footView.backgroundColor = [UIColor clearColor];
     
     
-    UITextView * footTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 145)];
+    footTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 145)];
     footTextView.backgroundColor = [UIColor whiteColor];
     footTextView.delegate = self;
     footTextView.font = [UIFont systemFontOfSize:14];
@@ -102,10 +104,53 @@
     commitBtn.backgroundColor = BgBlueColor;
     commitBtn.frame = CGRectMake(20, txtNumLabel.frame.origin.y + txtNumLabel.frame.size.height + 8, LCDW - 40, 44);
     [commitBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [commitBtn addTarget:self action:@selector(clickOk) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:commitBtn];
     
     
     return footView;
+
+}
+-(void)clickOk
+{
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary * postDic = [CommonUtil getPostDic];
+    
+    //服务和质量评分
+    start1Num *= 20;
+    start2Num *= 20;
+    
+    [postDic setObject:[NSNumber numberWithInteger:start1Num] forKey:@"rate_service"];
+    [postDic setObject:[NSNumber numberWithInteger:start2Num] forKey:@"rate_oil"];
+    
+    //文字评价
+    [postDic setObject:footTextView.text forKey:@"content"];
+    
+    //订单ID
+    [self.transactionInfo objectForKey:@"order_id"];
+    [postDic setObject:[self.transactionInfo objectForKey:@"order_id"] forKey:@"order_id"];
+    
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [manager POST:[NSString stringWithFormat:@"%@/comment/create",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        NSDictionary * dataDic = responseObject;
+        
+        if ([[dataDic objectForKey:@"status"]longValue] == 200)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            
+        }
+          [CommonUtil showHUD:[dataDic objectForKey:@"content"] delay:2.0f withDelegate:self];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [CommonUtil showHUD:@"获取数据失败，请检查网络后重试" delay:2.0f withDelegate:self];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+    }];
 
 }
 
@@ -218,7 +263,6 @@
 
 - (void)keyboardWillHide:(NSNotification *)aNotification
 {
-    
     //动画
     [UIView animateWithDuration:.3 animations:^{
         
