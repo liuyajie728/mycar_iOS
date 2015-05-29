@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0102CF131B16E52100EB1285 /* ConfirmPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0102CF121B16E52100EB1285 /* ConfirmPayViewController.m */; };
+		0102CF161B16F0DB00EB1285 /* ConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0102CF151B16F0DB00EB1285 /* ConfirmView.m */; };
+		0102CF181B16F0EE00EB1285 /* ConfirmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0102CF171B16F0EE00EB1285 /* ConfirmView.xib */; };
 		01402D991B00C92000DAE4F6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01402D981B00C92000DAE4F6 /* MyViewController.m */; };
 		0142108C1B0AFDA400CB5AF7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0142108B1B0AFDA400CB5AF7 /* AVFoundation.framework */; };
 		0142108F1B0B0A2400CB5AF7 /* ScanCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0142108E1B0B0A2400CB5AF7 /* ScanCodeViewController.m */; };
@@ -105,6 +108,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0102CF111B16E52100EB1285 /* ConfirmPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPayViewController.h; sourceTree = "<group>"; };
+		0102CF121B16E52100EB1285 /* ConfirmPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPayViewController.m; sourceTree = "<group>"; };
+		0102CF141B16F0DB00EB1285 /* ConfirmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmView.h; sourceTree = "<group>"; };
+		0102CF151B16F0DB00EB1285 /* ConfirmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmView.m; sourceTree = "<group>"; };
+		0102CF171B16F0EE00EB1285 /* ConfirmView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmView.xib; sourceTree = "<group>"; };
 		01402D971B00C92000DAE4F6 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		01402D981B00C92000DAE4F6 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		0142108B1B0AFDA400CB5AF7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -324,6 +332,9 @@
 			isa = PBXGroup;
 			children = (
 				01533E341AF8B7B6000029C0 /* MBHUD */,
+				0102CF141B16F0DB00EB1285 /* ConfirmView.h */,
+				0102CF151B16F0DB00EB1285 /* ConfirmView.m */,
+				0102CF171B16F0EE00EB1285 /* ConfirmView.xib */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -351,6 +362,8 @@
 			children = (
 				018AC6271AFE053D00A220FE /* SecondViewController.h */,
 				018AC6281AFE053D00A220FE /* SecondViewController.m */,
+				0102CF111B16E52100EB1285 /* ConfirmPayViewController.h */,
+				0102CF121B16E52100EB1285 /* ConfirmPayViewController.m */,
 			);
 			path = "充值";
 			sourceTree = "<group>";
@@ -690,6 +703,7 @@
 				0148DD201AF777B600BAA18C /* readme.txt in Resources */,
 				18321E251AE013C800263CF9 /* Main.storyboard in Resources */,
 				01645D651B0493AD00AD36EB /* RechargeAndBalanceViewController.xib in Resources */,
+				0102CF181B16F0EE00EB1285 /* ConfirmView.xib in Resources */,
 				18321E431AE0167D00263CF9 /* Default-568h@2x.png in Resources */,
 				18321E2A1AE013C800263CF9 /* LaunchScreen.xib in Resources */,
 				01645D6A1B04A26500AD36EB /* RechargeAndBalanceCell.xib in Resources */,
@@ -718,6 +732,7 @@
 				01CD6B911B0DFC57003CCB9C /* MKAnnotationView+WebCache.m in Sources */,
 				01EB614A1AF74F92006E623C /* AFHTTPRequestOperationManager.m in Sources */,
 				01CD6B981B0DFC57003CCB9C /* SDWebImageManager.m in Sources */,
+				0102CF131B16E52100EB1285 /* ConfirmPayViewController.m in Sources */,
 				01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */,
 				01CC498B1B0C7C79007B7237 /* MyInfoViewController.m in Sources */,
 				017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */,
@@ -725,6 +740,7 @@
 				01458DA71B09C9EE00B4A6AF /* DealAppraiseViewController.m in Sources */,
 				018AC6221AFE047500A220FE /* LoginViewController.m in Sources */,
 				01CD6B9D1B0DFC57003CCB9C /* UIImage+WebP.m in Sources */,
+				0102CF161B16F0DB00EB1285 /* ConfirmView.m in Sources */,
 				01EB614E1AF74F92006E623C /* AFURLConnectionOperation.m in Sources */,
 				18321E1C1AE013C800263CF9 /* AppDelegate.mm in Sources */,
 				01EB61341AF74CC3006E623C /* RootTabBarController.m in Sources */,
@@ -831,7 +847,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: di wang (TWVQDU32V9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: di wang (TWVQDU32V9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -874,7 +891,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: di wang (TWVQDU32V9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: di wang (TWVQDU32V9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -916,7 +934,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "94110320-20fa-4eff-bc05-de9f525381dd";
 			};
 			name = Debug;
 		};
@@ -924,8 +942,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: di wang (TWVQDU32V9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: di wang (TWVQDU32V9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iRefuel/libs/baiduMap",
@@ -942,7 +960,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "94110320-20fa-4eff-bc05-de9f525381dd";
 			};
 			name = Release;
 		};

@@ -10,4 +10,13 @@
 
 @interface ConsumedViewController : UIViewController
 
+
+@property (weak, nonatomic) IBOutlet UITextField *myTopTextField;
+@property (weak, nonatomic) IBOutlet UITextField *myDownTextField;
+
+
+//油站的名字
+@property (nonatomic,copy)NSString * youzhanName;
+
+
 @end

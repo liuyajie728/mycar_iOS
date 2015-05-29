@@ -96,7 +96,7 @@
     
     //navRightBtn
     UIButton * navRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [navRightBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
+    [navRightBtn setBackgroundImage:[UIImage imageNamed:@"scanCodeImage"] forState:UIControlStateNormal];
     navRightBtn.frame = CGRectMake(0, 0, 30, 30);
     [navRightBtn addTarget:self action:@selector(clickNavRightBtn) forControlEvents:UIControlEventTouchUpInside];
     
@@ -136,7 +136,6 @@
 -(void)clickNavRightBtn
 {
     [self performSegueWithIdentifier:@"GoScanCode" sender:self];
-    //[self performSegueWithIdentifier:@"loginPush" sender:self];
 }
 - (IBAction)test:(id)sender {
     
@@ -219,9 +218,6 @@
         
         
     }];
-
-
-
 }
 
 

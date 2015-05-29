@@ -62,7 +62,7 @@
     
     //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(0, 0, 30, 30);
     UIBarButtonItem * backItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
@@ -332,8 +332,9 @@
 - (IBAction)goRefuel:(id)sender {
     
     UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
-    ConsumedViewController * mapVc = [board instantiateViewControllerWithIdentifier: @"Consume"];
-    [self.navigationController pushViewController:mapVc animated:YES];
+    ConsumedViewController * consumedVc = [board instantiateViewControllerWithIdentifier: @"Consume"];
+    consumedVc.youzhanName = [self.firstInfo objectForKey:@"name"];
+    [self.navigationController pushViewController:consumedVc animated:YES];
     
     
 }

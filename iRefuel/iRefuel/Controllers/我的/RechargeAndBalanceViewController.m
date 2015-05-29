@@ -40,7 +40,7 @@
     
     //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(0, 0, 30, 30);
     UIBarButtonItem * backItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
@@ -53,7 +53,7 @@
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     
     self.myTableView.tableHeaderView = [self getTableViewHeadView];
-    
+    self.myTableView.tableFooterView = [[UIView alloc]init];
     
     //[self settingDataSource];
     
@@ -85,7 +85,7 @@
         {
             [MyPreference commitLoginInfo:[dataDic objectForKey:@"content"]];
             
-            //请求充值余额信息
+            //请求信息列表
             [self requestConsumeWithBalance: [[dataDic objectForKey:@"content"]objectForKey:@"balance"] andUserId:[[dataDic objectForKey:@"content"]objectForKey:@"user_id"]];
             
             //设置余额
@@ -155,7 +155,7 @@
 
 -(UIView*)getTableViewHeadView
 {
-    UIView * headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 72)];
+    UIView * headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 92)];
     headView.backgroundColor = [UIColor whiteColor];
     
     UIView * topSectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 20)];
@@ -166,6 +166,11 @@
     //所有东西都加在contenView上就行
     UIView * downContentView = [[UIView alloc]initWithFrame:CGRectMake(0, 20, LCDW, 52)];
     downContentView.backgroundColor = [UIColor whiteColor];
+    
+    
+    UIView * downSectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 72, LCDW, 20)];
+    downSectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [headView addSubview:downSectionView];
     
     
     headViewLabel = [[UILabel alloc]initWithFrame:CGRectMake(12, 16, 200, 20)];
@@ -283,10 +288,30 @@
     
     //右边
     //加上赠费总共的金额
-    cell.rightTopLabel_lb.text = [cellDic objectForKey:@"amount"];
+    cell.rightTopLabel_lb.text = [NSString stringWithFormat:@"+ %@",[cellDic objectForKey:@"amount"]];
     
     //状态
     NSString * status = [cellDic objectForKey:@"status"];
+    
+    if ([status isEqualToString:@"0"]) {
+        cell.rightDownLabel_lb.text = @"待支付";
+        
+    }else if ([status isEqualToString:@"1"]){
+        cell.rightDownLabel_lb.text = @"已过期";
+    
+    }else if ([status isEqualToString:@"2"]){
+        cell.rightDownLabel_lb.text = @"已取消";
+        
+    }else if ([status isEqualToString:@"3"]){
+        cell.rightDownLabel_lb.text = @"已支付";
+        
+    }else if ([status isEqualToString:@"4"]){
+        cell.rightDownLabel_lb.text = @"已评论";
+        
+    }else if ([status isEqualToString:@"5"]){
+        cell.rightDownLabel_lb.text = @"已追加评论";
+    }
+    
     
     return cell;
 }

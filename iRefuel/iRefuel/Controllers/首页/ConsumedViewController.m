@@ -8,6 +8,7 @@
 
 #import "ConsumedViewController.h"
 #import "CommonUtil.h"
+#include "ConfirmPayViewController.h"
 
 @interface ConsumedViewController ()<UIGestureRecognizerDelegate>
 
@@ -26,7 +27,7 @@
     
     //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(0, 0, 30, 30);
     UIBarButtonItem * backItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
@@ -51,8 +52,22 @@
 //提交订单
 - (IBAction)commit:(id)sender {
     
+    //TODO 判断是否填写金额
+    [self performSegueWithIdentifier:@"ConsumePay" sender:self];
     
 }
 
-
+#pragma mark Storyboard
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ConsumePay"]) {
+        ConfirmPayViewController * confirmVc = segue.destinationViewController;
+        
+        float allMoney = [self.myTopTextField.text floatValue] + [self.myDownTextField.text floatValue];
+        confirmVc.payNum = [NSString stringWithFormat:@"%.2f",allMoney];
+        confirmVc.youzhanName = self.youzhanName;
+        confirmVc.type = 2;
+        
+    }
+}
 @end

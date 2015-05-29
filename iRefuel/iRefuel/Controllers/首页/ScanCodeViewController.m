@@ -43,7 +43,7 @@
     
     //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(0, 0, 30, 30);
     UIBarButtonItem * backItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
@@ -126,6 +126,8 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     isFirst = YES;
+    
+     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
@@ -182,9 +184,7 @@
         //扫描二维码传值
 //        GasStationDetailViewController * send = segue.destinationViewController;
 //        send.codeSrt = stringValue;
-        
-     
-        
+           
     }
 }
 

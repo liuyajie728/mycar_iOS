@@ -33,12 +33,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+#warning 这个类目前没有用到 
     
     self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"油站详情" andFount:18 andTitleColour:TitleColor];
     
     //设置nav左边按钮
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"clockicon.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(0, 0, 30, 30);
     UIBarButtonItem * backItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
