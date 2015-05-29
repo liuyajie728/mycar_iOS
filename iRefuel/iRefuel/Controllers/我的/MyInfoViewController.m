@@ -19,7 +19,7 @@
 @end
 
 
-@interface MyInfoViewController ()<UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MyInfoViewController ()<UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     NSArray * s1;
     NSArray * s2;
@@ -31,6 +31,9 @@
     
     NSString * nickName;
     
+    
+    UIPickerView * myPickerView;
+    NSArray * pickerAry;
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -64,7 +67,7 @@
     
     
     s1 = @[@"头像",@"昵称"];
-    s2 = @[@"所在地区",@"性别",@"车牌号",@"常用油号",@"手机号",@"电子邮箱"];
+    s2 = @[@"性别",@"手机号",@"电子邮箱",@"生日"];
     
     
 }
@@ -180,6 +183,36 @@
             [self performSegueWithIdentifier:@"revamp" sender:self];
             
         }
+    }else if (indexPath.section == 1){
+    
+        if (indexPath.row == 0) {
+            //性别
+            if (!myPickerView) {
+                myPickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, LCDW - 216, 320, 216)];
+                myPickerView.backgroundColor = [UIColor redColor];
+                myPickerView.delegate = self;
+                myPickerView.dataSource = self;
+                [self.view addSubview:myPickerView];
+                
+            }
+            
+            pickerAry = @[@"男",@"女"];
+            [myPickerView reloadAllComponents];
+            
+        }else if (indexPath.row == 1){
+            //手机号
+            
+            
+        }else if (indexPath.row == 2){
+            //电子邮箱
+            
+            
+        }else if (indexPath.row == 3){
+            //生日
+            
+            
+        }
+    
     }
 
 }
@@ -187,11 +220,9 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"revamp"]) {
-        //扫描二维码传值
-        RevampViewController * send = segue.destinationViewController;
-        send.myType = revampType;
+        RevampViewController * revampVc = segue.destinationViewController;
+        revampVc.myType = 1;
     }
-
 }
 #pragma mark - actionDelegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -244,7 +275,28 @@
 //    isUpdateImage = YES;
     
     //TODO上传头像
- 
+}
+
+#pragma mark pickerViewDelegate
+// returns the number of 'columns' to display.
+//返回有几个PickerView
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+
+    return pickerAry.count;
+
+}
+//每列每行对应显示的数据是什么
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+
+    return pickerAry[row];
 }
 
 @end

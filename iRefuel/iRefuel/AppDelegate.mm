@@ -40,7 +40,7 @@ BMKMapManager* _mapManager;
     
     
     //注册微信
-    BOOL isok = [WXApi registerApp:@"wx920a184018cc7654"];
+    BOOL isok = [WXApi registerApp:@"wxf7f059a40576ef99"];
     if (isok) {
         //NSLog(@"注册微信成功");
     }else{

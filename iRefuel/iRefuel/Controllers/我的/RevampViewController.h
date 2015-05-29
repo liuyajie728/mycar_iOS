@@ -10,6 +10,7 @@
 
 @interface RevampViewController : UIViewController
 
+//1 修改昵称
 @property (nonatomic,assign)int myType;
 
 @end

@@ -41,12 +41,12 @@
 // 账号帐户资料
 //更改商户把相关参数后可测试
 
-#define APP_ID          @"wx920a184018cc7654"               //APPID
-#define APP_SECRET      @"1ce56c3e71ff076f6f78ce5e845449e6" //appsecret
+#define APP_ID          @"wxf7f059a40576ef99"               //APPID
+#define APP_SECRET      @"c3cc3c875604330721dcc2632c580e22" //appsecret
 //商户号，填写商户对应参数
-#define MCH_ID          @"1237619902"
+#define MCH_ID          @"1220963801"
 //商户API密钥，填写相应参数
-#define PARTNER_ID      @"mycar2014sensestrong201194118435"
+#define PARTNER_ID      @"8091283365a40f2d4ed42959ec595c03"
 //支付结果回调页面
 #define NOTIFY_URL      @"http://www.jiayoucar.com/web/wepay/demo/notify_url.php"
 //获取服务器端支付数据地址（商户自定义）

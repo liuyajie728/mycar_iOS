@@ -224,7 +224,7 @@
 
 +(UIView*)getTitleViewWithTitle:(NSString*)title andFount:(CGFloat)fount andTitleColour:(UIColor*)color
 {
-    UIView * titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 35)];
+    UIView * titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 215, 44)];
     titleView.backgroundColor = [UIColor clearColor];
     
     UILabel * titleLabel = [[UILabel alloc]initWithFrame:titleView.frame];

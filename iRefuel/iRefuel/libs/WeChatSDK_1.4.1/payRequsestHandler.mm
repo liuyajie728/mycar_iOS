@@ -150,7 +150,8 @@
 {
 
     //订单标题，展示给用户
-    NSString *order_name    = @"V3支付测试";
+    NSString *order_name  = [info objectForKey:@"payTitle"];
+    
     //订单金额,单位（分）
     NSString *order_price   = [NSString stringWithFormat:@"%d",[[info objectForKey:@"total"]intValue]*100];
     //订单号

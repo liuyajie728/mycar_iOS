@@ -11,6 +11,9 @@
 #import "ConfirmView.h"
 #import "MyPreference.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "WXApi.h"
+#import "WXApiObject.h"
+#import "payRequsestHandler.h"
 
 @implementation confirmPayCell
 @end
@@ -24,8 +27,11 @@
     //section中显示文字的内容
     NSString * sectionText;
     
-    //记录选中cell是哪一个
+    //记录选中cell是哪一个(没有余额支付的时候)
     int selecteedNum;
+    
+    //有余额的时候记录用哪个第三方来支付
+    int thirdPrtyNum;
     
     //是否选用余额支付
     BOOL isYue;
@@ -36,10 +42,14 @@
     //userBalance
     NSString * userBalance;
     
+    //微信相关--------------
+    NSString * payCode; //从服务器获取的支付编号
     
 }
 
 @end
+
+
 
 @implementation ConfirmPayViewController
 
@@ -65,7 +75,7 @@
     //首先获取一下用户最新余额
     [self requestUserInfo];
     
-    
+    thirdPrtyNum = -1;
     logos = @[@"weixinLogo"];
     
     
@@ -82,13 +92,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark tableViewHeadAndFootView
 -(UIView*)getTableViewFootView
 {
-    UIView * footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 50)];
+    UIView * footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LCDW, 70)];
     footView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     UIButton * okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    okBtn.frame = CGRectMake(20, 10, LCDW - 40, 30);
+    okBtn.frame = CGRectMake(20, 10, LCDW - 40, 40);
     [okBtn addTarget:self action:@selector(clickOKBtn) forControlEvents:UIControlEventTouchUpInside];
     okBtn.backgroundColor = BgBlueColor;
     [okBtn setTitle:@"确认支付" forState:UIControlStateNormal];
@@ -99,10 +110,19 @@
 
 -(void)clickOKBtn
 {
-
-
+    
+    if (self.type == 1) {
+        //充值
+        //充值的话只使用第三方来完成
+        
+        //调用微信支付
+        [self weixinPayWithMoney:self.payNum];
+        
+    }else if (self.type == 2){
+        
+    
+    }
 }
-
 -(void)settingTableViewHeaderWithBalance:(NSString*)balance
 {
 //    NSLog(@"%@",balance);
@@ -286,27 +306,43 @@
     
     
     if (sectionNum == 2) {
+        //有余额的情况
+       
+        
         
         if (indexPath.section == 0) {
+            //余额
             
             cell.textLabel.text = @"您可以使用余额支付";
             cell.textLabel.font = [UIFont systemFontOfSize:14];
             
             
+            //设置余额应该如何显示
             //判断余额
-            
             float userBalanceFloat = [userBalance floatValue];
             float payNumFloat = [self.payNum floatValue];
-            
             float cellYuE = userBalanceFloat - payNumFloat;
             
             if (cellYuE >=0) {
-                cell.money_label.text = [NSString stringWithFormat:@"¥%.2f",cellYuE];
+                //如果余额足够支付充值的钱数
+                //这里就显示需要支付的钱数
+                cell.money_label.text = [NSString stringWithFormat:@"¥%.2f",payNumFloat];
+                
+                //如果钱数足够 就不需要使用下面第三方的支付方式了
+                if (!isYue) {
+                   thirdPrtyNum = -1;
+                }
+              
             }else{
+                //余额不够支付充值的钱数
+                //这里就显示余额总共的钱数
                 cell.money_label.text = [NSString stringWithFormat:@"¥%.2f",userBalanceFloat];
+                
+                //因为余额不够 第三方支付也要打钩
+                thirdPrtyNum = 0;
             }
  
-            cell.money_label.text = [NSString stringWithFormat:@"¥%@",userBalance];
+            //cell.money_label.text = [NSString stringWithFormat:@"¥%@",userBalance];
             if (!isYue) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }else{
@@ -316,7 +352,7 @@
         }else if (indexPath.section == 1){
         
             //设置对勾效果
-            if (indexPath.row == selecteedNum) {
+            if (indexPath.row == thirdPrtyNum) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }else{
                 cell.accessoryType = UITableViewCellAccessoryNone;
@@ -340,6 +376,8 @@
             cell.money_label.text = [NSString stringWithFormat:@"¥%2.f",money];
         }
     }else{
+        
+        //这是没有使用余额的情况
         
         //设置对勾效果
         if (indexPath.row == selecteedNum) {
@@ -366,12 +404,101 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selecteedNum = (int)indexPath.row;
-    [tableView reloadData];
+    
     
     if (sectionNum == 2) {
         if (indexPath.section == 0) {
             isYue = !isYue;
+            
+            thirdPrtyNum = 0;
         }
     }
+    
+    [tableView reloadData];
 }
+
+
+#pragma mark WeiXinPay
+-(void)weixinPayWithMoney:(NSString*)payMoney
+{
+    
+    //TODO获取服务器订单号
+    
+    payCode = @"001122334455";
+    [self WeiChatUnifiedorder:payCode andTotal:@"测试" andIp:@"192.168.1.1" andMoney:@"100"];
+    
+}
+
+-(void)WeiChatUnifiedorder:(NSString*)orderId andTotal:(NSString*)total andIp:(NSString*)ipStr andMoney:(NSString*)money
+{
+    
+    //创建支付签名对象
+    payRequsestHandler *req = [payRequsestHandler alloc];
+    
+    //初始化支付签名对象
+    [req init:APP_ID mch_id:MCH_ID];
+    
+    //设置密钥
+    [req setKey:PARTNER_ID];
+    
+
+    NSDictionary * payDic = @{@"payTitle":@"微信充值",
+                              @"total":money,
+                              @"orderId":orderId,
+                              @"ip":ipStr};
+    
+    //获取到实际调起微信支付的参数后，在app端调起支付
+    NSMutableDictionary *dict = [req sendPay_demo:payDic];
+
+    if (dict) {
+        
+        //调用微信支付接口开始支付
+        PayReq * req = [[PayReq alloc]init];
+        
+        
+        req.openID =  [dict objectForKey:@"appid"];
+        req.partnerId = [dict objectForKey:@"partnerid"];
+        req.prepayId = [dict objectForKey:@"prepayid"];
+        req.package = [dict objectForKey:@"package"];
+        req.nonceStr = [dict objectForKey:@"noncestr"];
+        req.timeStamp = [[dict objectForKey:@"timestamp"] intValue];
+        req.sign = [dict objectForKey:@"sign"];
+        
+        [WXApi sendReq:req];
+    }else{
+        //错误提示
+        NSString *debug = [req getDebugifo];
+        NSLog(@"%@\n\n",debug);
+    }
+}
+
+//MARK: 时间戳
+- (NSString *)genTimeStamp
+{
+    return [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
+}
+//MARK: sign
+- (NSString *)genSign:(NSDictionary *)signParams
+{
+    // 排序
+    NSArray *keys = [signParams allKeys];
+    NSArray *sortedKeys = [keys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];
+    
+    // 生成
+    NSMutableString *sign = [NSMutableString string];
+    for (NSString *key in sortedKeys) {
+        [sign appendString:key];
+        [sign appendString:@"="];
+        [sign appendString:[signParams objectForKey:key]];
+        [sign appendString:@"&"];
+    }
+    NSString *signString = [[sign copy] substringWithRange:NSMakeRange(0, sign.length - 1)];
+    
+    NSString *result = [CommonUtil sha1:signString];
+    //NSLog(@"--- Gen sign: %@", result);
+    return result;
+}
+
 @end
