@@ -10,7 +10,7 @@
 
 @interface RevampViewController : UIViewController
 
-//1 修改昵称
+//1 修改昵称、 2 电子邮箱
 @property (nonatomic,assign)int myType;
 
 @end

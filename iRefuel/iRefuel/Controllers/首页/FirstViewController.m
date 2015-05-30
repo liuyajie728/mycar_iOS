@@ -467,9 +467,9 @@
     [req setKey:PARTNER_ID];
     
     //获取到实际调起微信支付的参数后，在app端调起支付
-    NSMutableDictionary *dict = [req sendPay_demo:@{@"orderId":orderId,
-                                                    @"total":total,
-                                                    @"ip":ipStr}];
+//    NSMutableDictionary *dict = [req sendPay_demo:@{@"orderId":orderId,
+//                                                    @"total":total,
+//                                                    @"ip":ipStr}];
     
     
     

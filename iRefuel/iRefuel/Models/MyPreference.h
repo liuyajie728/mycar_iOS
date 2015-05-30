@@ -17,7 +17,7 @@
 @interface MyPreference : NSObject
 
 //loginInfo
-+(NSDictionary*)getLoginInfo;
++(NSMutableDictionary*)getLoginInfo;
 +(void)commitLoginInfo:(NSDictionary*)info;
 
 //所有加油站列表

@@ -12,13 +12,14 @@
 @implementation MyPreference
 
 //loginInfo
-+(NSDictionary*)getLoginInfo
++(NSMutableDictionary*)getLoginInfo
 {
     NSUserDefaults *userDefaults = USERDEFAULTS;
     NSDictionary *loginInfo = [userDefaults objectForKey:LOGIN_INFO];
+    NSMutableDictionary * mDic = [[NSMutableDictionary alloc]initWithDictionary:loginInfo];
     
-    if (loginInfo) {
-        return loginInfo;
+    if (mDic) {
+        return mDic;
     }else{
         return nil;
     }

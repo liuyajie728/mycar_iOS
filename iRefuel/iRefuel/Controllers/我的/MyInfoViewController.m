@@ -11,6 +11,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "RevampViewController.h"
 #import "MyPreference.h"
+#import "myPickerView.h"
+#import "SelectedGenderViewController.h"
 
 @implementation myInfoCell1
 @end
@@ -24,6 +26,8 @@
     NSArray * s1;
     NSArray * s2;
     
+    NSArray * s2Infos;
+    
     UIImagePickerController * imagePicker;  // 图片选择器
     
     int revampType;//用来给修改界面穿的type
@@ -32,7 +36,7 @@
     NSString * nickName;
     
     
-    UIPickerView * myPickerView;
+    myPickerView * my_PickerView;
     NSArray * pickerAry;
     
 }
@@ -69,6 +73,7 @@
     s1 = @[@"头像",@"昵称"];
     s2 = @[@"性别",@"手机号",@"电子邮箱",@"生日"];
     
+
     
 }
 
@@ -81,14 +86,61 @@
 {
     //设置个人信息
     NSDictionary * dic = [MyPreference getLoginInfo];
-    
     nickName = [dic objectForKey:@"nickname"];
+    
+    //设置tableView显示的个人信息
+    NSDictionary * userDic = [MyPreference getLoginInfo];
+    
+    //性别
+    NSString * gender = [userDic objectForKey:@"gender"];
+    if ([gender isEqualToString:@"0"]) {
+        gender = @"女";
+    }else if([gender isEqualToString:@"1"]){
+        gender = @"男";
+    }
+    
+    //手机号
+    NSString * userPhone = [userDic objectForKey:@"mobile"];
+    
+    //邮箱
+    NSString * eMail = [userDic objectForKey:@"email"];
+    
+    //生日
+    NSString * birthday = [userDic objectForKey:@"dob"];
+    
+    s2Infos = @[gender,userPhone,eMail,birthday];
+    [self.myTableView reloadData];
     
 }
 
 -(void)backBtn:(UIButton*)send
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark settingTableViewHeight
+-(void)settingTableViewHeight:(BOOL)isHeight
+{
+    if (isHeight) {
+        //收
+        //[UIView animateWithDuration:.3 animations:^{
+            
+            //调整scrollView
+//            CGRect frame = self.myTableView.frame;
+//            //frame.size.height = LCDH - (153+64);
+//            frame.size.height = 200;
+//            self.myTableView.frame = frame;
+        
+//        } completion:^(BOOL finished) {
+//            
+//        }];
+        
+    }else{
+        //伸
+    
+    }
+
+
 }
 
 #pragma mark TableViewDelegate
@@ -152,6 +204,7 @@
             
         }else if (indexPath.section == 1){
             cell.leftLabel.text = s2[indexPath.row];
+            cell.rightLabel.text = s2Infos[indexPath.row];
         }
         
         return cell;
@@ -186,25 +239,18 @@
     }else if (indexPath.section == 1){
     
         if (indexPath.row == 0) {
+            
             //性别
-            if (!myPickerView) {
-                myPickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, LCDW - 216, 320, 216)];
-                myPickerView.backgroundColor = [UIColor redColor];
-                myPickerView.delegate = self;
-                myPickerView.dataSource = self;
-                [self.view addSubview:myPickerView];
-                
-            }
-            
-            pickerAry = @[@"男",@"女"];
-            [myPickerView reloadAllComponents];
-            
+            [self performSegueWithIdentifier:@"gender" sender:nil];
+
         }else if (indexPath.row == 1){
             //手机号
             
             
         }else if (indexPath.row == 2){
             //电子邮箱
+            revampType = 2;
+            [self performSegueWithIdentifier:@"revamp" sender:self];
             
             
         }else if (indexPath.row == 3){
@@ -221,7 +267,11 @@
 {
     if ([segue.identifier isEqualToString:@"revamp"]) {
         RevampViewController * revampVc = segue.destinationViewController;
-        revampVc.myType = 1;
+        revampVc.myType = revampType;
+    }else if ([segue.identifier isEqualToString:@"gender"]){
+        SelectedGenderViewController * selectedVc = segue.destinationViewController;
+        selectedVc.gender = s2Infos[0];
+        selectedVc.delegate = self;
     }
 }
 #pragma mark - actionDelegate
@@ -297,6 +347,13 @@
 {
 
     return pickerAry[row];
+}
+
+//点击pickerview上面的取消按钮
+-(void)clickPickerViewBtn{
+    
+    my_PickerView.hidden = YES;
+    [self settingTableViewHeight:NO];
 }
 
 @end

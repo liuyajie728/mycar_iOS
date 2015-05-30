@@ -410,28 +410,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iRefuel/Controllers/&#x6211;&#x7684;/MyInfoViewController.m"
-            timestampString = "454592521.930045"
+            timestampString = "454678722.411943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "-prepareForSegue:sender:"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iRefuel/Controllers/&#x6211;&#x7684;/MyInfoViewController.m"
-            timestampString = "454591011.260818"
+            filePath = "iRefuel/Controllers/&#x6211;&#x7684;/RevampViewController.m"
+            timestampString = "454689257.485846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-saveInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

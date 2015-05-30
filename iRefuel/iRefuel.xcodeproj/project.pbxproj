@@ -45,6 +45,10 @@
 		01645D6A1B04A26500AD36EB /* RechargeAndBalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01645D681B04A26500AD36EB /* RechargeAndBalanceCell.xib */; };
 		017386911B0316CA008AC34C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017386901B0316CA008AC34C /* SettingViewController.m */; };
 		017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017386951B034642008AC34C /* BalanceAndPrepaidTakeViewController.m */; };
+		01782FC71B196A7800481B6C /* myPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01782FC61B196A7800481B6C /* myPickerView.m */; };
+		01782FC91B196A8400481B6C /* myPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01782FC81B196A8400481B6C /* myPickerView.xib */; };
+		01782FCC1B199DFF00481B6C /* SelectedGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01782FCB1B199DFF00481B6C /* SelectedGenderViewController.m */; };
+		01782FCF1B19DC1700481B6C /* SelectedDataPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01782FCE1B19DC1700481B6C /* SelectedDataPickerViewController.m */; };
 		018AC6221AFE047500A220FE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61D1AFE047400A220FE /* LoginViewController.m */; };
 		018AC6231AFE047500A220FE /* TreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61F1AFE047400A220FE /* TreatyViewController.m */; };
 		018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC6251AFE052A00A220FE /* FirstViewController.m */; };
@@ -168,6 +172,13 @@
 		017386931B032D03008AC34C /* MyDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDefine.h; sourceTree = "<group>"; };
 		017386941B034642008AC34C /* BalanceAndPrepaidTakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceAndPrepaidTakeViewController.h; sourceTree = "<group>"; };
 		017386951B034642008AC34C /* BalanceAndPrepaidTakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceAndPrepaidTakeViewController.m; sourceTree = "<group>"; };
+		01782FC51B196A7800481B6C /* myPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myPickerView.h; sourceTree = "<group>"; };
+		01782FC61B196A7800481B6C /* myPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myPickerView.m; sourceTree = "<group>"; };
+		01782FC81B196A8400481B6C /* myPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = myPickerView.xib; path = ../../../myPickerView.xib; sourceTree = "<group>"; };
+		01782FCA1B199DFF00481B6C /* SelectedGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedGenderViewController.h; sourceTree = "<group>"; };
+		01782FCB1B199DFF00481B6C /* SelectedGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedGenderViewController.m; sourceTree = "<group>"; };
+		01782FCD1B19DC1700481B6C /* SelectedDataPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedDataPickerViewController.h; sourceTree = "<group>"; };
+		01782FCE1B19DC1700481B6C /* SelectedDataPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDataPickerViewController.m; sourceTree = "<group>"; };
 		018AC61C1AFE047400A220FE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		018AC61D1AFE047400A220FE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		018AC61E1AFE047400A220FE /* TreatyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatyViewController.h; sourceTree = "<group>"; };
@@ -335,6 +346,9 @@
 				0102CF141B16F0DB00EB1285 /* ConfirmView.h */,
 				0102CF151B16F0DB00EB1285 /* ConfirmView.m */,
 				0102CF171B16F0EE00EB1285 /* ConfirmView.xib */,
+				01782FC51B196A7800481B6C /* myPickerView.h */,
+				01782FC61B196A7800481B6C /* myPickerView.m */,
+				01782FC81B196A8400481B6C /* myPickerView.xib */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -427,6 +441,10 @@
 				01458DA31B09B16500B4A6AF /* DealDetailViewController.m */,
 				01458DA51B09C9EE00B4A6AF /* DealAppraiseViewController.h */,
 				01458DA61B09C9EE00B4A6AF /* DealAppraiseViewController.m */,
+				01782FCA1B199DFF00481B6C /* SelectedGenderViewController.h */,
+				01782FCB1B199DFF00481B6C /* SelectedGenderViewController.m */,
+				01782FCD1B19DC1700481B6C /* SelectedDataPickerViewController.h */,
+				01782FCE1B19DC1700481B6C /* SelectedDataPickerViewController.m */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -706,6 +724,7 @@
 				0102CF181B16F0EE00EB1285 /* ConfirmView.xib in Resources */,
 				18321E431AE0167D00263CF9 /* Default-568h@2x.png in Resources */,
 				18321E2A1AE013C800263CF9 /* LaunchScreen.xib in Resources */,
+				01782FC91B196A8400481B6C /* myPickerView.xib in Resources */,
 				01645D6A1B04A26500AD36EB /* RechargeAndBalanceCell.xib in Resources */,
 				18321E271AE013C800263CF9 /* Images.xcassets in Resources */,
 				01CC49881B0C74E4007B7237 /* StationDetailTableViewCell.xib in Resources */,
@@ -729,9 +748,11 @@
 			files = (
 				01CD6B9B1B0DFC57003CCB9C /* UIImage+GIF.m in Sources */,
 				01EB612B1AF74C5A006E623C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				01782FCF1B19DC1700481B6C /* SelectedDataPickerViewController.m in Sources */,
 				01CD6B911B0DFC57003CCB9C /* MKAnnotationView+WebCache.m in Sources */,
 				01EB614A1AF74F92006E623C /* AFHTTPRequestOperationManager.m in Sources */,
 				01CD6B981B0DFC57003CCB9C /* SDWebImageManager.m in Sources */,
+				01782FC71B196A7800481B6C /* myPickerView.m in Sources */,
 				0102CF131B16E52100EB1285 /* ConfirmPayViewController.m in Sources */,
 				01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */,
 				01CC498B1B0C7C79007B7237 /* MyInfoViewController.m in Sources */,
@@ -780,6 +801,7 @@
 				01402D991B00C92000DAE4F6 /* MyViewController.m in Sources */,
 				01645D641B0493AD00AD36EB /* RechargeAndBalanceViewController.m in Sources */,
 				01620C981B0D97EA009F647C /* StationDetailViewController.m in Sources */,
+				01782FCC1B199DFF00481B6C /* SelectedGenderViewController.m in Sources */,
 				018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */,
 				01CD6B921B0DFC57003CCB9C /* NSData+ImageContentType.m in Sources */,
 				01EB612D1AF74C5A006E623C /* UIButton+AFNetworking.m in Sources */,

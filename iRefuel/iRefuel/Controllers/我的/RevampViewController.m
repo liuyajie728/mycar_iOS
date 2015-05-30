@@ -9,6 +9,7 @@
 #import "RevampViewController.h"
 #import "CommonUtil.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "MyPreference.h"
 
 @interface RevampViewController ()<UIGestureRecognizerDelegate,UITextFieldDelegate,MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *myTextField;
@@ -28,6 +29,9 @@
     if (self.myType == 1) {
         //昵称
         titleStr = @"修改昵称";
+    }else if (self.myType == 2){
+        //电子邮箱
+        titleStr = @"电子邮箱";
     }
     
     
@@ -74,22 +78,61 @@
 
 -(void)saveInfo
 {
-    //更改用户名称
+    //根据不同的type做不同的提示
+    NSString * tishiStr;
+    if (self.myType == 1) {
+        tishiStr = @"昵称不能为空";
+    }else if (self.myType == 2){
+        tishiStr = @"邮箱地址不能为空";
+    }
+    
+    
+    if ([self.myTextField.text isEqualToString:@""]) {
+        [CommonUtil showHUD:tishiStr delay:2.0f withDelegate:self];
+        return;
+    }
+    
+    
+    //登陆返回的用户信息
+    NSDictionary * userInfo = [MyPreference getLoginInfo];
+    
+    
+    //初始化af
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     NSMutableDictionary * postDic = [CommonUtil getPostDic];
+    [postDic setObject:[userInfo objectForKey:@"user_id"] forKey:@"user_id"];
     
     //根据不同的type做不同的修改
     if (self.myType == 1) {
         //修改昵称
-        [postDic setObject:self.myTextField.text forKey:@"nickname"];
+        [postDic setObject:@"nickname" forKey:@"column"];
+        [postDic setObject:self.myTextField.text forKey:@"value"];
+    }else if (self.myType == 2){
+        //电子邮箱
+        [postDic setObject:@"email" forKey:@"column"];
+        [postDic setObject:self.myTextField.text forKey:@"value"];
     }
+    
     
     //发送网络请求
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [manager POST:[NSString stringWithFormat:@"%@/user/update",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"%@",responseObject);
-        NSDictionary * dic = responseObject;
+        NSDictionary * dataDic = responseObject;
+        if ([[dataDic objectForKey:@"status"]longValue] == 200)
+        {
+            //修改成功后更新信息
+            NSMutableDictionary * mUserDic = [MyPreference getLoginInfo];
+            [mUserDic setObject:self.myTextField.text forKey:@"nickname"];
+            [MyPreference commitLoginInfo:mUserDic];
+            
+        }else{
+        
+            [CommonUtil showHUD:[dataDic objectForKey:@"content"] delay:2.0f withDelegate:self];
+        }
+        
+        
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -115,9 +158,16 @@
 }
 - (void)textFieldDidChange:(UITextField *)textField
 {
+    int xianzhi = 0;
+    if (self.myType == 1) {
+        xianzhi = 15;
+    }else if (self.myType == 2){
+        xianzhi = 30;
+    }
+    
     if (textField == self.myTextField) {
-        if (textField.text.length > 15) {
-            textField.text = [textField.text substringToIndex:15];
+        if (textField.text.length > xianzhi) {
+            textField.text = [textField.text substringToIndex:xianzhi];
         }
     }
 }
