@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>29568369-9E35-441C-B83E-2460DA6EB0C4</string>
 	<key>IDESourceControlProjectName</key>
-	<string>iRefuel</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A33885E9F54FC1C84896F094B3544DF04782C3EB</key>
 		<string>https://github.com/liuyajie728/mycar_iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iRefuel/iRefuel.xcodeproj</string>
+	<string>iRefuel/iRefuel.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A33885E9F54FC1C84896F094B3544DF04782C3EB</key>

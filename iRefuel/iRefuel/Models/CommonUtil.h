@@ -55,5 +55,16 @@
 //根据加油站品牌id得到加油站品牌
 +(NSString*)getBrandWithBrandId:(int)brandId;
 
+//对图片尺寸进行压缩--
++(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
+
+//判断是否是一个合法的金额
++(BOOL)isMoney:(NSString*)money;
+
+////获取ip地址
+//+ (NSString *)getIPAddress;
+
+
+
 
 @end

@@ -18,6 +18,9 @@
 #define IP_ADDR_IPv4    @"ipv4"
 #define IP_ADDR_IPv6    @"ipv6"
 
+#define myDotNumbers     @"0123456789.\n"
+#define myNumbers        @"0123456789\n"
+
 @implementation CommonUtil
 
 + (NSString *)md5:(NSString *)input
@@ -399,13 +402,96 @@
     
     
     NSArray * brands = [MyPreference getBrandList];
-    
-    
-    
-    
-    
-    
+
     return brandName;
 
+}
++(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    
+    UIGraphicsBeginImageContext(newSize);
+    
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    
+    
+    // Get the new image from the context
+    
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    
+    // End the context
+    
+    UIGraphicsEndImageContext();
+    
+    
+    // Return the new image.
+    
+    return newImage;
+
+}
+
++(BOOL)isMoney:(NSString*)money
+{
+    
+    NSCharacterSet *cs;
+    NSInteger location =  money.length;
+    NSUInteger nDotLoc = [money rangeOfString:@"."].location;
+    
+    if (NSNotFound == nDotLoc && 0 != location) {
+        cs = [[NSCharacterSet characterSetWithCharactersInString:myDotNumbers] invertedSet];
+    }
+    else {
+        cs = [[NSCharacterSet characterSetWithCharactersInString:myNumbers] invertedSet];
+    }
+    NSString *filtered = [[money componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    BOOL basicTest = [money isEqualToString:filtered];
+    if (!basicTest) {
+        
+        //[self showMyMessage:@"只能输入数字和小数点"];
+        NSLog(@"只能输入数字和小数点");
+        return NO;
+    }
+    if (NSNotFound != nDotLoc && location > nDotLoc + 3) {
+        //[self showMyMessage:@"小数点后最多三位"];
+        NSLog(@"小数点后最多三位");
+        return NO;
+    }
+    return YES;
+}
+
+
++ (NSString *)getIPAddress
+{
+    NSString *address = @"error";
+    struct ifaddrs *interfaces = NULL;
+    struct ifaddrs *temp_addr = NULL;
+    int success = 0;
+    
+    // retrieve the current interfaces - returns 0 on success
+    success = getifaddrs(&interfaces);
+    if (success == 0) {
+        // Loop through linked list of interfaces
+        temp_addr = interfaces;
+        while (temp_addr != NULL) {
+            if( temp_addr->ifa_addr->sa_family == AF_INET) {
+                // Check if interface is en0 which is the wifi connection on the iPhone
+                if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+                    // Get NSString from C String
+                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+                }
+            }
+            
+            temp_addr = temp_addr->ifa_next;
+        }
+    }
+    
+    // Free memory
+    freeifaddrs(interfaces);
+    
+    return address;
 }
 @end

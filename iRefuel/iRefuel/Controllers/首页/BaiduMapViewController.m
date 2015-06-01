@@ -66,7 +66,7 @@
 
     pointAnnotation.coordinate = coor;
     pointAnnotation.title = @"目的地";
-    pointAnnotation.subtitle = @"此Annotation可拖拽!";
+    pointAnnotation.subtitle = @"";
     [_myMapView addAnnotation:pointAnnotation];
     
 }

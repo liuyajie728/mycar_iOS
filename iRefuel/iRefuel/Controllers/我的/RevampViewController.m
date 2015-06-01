@@ -14,6 +14,7 @@
 @interface RevampViewController ()<UIGestureRecognizerDelegate,UITextFieldDelegate,MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *myTextField;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+@property (weak, nonatomic) IBOutlet UIDatePicker *myDataPicker;
 
 @end
 
@@ -29,11 +30,30 @@
     if (self.myType == 1) {
         //昵称
         titleStr = @"修改昵称";
+        self.myDataPicker.hidden = YES;
     }else if (self.myType == 2){
         //电子邮箱
         titleStr = @"电子邮箱";
-    }
+        self.myDataPicker.hidden = YES;
+    }else if (self.myType == 3){
+        //选择生日
+        titleStr = @"生日";
+        self.deleteBtn.hidden = YES;
     
+        self.myDataPicker.datePickerMode = UIDatePickerModeDate;
+        
+        //设置时间限制
+        //最大时间
+        self.myDataPicker.maximumDate = [NSDate date];
+        
+        //最小时间
+        NSString * timeStr = @"1940-01-01";
+        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+        [inputFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate * date = [inputFormatter dateFromString:timeStr];
+        self.myDataPicker.minimumDate = date;
+        
+    }
     
     self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:titleStr andFount:18 andTitleColour:TitleColor];
     
@@ -84,6 +104,8 @@
         tishiStr = @"昵称不能为空";
     }else if (self.myType == 2){
         tishiStr = @"邮箱地址不能为空";
+    }else if (self.myType == 3){
+        tishiStr = @"请您选择日期";
     }
     
     
@@ -111,6 +133,10 @@
         //电子邮箱
         [postDic setObject:@"email" forKey:@"column"];
         [postDic setObject:self.myTextField.text forKey:@"value"];
+    }else if (self.myType == 3){
+        //修改生日
+        [postDic setObject:@"dob" forKey:@"column"];
+        [postDic setObject:self.myTextField.text forKey:@"value"];
     }
     
     
@@ -118,14 +144,26 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [manager POST:[NSString stringWithFormat:@"%@/user/update",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         NSDictionary * dataDic = responseObject;
         if ([[dataDic objectForKey:@"status"]longValue] == 200)
         {
             //修改成功后更新信息
             NSMutableDictionary * mUserDic = [MyPreference getLoginInfo];
-            [mUserDic setObject:self.myTextField.text forKey:@"nickname"];
+            
+            //根据不同的type分别针对不同的信息做储存
+            if (self.myType == 1) {
+                [mUserDic setObject:self.myTextField.text forKey:@"nickname"];
+            }else if (self.myType == 2){
+                [mUserDic setObject:self.myTextField.text forKey:@"email"];
+            }else if (self.myType == 3){
+                [mUserDic setObject:self.myTextField.text forKey:@"dob"];
+            }
+            
             [MyPreference commitLoginInfo:mUserDic];
+            
+            //成功后返回
+            [self.navigationController popViewControllerAnimated:YES];
             
         }else{
         
@@ -171,6 +209,27 @@
         }
     }
 }
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (self.myType == 3) {
+        return NO;
+    }
+    
+    
+    return YES;
+}
+
+- (IBAction)changedDataPicker:(id)sender {
+    
+    NSDate * date = self.myDataPicker.date;
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *dateStr = [dateformatter stringFromDate:date];
+    NSLog(@"%@",dateStr);
+    self.myTextField.text = dateStr;
+    
+}
+
 /*
 #pragma mark - Navigation
 

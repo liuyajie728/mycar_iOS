@@ -101,7 +101,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [manager POST:[NSString stringWithFormat:@"%@/user/update",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         NSDictionary * dataDic = responseObject;
         
         if ([[dataDic objectForKey:@"status"]longValue] == 200){

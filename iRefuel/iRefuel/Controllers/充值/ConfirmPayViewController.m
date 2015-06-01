@@ -57,7 +57,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     self.navigationItem.titleView = [CommonUtil getTitleViewWithTitle:@"消费订单确认" andFount:18 andTitleColour:TitleColor];
     
@@ -269,6 +269,10 @@
     
     return 20;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -422,10 +426,33 @@
 -(void)weixinPayWithMoney:(NSString*)payMoney
 {
     
-    //TODO获取服务器订单号
+    NSDictionary * userDic = [MyPreference getLoginInfo];
     
-    payCode = @"001122334455";
-    [self WeiChatUnifiedorder:payCode andTotal:@"测试" andIp:@"192.168.1.1" andMoney:@"100"];
+    
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary * postDic = [CommonUtil getPostDic];
+    
+    [postDic setObject:@"consume" forKey:@"type"];
+    [postDic setObject:[userDic objectForKey:@"user_id"] forKey:@"user_id"];
+    [postDic setObject:@"192.168.1.1" forKey:@"user_ip"];
+    [postDic setObject:@"100" forKey:@"total"];
+    
+
+   [manager POST:[NSString stringWithFormat:@"%@/order/create",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+       
+       NSLog(@"%@",responseObject);
+       
+   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+       
+       
+   }];
+    
+    
+    
+    
+    //TODO获取服务器订单号
+//    payCode = @"001122334455";
+//    [self WeiChatUnifiedorder:payCode andTotal:@"测试" andIp:@"192.168.1.1" andMoney:@"100"];
     
 }
 

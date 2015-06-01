@@ -243,7 +243,8 @@
     NSDictionary * dataDic = dataAry[indexPath.row];
     
     //图片
-    [cell.headImage setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"image_url"]] placeholderImage:nil];
+    UIImage * image = [UIImage imageNamed:@"default_station.jpg"];
+    [cell.headImage setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"image_url"]] placeholderImage:image];
    
     //油站名称
     cell.youzhanName.text = [dataDic objectForKey:@"name"];

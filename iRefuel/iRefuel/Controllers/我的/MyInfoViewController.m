@@ -13,6 +13,10 @@
 #import "MyPreference.h"
 #import "myPickerView.h"
 #import "SelectedGenderViewController.h"
+#import "UpYun.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "UIImageView+WebCache.h"
+
 
 @implementation myInfoCell1
 @end
@@ -21,7 +25,7 @@
 @end
 
 
-@interface MyInfoViewController ()<UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+@interface MyInfoViewController ()<UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate,MBProgressHUDDelegate>
 {
     NSArray * s1;
     NSArray * s2;
@@ -178,7 +182,21 @@
             cell = [[myInfoCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-        cell.headImage.backgroundColor = [UIColor redColor];
+        
+        NSDictionary * userDic = [MyPreference getLoginInfo];
+        NSString * logUrl = [userDic objectForKey:@"logo_url"];
+        
+        if ([logUrl isEqualToString:@""]) {
+            cell.headImage.image = [UIImage imageNamed:@"holdHeadImage"];
+            
+        }else{
+            
+            NSLog(@"-- %@",[userDic objectForKey:@"logo_url"]);
+            
+            [cell.headImage setImageWithURL:[NSURL URLWithString:[userDic objectForKey:@"logo_url"]] placeholderImage:[UIImage imageNamed:@"holdHeadImage"]];
+        }
+        
+        
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -255,7 +273,8 @@
             
         }else if (indexPath.row == 3){
             //生日
-            
+            revampType = 3;
+            [self performSegueWithIdentifier:@"revamp" sender:self];
             
         }
     
@@ -273,6 +292,67 @@
         selectedVc.gender = s2Infos[0];
         selectedVc.delegate = self;
     }
+}
+
+#pragma mark request
+-(void)saveUserHeadImage
+{
+    
+    //登陆返回的用户信息
+    NSDictionary * userInfo = [MyPreference getLoginInfo];
+    
+    //请求
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    
+    //修改用户头像路径
+    NSMutableDictionary * postDic = [CommonUtil getPostDic];
+    [postDic setObject:[userInfo objectForKey:@"user_id"] forKey:@"user_id"];
+    [postDic setObject:@"logo_url" forKey:@"column"];
+    [postDic setObject:[NSString stringWithFormat:@"http://image.irefuel.cn%@",[self getSaveKey]] forKey:@"value"];
+    
+    
+    [manager POST:[NSString stringWithFormat:@"%@/user/update",MyHTTP] parameters:postDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        
+        NSDictionary * dataDic = responseObject;
+        if ([[dataDic objectForKey:@"status"]longValue] == 200)
+        {
+            [CommonUtil showHUD:@"头像设置成功" delay:2.0f withDelegate:self];
+        
+            
+            //更新头像信息
+            NSMutableDictionary * mUserDic = [MyPreference getLoginInfo];
+            [mUserDic setObject:[NSString stringWithFormat:@"http://image.irefuel.cn%@",[self getSaveKey]] forKey:@"logo_url"];
+            [MyPreference commitLoginInfo:mUserDic];
+            
+            
+            
+//            SDImageCache *imageCache = [SDImageCache sharedImageCache];
+//            [imageCache clearMemory];
+//            [imageCache clearDisk];
+//            [[SDImageCache sharedImageCache] removeImageForKey:[mUserDic objectForKey:@"logo_url"] fromDisk:YES];
+            
+            [[SDImageCache sharedImageCache] removeImageForKey:[mUserDic objectForKey:@"logo_url"]];
+            
+            //让新的头像显示
+            //[self.myTableView reloadData];
+            
+            //发送广播 让上一个界面的头像也更新
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"headImage" object:nil];
+        
+        }else{
+            [CommonUtil showHUD:@"头像保存失败" delay:2.0f withDelegate:self];
+        
+        }
+        
+     
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+
 }
 #pragma mark - actionDelegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -320,13 +400,47 @@
 {
     
     UIImage *image  = [info objectForKey:UIImagePickerControllerEditedImage];
-//    self.myFace_IV.image = image;
-//    [imagePicker dismissViewControllerAnimated:YES completion:nil];
-//    isUpdateImage = YES;
     
-    //TODO上传头像
-}
+    //压缩图片
+    UIImage * newImage = [CommonUtil imageWithImage:image scaledToSize:CGSizeMake(150, 150)];
+    
+    
+    //上传头像
+    UpYun *uy = [[UpYun alloc] init];
+    
+    uy.successBlocker = ^(id data)
+    {
+        NSLog(@"上传图片成功");
+        
+        //TODO 把图片地址保存到自己的服务器上
+        [self saveUserHeadImage];
+        
+    };
+    
+    uy.failBlocker = ^(NSError * error)
+    {
+//        NSLog(@"上传图片失败 = %@",error);
+        [CommonUtil showHUD:@"头像上传失败" delay:2.0f withDelegate:self];
 
+    };
+    
+    uy.progressBlocker = ^(CGFloat percent, long long requestDidSendBytes)
+    {
+        //不出意外是进度条
+        NSLog(@"percent = %lf",percent);
+        NSLog(@"requestDidSendBytes = %lld",requestDidSendBytes);
+    };
+//    NSLog(@"%@",[self getSaveKey]);
+    [uy uploadFile:newImage saveKey:[self getSaveKey]];
+    [imagePicker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+-(NSString * )getSaveKey {
+    
+    NSDictionary * userDic = [MyPreference getLoginInfo];
+    return [NSString stringWithFormat:@"/ios_app/userHead/%@.png",[userDic objectForKey:@"user_id"]];
+    
+}
 #pragma mark pickerViewDelegate
 // returns the number of 'columns' to display.
 //返回有几个PickerView
@@ -349,11 +463,6 @@
     return pickerAry[row];
 }
 
-//点击pickerview上面的取消按钮
--(void)clickPickerViewBtn{
-    
-    my_PickerView.hidden = YES;
-    [self settingTableViewHeight:NO];
-}
+
 
 @end

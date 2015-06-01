@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "RechargeAndBalanceViewController.h"
 #import "MyPreference.h"
+#import "UIImageView+WebCache.h"
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -41,14 +42,15 @@
     
     
     //nav右边按钮 TODO 要用自定义的or改个颜色
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(RightBarAction)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:1];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(RightBarAction)];
+//    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:1];
     
     //设置tableView没有弹性
     self.myTableView.bounces = NO;
     
     
-
+    //监听刷新头像
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadHeadImage) name:@"headImage" object:nil];
     
 }
 
@@ -61,7 +63,10 @@
     NSLog(@"+++");
 }
 
-
+-(void)reloadHeadImage
+{
+    [self.myTableView reloadData];
+}
 #pragma mark tableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -113,16 +118,29 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section == 0) {
-        //头像
-        UIImageView * headView = [[UIImageView alloc]initWithFrame:CGRectMake(18, 8, 68, 68)];
-        headView.backgroundColor = [UIColor redColor];
-        headView.tag = 102;
-        [cell.contentView addSubview:headView];
+        
         
         //设置用户信息
         NSDictionary * userInfo = [MyPreference getLoginInfo];
         
+        //头像
+        UIImageView * headView = [[UIImageView alloc]initWithFrame:CGRectMake(18, 8, 68, 68)];
+//        headView.backgroundColor = [UIColor redColor];
+        headView.tag = 102;
+        [cell.contentView addSubview:headView];
         
+        NSString * logUrl = [userInfo objectForKey:@"logo_url"];
+        if ([logUrl isEqualToString:@""]) {
+            headView.image = [UIImage imageNamed:@"holdHeadImage"];
+            
+        }else{
+            [headView setImageWithURL:[NSURL URLWithString:[userInfo objectForKey:@"logo_url"]] placeholderImage:[UIImage imageNamed:@"holdHeadImage"]];
+        }
+        
+        
+        
+        
+        //两个label
         UILabel * nameLabe = [[UILabel alloc]initWithFrame:CGRectMake(headView.frame.origin.x + headView.frame.size.width + 10, 20, 140, 22)];
         nameLabe.backgroundColor = [UIColor clearColor];
         nameLabe.text = [userInfo objectForKey:@"nickname"];

@@ -53,6 +53,11 @@
 		018AC6231AFE047500A220FE /* TreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC61F1AFE047400A220FE /* TreatyViewController.m */; };
 		018AC6261AFE052A00A220FE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC6251AFE052A00A220FE /* FirstViewController.m */; };
 		018AC6291AFE053D00A220FE /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AC6281AFE053D00A220FE /* SecondViewController.m */; };
+		019ECDD71B1C111F00868FC0 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 019ECDD01B1C111F00868FC0 /* MF_Base64Additions.m */; };
+		019ECDD81B1C111F00868FC0 /* NSData+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 019ECDD31B1C111F00868FC0 /* NSData+Utils.m */; };
+		019ECDD91B1C111F00868FC0 /* NSData+MD5Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 019ECDD61B1C111F00868FC0 /* NSData+MD5Digest.m */; };
+		019ECDDD1B1C146800868FC0 /* UpYun.m in Sources */ = {isa = PBXBuildFile; fileRef = 019ECDDC1B1C146800868FC0 /* UpYun.m */; };
+		019ECDDF1B1C43F200868FC0 /* default_station.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 019ECDDE1B1C43F200868FC0 /* default_station.jpg */; };
 		01AFE7BA1AFB41D0006EEE27 /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B51AFB41D0006EEE27 /* ApiXml.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AFE7BB1AFB41D0006EEE27 /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B71AFB41D0006EEE27 /* payRequsestHandler.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AFE7BC1AFB41D0006EEE27 /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01AFE7B91AFB41D0006EEE27 /* WXUtil.mm */; };
@@ -187,6 +192,15 @@
 		018AC6251AFE052A00A220FE /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		018AC6271AFE053D00A220FE /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		018AC6281AFE053D00A220FE /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		019ECDCF1B1C111F00868FC0 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
+		019ECDD01B1C111F00868FC0 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
+		019ECDD21B1C111F00868FC0 /* NSData+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Utils.h"; sourceTree = "<group>"; };
+		019ECDD31B1C111F00868FC0 /* NSData+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Utils.m"; sourceTree = "<group>"; };
+		019ECDD51B1C111F00868FC0 /* NSData+MD5Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5Digest.h"; sourceTree = "<group>"; };
+		019ECDD61B1C111F00868FC0 /* NSData+MD5Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5Digest.m"; sourceTree = "<group>"; };
+		019ECDDB1B1C146800868FC0 /* UpYun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpYun.h; sourceTree = "<group>"; };
+		019ECDDC1B1C146800868FC0 /* UpYun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpYun.m; sourceTree = "<group>"; };
+		019ECDDE1B1C43F200868FC0 /* default_station.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_station.jpg; sourceTree = "<group>"; };
 		01AFE7B41AFB41D0006EEE27 /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
 		01AFE7B51AFB41D0006EEE27 /* ApiXml.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiXml.mm; sourceTree = "<group>"; };
 		01AFE7B61AFB41D0006EEE27 /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
@@ -314,6 +328,9 @@
 		0148DD161AF775F000BAA18C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				019ECDCE1B1C111F00868FC0 /* Base64 */,
+				019ECDD11B1C111F00868FC0 /* Data */,
+				019ECDD41B1C111F00868FC0 /* NSData+MD5Digest */,
 				0148DD171AF775F000BAA18C /* CommonUtil.h */,
 				0148DD181AF775F000BAA18C /* CommonUtil.m */,
 				016410C51B12F916002869C7 /* MyPreference.h */,
@@ -449,6 +466,42 @@
 			path = "我的";
 			sourceTree = "<group>";
 		};
+		019ECDCE1B1C111F00868FC0 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				019ECDCF1B1C111F00868FC0 /* MF_Base64Additions.h */,
+				019ECDD01B1C111F00868FC0 /* MF_Base64Additions.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		019ECDD11B1C111F00868FC0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				019ECDD21B1C111F00868FC0 /* NSData+Utils.h */,
+				019ECDD31B1C111F00868FC0 /* NSData+Utils.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		019ECDD41B1C111F00868FC0 /* NSData+MD5Digest */ = {
+			isa = PBXGroup;
+			children = (
+				019ECDD51B1C111F00868FC0 /* NSData+MD5Digest.h */,
+				019ECDD61B1C111F00868FC0 /* NSData+MD5Digest.m */,
+			);
+			path = "NSData+MD5Digest";
+			sourceTree = "<group>";
+		};
+		019ECDDA1B1C146800868FC0 /* UpYun */ = {
+			isa = PBXGroup;
+			children = (
+				019ECDDB1B1C146800868FC0 /* UpYun.h */,
+				019ECDDC1B1C146800868FC0 /* UpYun.m */,
+			);
+			path = UpYun;
+			sourceTree = "<group>";
+		};
 		01CD6B731B0DFC56003CCB9C /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +553,7 @@
 		01EB61171AF74C5A006E623C /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				019ECDDA1B1C146800868FC0 /* UpYun */,
 				01CD6B731B0DFC56003CCB9C /* SDWebImage */,
 				01631CF71B01D5FB00DC1888 /* baiduMap */,
 				0148DD1A1AF777B600BAA18C /* WeChatSDK_1.4.1 */,
@@ -571,6 +625,7 @@
 				01631CFC1B01D64D00DC1888 /* QuartzCore.framework */,
 				01631CFA1B01D64200DC1888 /* CoreLocation.framework */,
 				18321E421AE0167D00263CF9 /* Default-568h@2x.png */,
+				019ECDDE1B1C43F200868FC0 /* default_station.jpg */,
 				18321E151AE013C800263CF9 /* iRefuel */,
 				18321E321AE013C800263CF9 /* iRefuelTests */,
 				18321E141AE013C800263CF9 /* Products */,
@@ -728,6 +783,7 @@
 				01645D6A1B04A26500AD36EB /* RechargeAndBalanceCell.xib in Resources */,
 				18321E271AE013C800263CF9 /* Images.xcassets in Resources */,
 				01CC49881B0C74E4007B7237 /* StationDetailTableViewCell.xib in Resources */,
+				019ECDDF1B1C43F200868FC0 /* default_station.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,9 +807,11 @@
 				01782FCF1B19DC1700481B6C /* SelectedDataPickerViewController.m in Sources */,
 				01CD6B911B0DFC57003CCB9C /* MKAnnotationView+WebCache.m in Sources */,
 				01EB614A1AF74F92006E623C /* AFHTTPRequestOperationManager.m in Sources */,
+				019ECDD91B1C111F00868FC0 /* NSData+MD5Digest.m in Sources */,
 				01CD6B981B0DFC57003CCB9C /* SDWebImageManager.m in Sources */,
 				01782FC71B196A7800481B6C /* myPickerView.m in Sources */,
 				0102CF131B16E52100EB1285 /* ConfirmPayViewController.m in Sources */,
+				019ECDDD1B1C146800868FC0 /* UpYun.m in Sources */,
 				01645D511B04745B00AD36EB /* TransactionRecordViewController.m in Sources */,
 				01CC498B1B0C7C79007B7237 /* MyInfoViewController.m in Sources */,
 				017386961B034642008AC34C /* BalanceAndPrepaidTakeViewController.m in Sources */,
@@ -766,6 +824,7 @@
 				18321E1C1AE013C800263CF9 /* AppDelegate.mm in Sources */,
 				01EB61341AF74CC3006E623C /* RootTabBarController.m in Sources */,
 				01533E371AF8B7B6000029C0 /* MBProgressHUD.m in Sources */,
+				019ECDD81B1C111F00868FC0 /* NSData+Utils.m in Sources */,
 				014210921B0B138A00CB5AF7 /* GasStationDetailViewController.m in Sources */,
 				018AC6291AFE053D00A220FE /* SecondViewController.m in Sources */,
 				01EB614F1AF74F92006E623C /* AFURLRequestSerialization.m in Sources */,
@@ -787,6 +846,7 @@
 				01645D691B04A26500AD36EB /* RechargeAndBalanceCell.m in Sources */,
 				01CD6B991B0DFC57003CCB9C /* SDWebImagePrefetcher.m in Sources */,
 				01CD6B9C1B0DFC57003CCB9C /* UIImage+MultiFormat.m in Sources */,
+				019ECDD71B1C111F00868FC0 /* MF_Base64Additions.m in Sources */,
 				01CD6B951B0DFC57003CCB9C /* SDWebImageDecoder.m in Sources */,
 				18321E191AE013C800263CF9 /* main.m in Sources */,
 				01EB614C1AF74F92006E623C /* AFNetworkReachabilityManager.m in Sources */,
